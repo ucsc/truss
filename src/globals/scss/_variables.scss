@@ -1,0 +1,130 @@
+@use "sass:math";
+// All the variables used in the stylesheet
+
+/*
+*  Colors
+*
+*/
+
+$colors:(
+  "gray-500": #f7fafc,
+  "red-500": #f56565,
+  "green-500": #48bb78
+);
+
+
+// 2010 template defaults
+$sand: #f2f0e4;
+$sand-light: lighten($sand, 8%);
+$sand-med: darken($sand, 2%);
+$sand-dark: darken($sand, 6%);
+
+$brown: #585755;
+$brown-light: lighten($brown, 8%);
+$brown-med: darken($brown, 2%);
+$brown-dark: darken($brown, 6%);
+
+$gray: #8e8c87;
+$gray-very-light: lighten($gray, 40%);
+$gray-light: lighten($gray, 8%);
+$gray-med: darken($gray, 2%);
+$gray-dark: darken($gray, 4%);
+
+$blue: #003c6c;
+$blue-light: lighten($blue, 8%);
+$blue-med: darken($blue, 2%);
+$blue-dark: darken($blue, 4%);
+
+$gold: #ffc500;
+$gold-light: lighten($gold, 8%);
+$gold-med: darken($gold, 2%);
+$gold-dark: darken($gold, 10%);
+
+// 2014 template default colors, derived from above
+$body-text: darken($gray, 15%);
+$body-bg: #fff;
+// $body-bg: lighten($sand, 2%);
+
+
+
+// Brand Refresh Colors
+$brand-primary-blue: #003c6c;
+$brand-yellow: #fdc700;
+$brand-secondary-blue: #00458c;
+$brand-orange: #d66e2e;
+$brand-tertiary-blue: #01589d;
+$brand-gold: #f1af13;
+$brand-green: #93c02d;
+$brand-turquoise: #007988;
+$brand-pink: #da216d;
+
+$brand-black: #000;
+$brand-dark-gray: #222;
+$brand-medium-gray: #555;
+$brand-light-gray: #ddd;
+
+
+/*
+*  Typography
+*
+*/
+
+// $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
+$font-family-sans-serif: 'Roboto',
+sans-serif !default;
+$font-family-sans-serif-condensed: 'Roboto Condensed',
+sans-serif !default;
+$font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace !default;
+$font-family-headlines: "Helvetica Neue",
+Helvetica,
+Arial,
+"Lucida Grande",
+sans-serif;
+$font-family-base: $font-family-sans-serif !default;
+
+$font-size-base: 16px !default;
+$font-size-large: ceil($font-size-base * 1.25) !default; // ~18px
+$font-size-small: ceil($font-size-base * 0.85) !default; // ~12px
+
+$font-size-h1: floor($font-size-base * 2.6) !default; // ~36px
+$font-size-h2: floor($font-size-base * 2.15) !default; // ~30px
+$font-size-h3: ceil($font-size-base * 1.7) !default; // ~24px
+$font-size-h4: ceil($font-size-base * 1.25) !default; // ~18px
+$font-size-h5: $font-size-base !default;
+$font-size-h6: ceil($font-size-base * 0.85) !default; // ~12px
+
+$line-height-base: 1.428571429 !default; // 20/14
+// $line-height-computed:    floor($font-size-base * $line-height-base) !default; // ~20px
+
+$headings-font-family: $font-family-base !default;
+$headings-font-weight: 500 !default;
+$headings-line-height: 1.1 !default;
+$headings-color: inherit !default;
+
+$border-radius-base: 6px;
+$modular-scale-base: 1em;
+$modular-scale-ratio: 1.25;
+
+
+// Layout variables for Bourbon Neat
+$browser-context: 16;
+$max-width: #{math.div(1080,$browser-context)}rem;
+$grids-columns: 12;
+$column: 12;
+$gutter: 1em;
+
+
+// Breakpoint variables
+$desktop: 60em;
+$tablet: 48em;
+$tablet-minus: 48em;
+$portrait: 37.5em;
+$mobile: 37.44em;
+
+
+// Bootstrap Simulated Checkpoints
+$mobile-plus: 368px;
+$tablet-plus: 768px;
+$small-desktop-plus: 992px;
+$medium-desktop-plus: 1200px;
+$large-desktop-plus: 1600px;

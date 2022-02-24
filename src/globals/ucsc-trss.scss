@@ -1,0 +1,67 @@
+@import 'scss/variables';
+@import 'scss/mixins';
+@import 'scss/reset';
+
+:root {
+
+@each $key,
+$value in $colors {
+  --#{$key}: #{$value};
+}
+
+  /* Base colors */
+  --ucsc-primary-blue: hsl(207, 100%, 21%);
+  --ucsc-yellow: #fdc700;
+  --ucsc-secondary-blue: #00458c;
+  --ucsc-orange: #d66e2e;
+  --ucsc-tertiary-blue: #01589d;
+  --ucsc-gold: #f1af13;
+  --ucsc-green: #93c02d;
+  --ucsc-turquoise: #007988;
+  --ucsc-pink: #da216d;
+  --ucsc-black: #000;
+  --ucsc-dark-gray: #222;
+  --ucsc-medium-gray: #555;
+  --ucsc-light-gray: #ddd;
+
+  /* Typography */
+  --font-family-sans-serif: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-family-sans-serif-condensed: 'Roboto Condensed', sans-serif;
+  --font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
+  --font-family-headlines: var(--font-family-sans-serif);
+  --font-family-base: var(--font-family-sans-serif);
+
+  /* Base Units */
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+
+  --border-radius: 5px;
+
+  /* Layout */
+  --content-width: 67.5rem;
+}
+
+
+
+
+/*
+  UCSC defaults
+*/
+.container {
+  padding: 0;
+  margin: 0 ;
+}
+
+.row {
+  margin: 0 auto 2.5rem auto;
+  max-width: var(--content-width);
+  padding: 0 var(--font-size-base);
+}
+
+@media screen and (min-width: var(--content-width)) {
+  .row {
+    padding: 0;
+  }
+}
