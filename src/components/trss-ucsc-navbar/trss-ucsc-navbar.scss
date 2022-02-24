@@ -1,0 +1,149 @@
+:host {
+  display: block;
+}
+
+.page-top {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--font-size-lg);
+
+  @media screen and (min-width: $max-width) {
+    flex-direction: row;
+    justify-content: flex-end;
+
+    &.has-logo {
+      justify-content: space-between;
+    }
+  }
+}
+
+
+
+.page-top-right {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--font-size-lg);
+
+  @media screen and (min-width: 48em) {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--font-size-small);
+  }
+}
+
+.ucsc-navigation {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: .9em;
+  margin: 0;
+  gap: .8em;
+
+
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex: 1 1 46%;
+  }
+
+  a {
+    text-transform: none;
+    color: var(--ucsc-tertiary-blue);
+    padding: .25em .5em;
+    text-decoration: none;
+  }
+
+  @media screen and (min-width: 48em) {
+
+    flex-wrap: nowrap;
+    gap: 0.8em;
+    margin: 0;
+
+    > li {
+      line-height: 1.2em;
+      list-style-type: none;
+      flex: auto;
+    }
+
+    a {
+      border: none;
+      background-color: transparent;
+      border-radius: 0;
+      font-weight: 400;
+      padding: 0;
+      @include hoverActiveFocus($brand-primary-blue, true);
+    }
+  }
+}
+
+// ## Site Search
+// Search box for searching each site.
+.ucsc-search {
+  border-radius: var(--border-radius);
+  border: 2px solid var(--ucsc-light-gray);
+  transition: all .1s;
+  width: 100%;
+  max-width: 20em;
+
+  &:focus-within {
+    border: 2px solid var(--ucsc-tertiary-blue);
+    box-shadow: 2px 4px 8px var(--ucsc-light-gray);
+  }
+
+  form>div {
+    display: flex;
+  }
+
+  label {
+    display: block;
+    position: absolute;
+    text-indent: -100em;
+  }
+
+  input[type="text"] {
+    border: none;
+    border-radius: 6px;
+    padding: 0.4em 0.5em;
+    flex-grow: 1;
+
+    &:focus,
+    &:hover,
+    &:active {
+      color: var(--ucsc-dark-gray);
+      border: none;
+      outline: none;
+      box-shadow: none;
+    }
+
+  }
+
+  input[type="submit"] {
+    background: url(https://webassets.ucsc.edu/images/looking-glass.svg) no-repeat;
+    background-size: 22px;
+    background-position: center center;
+    border: 0;
+    left: auto;
+    outline: none;
+    text-indent: -100em;
+    top: 8%;
+    width: 2em;
+    z-index: 100;
+  }
+
+
+  @media screen and (min-width: 48em) {
+
+    margin-left: 1em;
+    width: auto;
+    max-width: auto;
+
+    form>div {
+      display: block;
+    }
+
+  }
+}
