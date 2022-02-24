@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+    <link rel="stylesheet" href="/build/ucsc-trss.css" />
+    <script type="module" src="/build/ucsc-trss.esm.js"></script>
+    <script nomodule src="/build/ucsc-trss.js"></script>
+
+    <style>
+      body {
+        padding-bottom: 8em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="content">
+        <div class="row">
+          <h2>Alert ribbons</h2>
+          <p>Alert ribbons appear at the top of campus home pages when important information must be conveyed to the campus community.</p>
+        </div>
+
+        <trss-alert appearance="notice" header="Headline for 'notice' ribbon appearance">
+          Outdoor face covering requirements remain in effect.&nbsp;<a href="https://slugstrong.ucsc.edu">Stay informed</a>.
+        </trss-alert>
+
+        <trss-alert appearance="clear" header="Headline for 'clear' ribbon appearance">
+          Indoor face covering requirements remain in effect.&nbsp;<a href="https://slugstrong.ucsc.edu">Stay informed</a>.
+        </trss-alert>
+
+        <trss-alert appearance="warning" header="Headline for 'warning' ribbon appearance">
+          Indoor face covering requirements remain in effect.&nbsp;<a href="https://slugstrong.ucsc.edu">Stay informed</a>.
+        </trss-alert>
+
+        <trss-alert appearance="emergency" header="Headline for 'emergency' ribbon appearance">
+          Indoor face covering requirements remain in effect.&nbsp;<a href="https://slugstrong.ucsc.edu">Stay informed</a>.
+        </trss-alert>
+
+        <div class="row">
+          <h2>Global navigation bar</h2>
+          <p>At the top of all UCSC websites.</p>
+          <trss-ucsc-navbar use-logo="false" search="/find/"></trss-ucsc-navbar>
+        </div>
+
+        <div class="row">
+          <h2>Site titles</h2>
+          <trss-site-title link="https://news.ucsc.edu">Campus Newcenter</trss-site-title>
+          <trss-site-title link="https://mcd.ucsc.edu">Molecular, Cell, &amp; Developmental Biology</trss-site-title>
+        </div>
+
+        <!--
+        <div class="row">
+          <trss-card header="This is a header" image-url="https://via.placeholder.com/480x150" image-alt="Image description"> This is the content of a card!</trss-card>
+        </div>
+        -->
+        <div class="row">
+          <trss-link-list source="http://localhost:5500/latest.json" />
+        </div>
+
+        <div class="row">
+          <trss-teaser link="http://localhost:5500/latest.json">
+            <div slot="header">Objectively innovate empowered manufactured products whereas parallel platforms</div>
+            <div slot="meta">January 2, 2022</div>
+            Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains.
+            Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.
+          </trss-teaser>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
