@@ -34,7 +34,15 @@ export namespace Components {
     }
     interface TrssCrumbs {
     }
-    interface TrssLinkList {
+    interface TrssDataList {
+        /**
+          * Optional text description below the header and above the list.
+         */
+        "description": string;
+        /**
+          * Optional header above the list.
+         */
+        "header": string;
         /**
           * The URL source for the remote content of this component.
          */
@@ -104,11 +112,11 @@ declare global {
         prototype: HTMLTrssCrumbsElement;
         new (): HTMLTrssCrumbsElement;
     };
-    interface HTMLTrssLinkListElement extends Components.TrssLinkList, HTMLStencilElement {
+    interface HTMLTrssDataListElement extends Components.TrssDataList, HTMLStencilElement {
     }
-    var HTMLTrssLinkListElement: {
-        prototype: HTMLTrssLinkListElement;
-        new (): HTMLTrssLinkListElement;
+    var HTMLTrssDataListElement: {
+        prototype: HTMLTrssDataListElement;
+        new (): HTMLTrssDataListElement;
     };
     interface HTMLTrssLogoElement extends Components.TrssLogo, HTMLStencilElement {
     }
@@ -139,7 +147,7 @@ declare global {
         "trss-card": HTMLTrssCardElement;
         "trss-carousel": HTMLTrssCarouselElement;
         "trss-crumbs": HTMLTrssCrumbsElement;
-        "trss-link-list": HTMLTrssLinkListElement;
+        "trss-data-list": HTMLTrssDataListElement;
         "trss-logo": HTMLTrssLogoElement;
         "trss-site-title": HTMLTrssSiteTitleElement;
         "trss-teaser": HTMLTrssTeaserElement;
@@ -175,7 +183,15 @@ declare namespace LocalJSX {
     }
     interface TrssCrumbs {
     }
-    interface TrssLinkList {
+    interface TrssDataList {
+        /**
+          * Optional text description below the header and above the list.
+         */
+        "description"?: string;
+        /**
+          * Optional header above the list.
+         */
+        "header"?: string;
         /**
           * The URL source for the remote content of this component.
          */
@@ -224,7 +240,7 @@ declare namespace LocalJSX {
         "trss-card": TrssCard;
         "trss-carousel": TrssCarousel;
         "trss-crumbs": TrssCrumbs;
-        "trss-link-list": TrssLinkList;
+        "trss-data-list": TrssDataList;
         "trss-logo": TrssLogo;
         "trss-site-title": TrssSiteTitle;
         "trss-teaser": TrssTeaser;
@@ -239,7 +255,7 @@ declare module "@stencil/core" {
             "trss-card": LocalJSX.TrssCard & JSXBase.HTMLAttributes<HTMLTrssCardElement>;
             "trss-carousel": LocalJSX.TrssCarousel & JSXBase.HTMLAttributes<HTMLTrssCarouselElement>;
             "trss-crumbs": LocalJSX.TrssCrumbs & JSXBase.HTMLAttributes<HTMLTrssCrumbsElement>;
-            "trss-link-list": LocalJSX.TrssLinkList & JSXBase.HTMLAttributes<HTMLTrssLinkListElement>;
+            "trss-data-list": LocalJSX.TrssDataList & JSXBase.HTMLAttributes<HTMLTrssDataListElement>;
             "trss-logo": LocalJSX.TrssLogo & JSXBase.HTMLAttributes<HTMLTrssLogoElement>;
             "trss-site-title": LocalJSX.TrssSiteTitle & JSXBase.HTMLAttributes<HTMLTrssSiteTitleElement>;
             "trss-teaser": LocalJSX.TrssTeaser & JSXBase.HTMLAttributes<HTMLTrssTeaserElement>;
