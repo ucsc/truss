@@ -1,0 +1,65 @@
+:host {
+  display: block;
+}
+
+.trss-data-list {
+
+  .header {
+    margin-bottom: .25em;
+    color: var(--ucsc-primary-blue);
+  }
+
+  .intro {
+    margin: .25rem 0 2rem;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  li {
+    margin-bottom: 1.2rem;
+  }
+
+  a {
+
+    text-decoration: none;
+    display: block;
+    padding: .25rem .15rem;
+
+    .meta {
+      color: var(--ucsc-dark-gray);
+      letter-spacing: .05em;
+      font-size: 0.9rem;
+      margin: 0 0 .1rem 0;
+    }
+
+    .header {
+      color: #00458c;
+      margin: .1rem 0 .25rem 0;
+    }
+
+    .description {
+      color: #222222;
+      margin: .1rem 0 .5rem 0;
+    }
+
+
+    &:focus,
+    &:hover,
+    &:active {
+      background-color: rgb(255, 250, 181);
+
+      .meta,
+      .header,
+      .description {
+        color: rgb(61, 61, 61);
+      }
+    }
+  }
+
+
+}
+
