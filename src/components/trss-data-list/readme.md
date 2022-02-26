@@ -2,7 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property      | Attribute     | Description                                                    | Type     | Default     |
@@ -11,7 +10,6 @@
 | `header`      | `header`      | Optional header above the list.                                | `string` | `undefined` |
 | `source`      | `source`      | The URL source for the remote content of this component.       | `string` | `undefined` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { TrssLinkList } from '../trss-data-list';
+import { TrssDataList } from '../trss-data-list';
 
-describe('trss-link-list', () => {
+describe('trss-data-list', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [TrssLinkList],
-      html: `<trss-link-list></trss-link-list>`,
+      components: [TrssDataList],
+      html: `<trss-data-list></trss-data-list>`,
     });
     expect(page.root).toEqualHtml(`
-      <trss-link-list>
+      <trss-data-list>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </trss-link-list>
+      </trss-data-list>
     `);
   });
 });
