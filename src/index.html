@@ -18,8 +18,9 @@
   <body>
     <div class="wrap">
       <div class="content">
-        <trss-alert appearance="warning" header="Headline for 'warning' ribbon appearance">
-          Indoor face covering requirements remain in effect.&nbsp;<a href="https://slugstrong.ucsc.edu">Stay informed</a>.
+        <trss-alert appearance="warning">
+          <div slot="header">Headline for 'warning' ribbon appearance</div>
+          <div slot="description">Indoor face covering requirements remain in effect.&nbsp;<a href="https://slugstrong.ucsc.edu">Stay informed</a>.</div>
         </trss-alert>
 
         <div class="row">
@@ -37,7 +38,7 @@
         -->
         <div class="row">
           <trss-data-list
-            source="http://localhost:5500/latest.json"
+            source="https://daringfireball.net/feeds/json"
             header="The latest COVID-19 updates"
             description="Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables."
           />

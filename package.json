@@ -1,6 +1,6 @@
 {
   "name": "@ucsantacruz/truss",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "Truss Design System",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@geometricpanda/storybook-addon-badges": "^0.2.1",
-    "@stencil/core": "^2.7.0",
+    "@stencil/core": "^2.14.0",
     "@stencil/sass": "^1.5.2",
     "storybook": "^6.4.12"
   },
