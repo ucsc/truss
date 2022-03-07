@@ -2,6 +2,7 @@
   "name": "@ucsantacruz/truss",
   "version": "0.6.0",
   "description": "Truss Design System",
+  "homepage": "https://github.com/ucsc/truss",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "es2015": "dist/esm/index.mjs",
@@ -52,5 +53,9 @@
     "puppeteer": "^10.0.0",
     "style-dictionary": "^3.1.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ucsc/truss.git"
+  }
 }
