@@ -3,6 +3,7 @@ www/
 loader/
 storybook-static/
 build/
+local/
 
 *~
 *.sw[mnpcod]
@@ -13,6 +14,7 @@ build/
 log.txt
 *.sublime-project
 *.sublime-workspace
+*.code-workspace
 
 .stencil/
 .idea/
