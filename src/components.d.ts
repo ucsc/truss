@@ -36,13 +36,9 @@ export namespace Components {
     }
     interface TrssDataList {
         /**
-          * Optional text description below the header and above the list.
+          * Limit the number of items displayed.
          */
-        "description": string;
-        /**
-          * Optional header above the list.
-         */
-        "header": string;
+        "limit": number;
         /**
           * The URL source for the remote content of this component.
          */
@@ -164,13 +160,9 @@ declare namespace LocalJSX {
     }
     interface TrssDataList {
         /**
-          * Optional text description below the header and above the list.
+          * Limit the number of items displayed.
          */
-        "description"?: string;
-        /**
-          * Optional header above the list.
-         */
-        "header"?: string;
+        "limit"?: number;
         /**
           * The URL source for the remote content of this component.
          */
