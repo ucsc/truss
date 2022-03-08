@@ -1,15 +1,18 @@
 # trss-data-list
 
+The data list component fetches data from a remote source and renders a list of links. This component works with any valid [JSON Feed](https://www.jsonfeed.org/version/1.1/).
+
 <!-- Auto Generated Below -->
+
 
 ## Properties
 
-| Property      | Attribute     | Description                                                    | Type     | Default     |
-| ------------- | ------------- | -------------------------------------------------------------- | -------- | ----------- |
-| `description` | `description` | Optional text description below the header and above the list. | `string` | `undefined` |
-| `header`      | `header`      | Optional header above the list.                                | `string` | `undefined` |
-| `source`      | `source`      | The URL source for the remote content of this component.       | `string` | `undefined` |
+| Property | Attribute | Description                                              | Type     | Default     |
+| -------- | --------- | -------------------------------------------------------- | -------- | ----------- |
+| `limit`  | `limit`   | Limit the number of items displayed.                     | `number` | `10`        |
+| `source` | `source`  | The URL source for the remote content of this component. | `string` | `undefined` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

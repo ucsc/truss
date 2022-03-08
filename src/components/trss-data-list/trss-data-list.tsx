@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core';
+import { friendly_date } from '../../utils/utils';
 
 @Component({
   tag: 'trss-data-list',
@@ -13,28 +14,35 @@ export class TrssDataList {
   @Prop() source: string;
 
   /**
-   * Optional header above the list.
+   * Limit the number of items displayed.
    */
-  @Prop() header: string;
+  @Prop() limit: number = 10;
 
   /**
-   * Optional text description below the header and above the list.
-   */
-  @Prop() description: string;
+ * @slot default - Any content you wish to appear above the list. We recommend a header and description.
+ */
+
+  private getEncodedText(text): string {
+    var textArea = document.createElement('textarea');
+    textArea.innerHTML = text;
+    return textArea.value;
+  }
+
 
   render() {
     return (
       <Host class="trss-data-list">
-        { this.header ? <h2 class="header">{this.header}</h2> : '' }
-        { this.description ? <p class="intro">{this.description}</p> : '' }
+        <div>
+          <slot />
+        </div>
         <ul>
-          {this.data.items.map((item:any={})=>
+          {this.listData.items.slice(0, this.limit).map((item:any={})=>
             <li>
               <a href={item.url}>
-                <span class="meta">{item._date_formatted.long}</span>
+                <span class="meta">{friendly_date(item.date_published)}</span>
                 <h3 class="header">{item.title}</h3>
                 { item.summary ?
-                  <p class="description">{item.summary}</p>
+                  <p class="description">{this.getEncodedText(item.summary)}</p>
                 : '' }
               </a>
             </li>
@@ -44,11 +52,11 @@ export class TrssDataList {
     );
   }
 
-  data;
+  listData = { items: [] };
 
   async componentWillRender() {
-    let getApi = await fetch(this.source,{method:'GET'})
-    this.data = await getApi.json()
+    let getApi = await fetch(this.source,{method:'GET', headers: { 'Content-Type': 'application/json',}});
+    this.listData = await getApi.json()
   }
 
 }
