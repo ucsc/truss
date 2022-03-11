@@ -16,6 +16,12 @@ export namespace Components {
          */
         "header": string;
     }
+    interface TrssBreadcrumbs {
+        /**
+          * The visual separator between links.
+         */
+        "separator": string;
+    }
     interface TrssCard {
         /**
           * The text for the headline of the card.
@@ -32,15 +38,13 @@ export namespace Components {
     }
     interface TrssCarousel {
     }
-    interface TrssCrumbs {
-    }
     interface TrssDataList {
         /**
           * Limit the number of items displayed.
          */
         "limit": number;
         /**
-          * The URL source for the remote content of this component.
+          * The JSON source for the content list in this component.
          */
         "source": string;
     }
@@ -76,6 +80,12 @@ declare global {
         prototype: HTMLTrssAlertElement;
         new (): HTMLTrssAlertElement;
     };
+    interface HTMLTrssBreadcrumbsElement extends Components.TrssBreadcrumbs, HTMLStencilElement {
+    }
+    var HTMLTrssBreadcrumbsElement: {
+        prototype: HTMLTrssBreadcrumbsElement;
+        new (): HTMLTrssBreadcrumbsElement;
+    };
     interface HTMLTrssCardElement extends Components.TrssCard, HTMLStencilElement {
     }
     var HTMLTrssCardElement: {
@@ -87,12 +97,6 @@ declare global {
     var HTMLTrssCarouselElement: {
         prototype: HTMLTrssCarouselElement;
         new (): HTMLTrssCarouselElement;
-    };
-    interface HTMLTrssCrumbsElement extends Components.TrssCrumbs, HTMLStencilElement {
-    }
-    var HTMLTrssCrumbsElement: {
-        prototype: HTMLTrssCrumbsElement;
-        new (): HTMLTrssCrumbsElement;
     };
     interface HTMLTrssDataListElement extends Components.TrssDataList, HTMLStencilElement {
     }
@@ -120,9 +124,9 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "trss-alert": HTMLTrssAlertElement;
+        "trss-breadcrumbs": HTMLTrssBreadcrumbsElement;
         "trss-card": HTMLTrssCardElement;
         "trss-carousel": HTMLTrssCarouselElement;
-        "trss-crumbs": HTMLTrssCrumbsElement;
         "trss-data-list": HTMLTrssDataListElement;
         "trss-logo": HTMLTrssLogoElement;
         "trss-site-title": HTMLTrssSiteTitleElement;
@@ -140,6 +144,12 @@ declare namespace LocalJSX {
          */
         "header"?: string;
     }
+    interface TrssBreadcrumbs {
+        /**
+          * The visual separator between links.
+         */
+        "separator"?: string;
+    }
     interface TrssCard {
         /**
           * The text for the headline of the card.
@@ -156,15 +166,13 @@ declare namespace LocalJSX {
     }
     interface TrssCarousel {
     }
-    interface TrssCrumbs {
-    }
     interface TrssDataList {
         /**
           * Limit the number of items displayed.
          */
         "limit"?: number;
         /**
-          * The URL source for the remote content of this component.
+          * The JSON source for the content list in this component.
          */
         "source"?: string;
     }
@@ -194,9 +202,9 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "trss-alert": TrssAlert;
+        "trss-breadcrumbs": TrssBreadcrumbs;
         "trss-card": TrssCard;
         "trss-carousel": TrssCarousel;
-        "trss-crumbs": TrssCrumbs;
         "trss-data-list": TrssDataList;
         "trss-logo": TrssLogo;
         "trss-site-title": TrssSiteTitle;
@@ -208,9 +216,9 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "trss-alert": LocalJSX.TrssAlert & JSXBase.HTMLAttributes<HTMLTrssAlertElement>;
+            "trss-breadcrumbs": LocalJSX.TrssBreadcrumbs & JSXBase.HTMLAttributes<HTMLTrssBreadcrumbsElement>;
             "trss-card": LocalJSX.TrssCard & JSXBase.HTMLAttributes<HTMLTrssCardElement>;
             "trss-carousel": LocalJSX.TrssCarousel & JSXBase.HTMLAttributes<HTMLTrssCarouselElement>;
-            "trss-crumbs": LocalJSX.TrssCrumbs & JSXBase.HTMLAttributes<HTMLTrssCrumbsElement>;
             "trss-data-list": LocalJSX.TrssDataList & JSXBase.HTMLAttributes<HTMLTrssDataListElement>;
             "trss-logo": LocalJSX.TrssLogo & JSXBase.HTMLAttributes<HTMLTrssLogoElement>;
             "trss-site-title": LocalJSX.TrssSiteTitle & JSXBase.HTMLAttributes<HTMLTrssSiteTitleElement>;

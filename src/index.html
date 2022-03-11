@@ -31,17 +31,25 @@
           <trss-site-title link="https://mcd.ucsc.edu">Molecular, Cell, &amp; Developmental Biology</trss-site-title>
         </div>
 
-        <!--
         <div class="row">
-          <trss-card header="This is a header" image-url="https://via.placeholder.com/480x150" image-alt="Image description"> This is the content of a card!</trss-card>
+          <trss-breadcrumbs>
+            <ul>
+              <li><a href="#">Link First</a></li>
+              <li><a href="#">Link Second</a></li>
+              <li><a href="#">Link Third</a></li>
+              <li><a href="#">Link Fourth</a></li>
+              <li>Current Page</li>
+            </ul>
+          </trss-breadcrumbs>
         </div>
-        -->
+
         <div class="row">
-          <trss-data-list
-            source="https://daringfireball.net/feeds/json"
-            header="The latest COVID-19 updates"
-            description="Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables."
-          />
+          <trss-data-list source="https://news.ucsc.edu/feeds/latest.json" limit="10">
+            <h2>The latest news from UCSC</h2>
+            <p>
+              Nemo doloremque, dicta alias est ipsum saepe aliquid nesciunt illo minus obcaecati animi sapiente soluta atque eligendi accusantium. Repellendus fuga harum animi.
+            </p>
+          </trss-data-list>
         </div>
       </div>
     </div>
