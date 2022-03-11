@@ -1,19 +1,11 @@
-import { format } from './utils';
+import { friendly_date } from './utils';
 
 describe('format', () => {
-  it('returns empty string for no names defined', () => {
-    expect(format(undefined, undefined, undefined)).toEqual('');
+  it('returns empty string for no dates defined', () => {
+    expect(friendly_date(undefined)).toEqual('');
   });
 
-  it('formats just first names', () => {
-    expect(format('Joseph', undefined, undefined)).toEqual('Joseph');
-  });
-
-  it('formats first and last names', () => {
-    expect(format('Joseph', undefined, 'Publique')).toEqual('Joseph Publique');
-  });
-
-  it('formats first, middle and last names', () => {
-    expect(format('Joseph', 'Quincy', 'Publique')).toEqual('Joseph Quincy Publique');
+  it('formats a basic date', () => {
+    expect(friendly_date('2022-03-07T09:00:00-08:00')).toEqual('March 7, 2022');
   });
 });

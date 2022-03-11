@@ -7,9 +7,8 @@ import { friendly_date } from '../../utils/utils';
   shadow: false,
 })
 export class TrssDataList {
-
   /**
-   * The URL source for the remote content of this component.
+   * The JSON source for the content list in this component.
    */
   @Prop() source: string;
 
@@ -19,15 +18,8 @@ export class TrssDataList {
   @Prop() limit: number = 10;
 
   /**
- * @slot default - Any content you wish to appear above the list. We recommend a header and description.
- */
-
-  private getEncodedText(text): string {
-    var textArea = document.createElement('textarea');
-    textArea.innerHTML = text;
-    return textArea.value;
-  }
-
+   * @slot default - Content that appears above the list. We recommend a header and description.
+   */
 
   render() {
     return (
@@ -36,17 +28,15 @@ export class TrssDataList {
           <slot />
         </div>
         <ul>
-          {this.listData.items.slice(0, this.limit).map((item:any={})=>
+          {this.listData.items.slice(0, this.limit).map((item: any = {}) => (
             <li>
               <a href={item.url}>
                 <span class="meta">{friendly_date(item.date_published)}</span>
-                <h3 class="header">{item.title}</h3>
-                { item.summary ?
-                  <p class="description">{this.getEncodedText(item.summary)}</p>
-                : '' }
+                <h3 class="header">{this.getEncodedText(item.title)}</h3>
+                {item.summary ? <p class="description">{this.getEncodedText(item.summary)}</p> : ''}
               </a>
             </li>
-         )}
+          ))}
         </ul>
       </Host>
     );
@@ -55,8 +45,15 @@ export class TrssDataList {
   listData = { items: [] };
 
   async componentWillRender() {
-    let getApi = await fetch(this.source,{method:'GET', headers: { 'Content-Type': 'application/json',}});
-    this.listData = await getApi.json()
+    let getApi = await fetch(this.source, { method: 'GET', headers: { 'Content-Type': 'application/json' } });
+    this.listData = await getApi.json();
   }
 
+  private getEncodedText(text): string {
+    var textArea = document.createElement('textarea');
+    textArea.innerHTML = text;
+    const regex = /<script[\d\D]*?>[\d\D]*?<\/script>/gm;
+    const result = textArea.value.replace(regex, '');
+    return result;
+  }
 }
