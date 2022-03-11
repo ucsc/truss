@@ -17,16 +17,21 @@ export class TrssAlert {
    */
   @Prop() header: string;
 
+  /**
+   * @slot header - Header content for the alert.
+   * @slot description - Text content for alert.
+   */
+
   private getAppearance(): string {
-    return 'ribbon ribbon-' + this.appearance;
+    return 'trss-alert trss-alert--' + this.appearance;
   }
 
   render() {
     return (
-      <div class={this.appearance ? this.getAppearance() : 'ribbon ribbon-notice'} role="complementary">
+      <div class={this.appearance ? this.getAppearance() : 'trss-alert trss-alert--notice'} role="complementary">
         <div class="row">
-          <h3 class="header">{this.header}</h3>
-          <slot />
+          <h3 class="header"><slot name="header" /></h3>
+          <div class="description"><slot name="description" /></div>
         </div>
       </div>
     );
