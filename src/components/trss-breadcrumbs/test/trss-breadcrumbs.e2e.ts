@@ -1,11 +1,11 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('trss-crumbs', () => {
+describe('trss-breadcrumbs', () => {
   it('renders', async () => {
     const page = await newE2EPage();
-    await page.setContent('<trss-crumbs></trss-crumbs>');
+    await page.setContent('<trss-breadcrumbs></trss-breadcrumbs>');
 
-    const element = await page.find('trss-crumbs');
+    const element = await page.find('trss-breadcrumbs');
     expect(element).toHaveClass('hydrated');
   });
 });

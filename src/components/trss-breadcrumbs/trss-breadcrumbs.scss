@@ -1,0 +1,47 @@
+:host {
+  display: block;
+}
+
+// Breadcrumbs appear on some pages
+
+.trss-breadcrumbs {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    list-style: none;
+    gap: 0.35rem;
+
+    li {
+      display: inline;
+      list-style: none;
+      font-weight: 600;
+      color: #555;
+    }
+  }
+
+  a {
+    display: block;
+    font-weight: normal;
+
+    &:after {
+      content: '/';
+      font-weight: 800;
+      color: #555;
+      display: inline-block;
+      margin-left: 0.35rem;
+    }
+
+    &:focus,
+    &:hover,
+    &:active {
+      @include hoverActiveFocus;
+    }
+  }
+}

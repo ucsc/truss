@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { TrssCrumbs } from '../trss-crumbs';
+import { TrssBreadcrumbs } from '../trss-breadcrumbs';
 
-describe('trss-crumbs', () => {
+describe('trss-breadcrumbs', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [TrssCrumbs],
-      html: `<trss-crumbs></trss-crumbs>`,
+      components: [TrssBreadcrumbs],
+      html: `<trss-breadcrumbs></trss-breadcrumbs>`,
     });
     expect(page.root).toEqualHtml(`
-      <trss-crumbs>
+      <trss-breadcrumbs>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </trss-crumbs>
+      </trss-breadcrumbs>
     `);
   });
 });
