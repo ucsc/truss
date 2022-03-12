@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.trss-ucsc-footer {
+
+  background-color: var(--ucsc-primary-blue);
+  color: var(--ucsc-light-gray);
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+
+  }
+
+}

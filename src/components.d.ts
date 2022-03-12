@@ -68,6 +68,8 @@ export namespace Components {
          */
         "link": string;
     }
+    interface TrssUcscFooter {
+    }
     interface TrssUcscNavbar {
         "search": string;
         "useLogo": boolean;
@@ -116,6 +118,12 @@ declare global {
         prototype: HTMLTrssSiteTitleElement;
         new (): HTMLTrssSiteTitleElement;
     };
+    interface HTMLTrssUcscFooterElement extends Components.TrssUcscFooter, HTMLStencilElement {
+    }
+    var HTMLTrssUcscFooterElement: {
+        prototype: HTMLTrssUcscFooterElement;
+        new (): HTMLTrssUcscFooterElement;
+    };
     interface HTMLTrssUcscNavbarElement extends Components.TrssUcscNavbar, HTMLStencilElement {
     }
     var HTMLTrssUcscNavbarElement: {
@@ -130,6 +138,7 @@ declare global {
         "trss-data-list": HTMLTrssDataListElement;
         "trss-logo": HTMLTrssLogoElement;
         "trss-site-title": HTMLTrssSiteTitleElement;
+        "trss-ucsc-footer": HTMLTrssUcscFooterElement;
         "trss-ucsc-navbar": HTMLTrssUcscNavbarElement;
     }
 }
@@ -196,6 +205,8 @@ declare namespace LocalJSX {
          */
         "link"?: string;
     }
+    interface TrssUcscFooter {
+    }
     interface TrssUcscNavbar {
         "search"?: string;
         "useLogo"?: boolean;
@@ -208,6 +219,7 @@ declare namespace LocalJSX {
         "trss-data-list": TrssDataList;
         "trss-logo": TrssLogo;
         "trss-site-title": TrssSiteTitle;
+        "trss-ucsc-footer": TrssUcscFooter;
         "trss-ucsc-navbar": TrssUcscNavbar;
     }
 }
@@ -222,6 +234,7 @@ declare module "@stencil/core" {
             "trss-data-list": LocalJSX.TrssDataList & JSXBase.HTMLAttributes<HTMLTrssDataListElement>;
             "trss-logo": LocalJSX.TrssLogo & JSXBase.HTMLAttributes<HTMLTrssLogoElement>;
             "trss-site-title": LocalJSX.TrssSiteTitle & JSXBase.HTMLAttributes<HTMLTrssSiteTitleElement>;
+            "trss-ucsc-footer": LocalJSX.TrssUcscFooter & JSXBase.HTMLAttributes<HTMLTrssUcscFooterElement>;
             "trss-ucsc-navbar": LocalJSX.TrssUcscNavbar & JSXBase.HTMLAttributes<HTMLTrssUcscNavbarElement>;
         }
     }
