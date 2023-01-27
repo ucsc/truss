@@ -17,41 +17,22 @@
   ],
   "scripts": {
     "dev": "stencil build --docs --watch --serve",
-    "build": "stencil build --docs",
     "start": "stencil build --watch",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate",
-    "storybook": "npm-run-all --parallel start storybook.run",
-    "storybook.run": "start-storybook -p 6006 -s www",
-    "build-storybook": "build-storybook -s ./www"
+    "generate": "stencil generate"
   },
   "dependencies": {
-    "@geometricpanda/storybook-addon-badges": "^0.2.1",
-    "@stencil/core": "^2.14.0",
-    "@stencil/sass": "^1.5.2",
-    "storybook": "^6.4.12"
+    "@stencil/core": "^3.0.0",
+    "@stencil/sass": "^1.5.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@storybook/addon-a11y": "^6.4.12",
-    "@storybook/addon-actions": "^6.4.12",
-    "@storybook/addon-essentials": "^6.4.12",
-    "@storybook/addon-links": "^6.4.12",
-    "@storybook/addon-notes": "^5.3.21",
-    "@storybook/addon-viewport": "^6.4.12",
-    "@storybook/addons": "^6.4.12",
-    "@storybook/html": "^6.4.12",
-    "@storybook/theming": "^6.4.12",
     "@types/jest": "^26.0.24",
-    "@whitespace/storybook-addon-html": "^5.0.0",
-    "babel-loader": "^8.2.3",
+    "@types/node": "^16.18.11",
     "case": "^1.6.3",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
-    "npm-run-all": "^4.1.5",
-    "puppeteer": "^10.0.0",
-    "style-dictionary": "^3.1.1"
+    "puppeteer": "^19.5.2"
   },
   "license": "MIT",
   "repository": {
