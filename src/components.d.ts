@@ -70,7 +70,7 @@ export namespace Components {
     }
     interface TrssUcscFooter {
     }
-    interface TrssUcscNavbar {
+    interface TrssUcscHeader {
         "search": string;
         "useLogo": boolean;
     }
@@ -124,11 +124,11 @@ declare global {
         prototype: HTMLTrssUcscFooterElement;
         new (): HTMLTrssUcscFooterElement;
     };
-    interface HTMLTrssUcscNavbarElement extends Components.TrssUcscNavbar, HTMLStencilElement {
+    interface HTMLTrssUcscHeaderElement extends Components.TrssUcscHeader, HTMLStencilElement {
     }
-    var HTMLTrssUcscNavbarElement: {
-        prototype: HTMLTrssUcscNavbarElement;
-        new (): HTMLTrssUcscNavbarElement;
+    var HTMLTrssUcscHeaderElement: {
+        prototype: HTMLTrssUcscHeaderElement;
+        new (): HTMLTrssUcscHeaderElement;
     };
     interface HTMLElementTagNameMap {
         "trss-alert": HTMLTrssAlertElement;
@@ -139,7 +139,7 @@ declare global {
         "trss-logo": HTMLTrssLogoElement;
         "trss-site-title": HTMLTrssSiteTitleElement;
         "trss-ucsc-footer": HTMLTrssUcscFooterElement;
-        "trss-ucsc-navbar": HTMLTrssUcscNavbarElement;
+        "trss-ucsc-header": HTMLTrssUcscHeaderElement;
     }
 }
 declare namespace LocalJSX {
@@ -207,7 +207,7 @@ declare namespace LocalJSX {
     }
     interface TrssUcscFooter {
     }
-    interface TrssUcscNavbar {
+    interface TrssUcscHeader {
         "search"?: string;
         "useLogo"?: boolean;
     }
@@ -220,7 +220,7 @@ declare namespace LocalJSX {
         "trss-logo": TrssLogo;
         "trss-site-title": TrssSiteTitle;
         "trss-ucsc-footer": TrssUcscFooter;
-        "trss-ucsc-navbar": TrssUcscNavbar;
+        "trss-ucsc-header": TrssUcscHeader;
     }
 }
 export { LocalJSX as JSX };
@@ -235,7 +235,7 @@ declare module "@stencil/core" {
             "trss-logo": LocalJSX.TrssLogo & JSXBase.HTMLAttributes<HTMLTrssLogoElement>;
             "trss-site-title": LocalJSX.TrssSiteTitle & JSXBase.HTMLAttributes<HTMLTrssSiteTitleElement>;
             "trss-ucsc-footer": LocalJSX.TrssUcscFooter & JSXBase.HTMLAttributes<HTMLTrssUcscFooterElement>;
-            "trss-ucsc-navbar": LocalJSX.TrssUcscNavbar & JSXBase.HTMLAttributes<HTMLTrssUcscNavbarElement>;
+            "trss-ucsc-header": LocalJSX.TrssUcscHeader & JSXBase.HTMLAttributes<HTMLTrssUcscHeaderElement>;
         }
     }
 }
