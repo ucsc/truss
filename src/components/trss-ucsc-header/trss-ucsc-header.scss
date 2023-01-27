@@ -2,14 +2,27 @@
   display: block;
 }
 
-.page-top {
-  margin-top: 2em;
+.two-blues {
+  @media screen and (min-width: $max-width) {
+    background: linear-gradient(90deg, #003c6c 40%, #006aad 40%);
+  }
+}
+
+#ucsc-header__toggle:checked + #ucsc-header__show {
+  border: 2px solid red;
+}
+
+.ucsc-header {
+  background-color: var(--ucsc-secondary-blue);
+  max-width: var(--ucsc-content-width);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--font-size-lg);
 
   @media screen and (min-width: $max-width) {
+    background: linear-gradient(128deg, #003c6c 22%, #006aad 22%);
     flex-direction: row;
     justify-content: flex-end;
 
@@ -19,9 +32,14 @@
   }
 }
 
+.ucsc-header__left {
+  padding: 1rem 3rem 1rem 0;
+}
 
 
-.page-top-right {
+
+.ucsc-header__right {
+  background-color: var(--ucsc-secondary-blue);
   display: flex;
   flex-direction: column-reverse;
   gap: var(--font-size-lg);
@@ -30,17 +48,17 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    gap: var(--font-size-small);
+    gap: var(--font-size-lg);
   }
 }
 
-.ucsc-navigation {
+.ucsc-header__navigation {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   font-size: .9em;
   margin: 0;
-  gap: .8em;
+  gap: 0.8em;
 
 
   li {
@@ -52,7 +70,7 @@
 
   a {
     text-transform: none;
-    color: var(--ucsc-tertiary-blue);
+    color: var(--ucsc-white);
     padding: .25em .5em;
     text-decoration: none;
   }
@@ -60,7 +78,7 @@
   @media screen and (min-width: 48em) {
 
     flex-wrap: nowrap;
-    gap: 0.8em;
+    gap: 1.5em;
     margin: 0;
 
     > li {
@@ -82,19 +100,19 @@
 
 // ## Site Search
 // Search box for searching each site.
-.ucsc-search {
+.ucsc-header__search {
+  background-color: var(--ucsc-white);
   border-radius: var(--border-radius);
-  border: 2px solid var(--ucsc-light-gray);
+  border: 1px solid var(--ucsc-white);
   transition: all .1s;
   width: 100%;
   max-width: 20em;
 
   &:focus-within {
-    border: 2px solid var(--ucsc-tertiary-blue);
-    box-shadow: 2px 4px 8px var(--ucsc-light-gray);
+    border: 1px solid var(--ucsc-secondary-blue);
   }
 
-  form>div {
+  form > div {
     display: flex;
   }
 
@@ -106,8 +124,8 @@
 
   input[type="text"] {
     border: none;
-    border-radius: 6px;
-    padding: 0.4em 0.5em;
+    border-radius: var(--border-radius);
+    padding: 0.3em 0.6em;
     flex-grow: 1;
 
     &:focus,
