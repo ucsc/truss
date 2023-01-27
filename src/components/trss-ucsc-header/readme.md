@@ -1,4 +1,4 @@
-# trss-ucsc-navbar
+# trss-ucsc-header
 
 <!-- Auto Generated Below -->
 
@@ -20,8 +20,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  trss-ucsc-navbar --> trss-logo
-  style trss-ucsc-navbar fill:#f9f,stroke:#333,stroke-width:4px
+  trss-ucsc-header --> trss-logo
+  style trss-ucsc-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

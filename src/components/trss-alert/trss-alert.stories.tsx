@@ -1,12 +1,10 @@
 import readme from './readme.md';
-import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {
   title: 'Banners/Alert',
   parameters: {
     markdown: readme,
-    notes: readme,
-    badges: [BADGE.STABLE],
+    notes: readme
   },
   argTypes: {
     appearance: {

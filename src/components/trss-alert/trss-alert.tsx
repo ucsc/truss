@@ -29,7 +29,7 @@ export class TrssAlert {
   render() {
     return (
       <div class={this.appearance ? this.getAppearance() : 'trss-alert trss-alert--notice'} role="complementary">
-        <div class="row">
+        <div class="ucsc-row__inner">
           <h3 class="header"><slot name="header" /></h3>
           <div class="description"><slot name="description" /></div>
         </div>

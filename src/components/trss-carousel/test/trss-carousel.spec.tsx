@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { TrssUcscNavbar } from '../trss-ucsc-navbar';
+import { TrssCarousel } from '../trss-carousel';
 
-describe('trss-ucsc-navbar', () => {
+describe('trss-carousel', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [TrssUcscNavbar],
-      html: `<trss-ucsc-navbar></trss-ucsc-navbar>`,
+      components: [TrssCarousel],
+      html: `<trss-carousel></trss-carousel>`,
     });
     expect(page.root).toEqualHtml(`
-      <trss-ucsc-navbar>
+      <trss-carousel>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </trss-ucsc-navbar>
+      </trss-carousel>
     `);
   });
 });

@@ -14,8 +14,10 @@ export class TrssSiteTitle {
 
   render() {
     return (
-      <div class="site-title">
-        <p><a href={this.link}><slot/></a></p>
+      <div class="ucsc-row__full">
+        <div class="site-title ucsc-row__inner">
+          <p><a href={this.link}><slot/></a></p>
+        </div>
       </div>
     );
   }

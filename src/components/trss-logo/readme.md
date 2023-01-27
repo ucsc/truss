@@ -16,12 +16,12 @@
 
 ### Used by
 
- - [trss-ucsc-navbar](../trss-ucsc-navbar)
+ - [trss-ucsc-header](../trss-ucsc-header)
 
 ### Graph
 ```mermaid
 graph TD;
-  trss-ucsc-navbar --> trss-logo
+  trss-ucsc-header --> trss-logo
   style trss-logo fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

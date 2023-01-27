@@ -68,7 +68,9 @@ export namespace Components {
          */
         "link": string;
     }
-    interface TrssUcscNavbar {
+    interface TrssUcscFooter {
+    }
+    interface TrssUcscHeader {
         "search": string;
         "useLogo": boolean;
     }
@@ -116,11 +118,17 @@ declare global {
         prototype: HTMLTrssSiteTitleElement;
         new (): HTMLTrssSiteTitleElement;
     };
-    interface HTMLTrssUcscNavbarElement extends Components.TrssUcscNavbar, HTMLStencilElement {
+    interface HTMLTrssUcscFooterElement extends Components.TrssUcscFooter, HTMLStencilElement {
     }
-    var HTMLTrssUcscNavbarElement: {
-        prototype: HTMLTrssUcscNavbarElement;
-        new (): HTMLTrssUcscNavbarElement;
+    var HTMLTrssUcscFooterElement: {
+        prototype: HTMLTrssUcscFooterElement;
+        new (): HTMLTrssUcscFooterElement;
+    };
+    interface HTMLTrssUcscHeaderElement extends Components.TrssUcscHeader, HTMLStencilElement {
+    }
+    var HTMLTrssUcscHeaderElement: {
+        prototype: HTMLTrssUcscHeaderElement;
+        new (): HTMLTrssUcscHeaderElement;
     };
     interface HTMLElementTagNameMap {
         "trss-alert": HTMLTrssAlertElement;
@@ -130,7 +138,8 @@ declare global {
         "trss-data-list": HTMLTrssDataListElement;
         "trss-logo": HTMLTrssLogoElement;
         "trss-site-title": HTMLTrssSiteTitleElement;
-        "trss-ucsc-navbar": HTMLTrssUcscNavbarElement;
+        "trss-ucsc-footer": HTMLTrssUcscFooterElement;
+        "trss-ucsc-header": HTMLTrssUcscHeaderElement;
     }
 }
 declare namespace LocalJSX {
@@ -196,7 +205,9 @@ declare namespace LocalJSX {
          */
         "link"?: string;
     }
-    interface TrssUcscNavbar {
+    interface TrssUcscFooter {
+    }
+    interface TrssUcscHeader {
         "search"?: string;
         "useLogo"?: boolean;
     }
@@ -208,7 +219,8 @@ declare namespace LocalJSX {
         "trss-data-list": TrssDataList;
         "trss-logo": TrssLogo;
         "trss-site-title": TrssSiteTitle;
-        "trss-ucsc-navbar": TrssUcscNavbar;
+        "trss-ucsc-footer": TrssUcscFooter;
+        "trss-ucsc-header": TrssUcscHeader;
     }
 }
 export { LocalJSX as JSX };
@@ -222,7 +234,8 @@ declare module "@stencil/core" {
             "trss-data-list": LocalJSX.TrssDataList & JSXBase.HTMLAttributes<HTMLTrssDataListElement>;
             "trss-logo": LocalJSX.TrssLogo & JSXBase.HTMLAttributes<HTMLTrssLogoElement>;
             "trss-site-title": LocalJSX.TrssSiteTitle & JSXBase.HTMLAttributes<HTMLTrssSiteTitleElement>;
-            "trss-ucsc-navbar": LocalJSX.TrssUcscNavbar & JSXBase.HTMLAttributes<HTMLTrssUcscNavbarElement>;
+            "trss-ucsc-footer": LocalJSX.TrssUcscFooter & JSXBase.HTMLAttributes<HTMLTrssUcscFooterElement>;
+            "trss-ucsc-header": LocalJSX.TrssUcscHeader & JSXBase.HTMLAttributes<HTMLTrssUcscHeaderElement>;
         }
     }
 }

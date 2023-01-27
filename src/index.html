@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
@@ -20,19 +21,16 @@
       <div class="content">
         <trss-alert appearance="warning">
           <div slot="header">Headline for 'warning' ribbon appearance</div>
-          <div slot="description">Indoor face covering requirements remain in effect.&nbsp;<a href="https://slugstrong.ucsc.edu">Stay informed</a>.</div>
+          <div slot="description">Indoor face covering requirements remain in effect.&nbsp;<a
+              href="https://slugstrong.ucsc.edu">Stay informed</a>.</div>
         </trss-alert>
 
-        <div class="row">
-          <trss-ucsc-navbar use-logo="true" search="/find/"></trss-ucsc-navbar>
-        </div>
+        <trss-ucsc-header use-logo="true" search="/find/"></trss-ucsc-header>
 
-        <div class="row">
-          <trss-site-title link="https://mcd.ucsc.edu">Molecular, Cell, &amp; Developmental Biology</trss-site-title>
-        </div>
+        <trss-site-title link="https://mcd.ucsc.edu">Molecular, Cell, &amp; Developmental Biology</trss-site-title>
 
-        <div class="row">
-          <trss-breadcrumbs>
+
+        <!-- <trss-breadcrumbs>
             <ul>
               <li><a href="#">Link First</a></li>
               <li><a href="#">Link Second</a></li>
@@ -41,17 +39,23 @@
               <li>Current Page</li>
             </ul>
           </trss-breadcrumbs>
-        </div>
+         -->
 
-        <div class="row">
-          <trss-data-list source="https://news.ucsc.edu/feeds/latest.json" limit="10">
+        <div class="ucsc-row__inner">
+          <trss-data-list source="https://news.ucsc.edu/feeds/latest.json" limit="4">
             <h2>The latest news from UCSC</h2>
             <p>
-              Nemo doloremque, dicta alias est ipsum saepe aliquid nesciunt illo minus obcaecati animi sapiente soluta atque eligendi accusantium. Repellendus fuga harum animi.
+              Recent articles published on our <a href="https://news.ucsc.edu">campus news center</a>.
             </p>
           </trss-data-list>
         </div>
       </div>
+
+      <trss-ucsc-footer>
+
+      </trss-ucsc-footer>
+
     </div>
   </body>
+
 </html>
