@@ -4,16 +4,16 @@
 
 .two-blues {
   @media screen and (min-width: $max-width) {
-    background: linear-gradient(90deg, #003c6c 40%, #006aad 40%);
+    background: linear-gradient(90deg, #003c6c 40%, #006aad 0);
   }
 }
 
-#ucsc-header__toggle:checked + #ucsc-header__show {
-  border: 2px solid red;
-}
+// #ucsc-header__toggle:checked + #ucsc-header__show {
+//   border: 2px solid red;
+// }
 
 .ucsc-header {
-  background-color: var(--ucsc-secondary-blue);
+  background-image: linear-gradient(360deg, #003c6c 10%, #006aad 40%);
   max-width: var(--ucsc-content-width);
   margin: 0 auto;
   display: flex;
@@ -22,7 +22,7 @@
   gap: var(--font-size-lg);
 
   @media screen and (min-width: $max-width) {
-    background: linear-gradient(128deg, #003c6c 22%, #006aad 22%);
+    background-image: linear-gradient(130deg, #003c6c 4rem, #006aad 18rem);
     flex-direction: row;
     justify-content: flex-end;
 
@@ -33,13 +33,12 @@
 }
 
 .ucsc-header__left {
-  padding: 1rem 3rem 1rem 0;
+  padding: .5rem 3rem .5rem 0;
 }
 
 
 
 .ucsc-header__right {
-  background-color: var(--ucsc-secondary-blue);
   display: flex;
   flex-direction: column-reverse;
   gap: var(--font-size-lg);
@@ -59,6 +58,7 @@
   font-size: .9em;
   margin: 0;
   gap: 0.8em;
+  margin
 
 
   li {
@@ -73,7 +73,16 @@
     color: var(--ucsc-white);
     padding: .25em .5em;
     text-decoration: none;
+
+    &:focus,
+    &:hover,
+    &:active {
+      color: var(--ucsc-white);
+      text-decoration: underline;
+    }
   }
+
+
 
   @media screen and (min-width: 48em) {
 
@@ -93,7 +102,7 @@
       border-radius: 0;
       font-weight: 400;
       padding: 0;
-      @include hoverActiveFocus($brand-primary-blue, true);
+      @include hoverActiveFocus($brand-white, true);
     }
   }
 }
@@ -107,6 +116,7 @@
   transition: all .1s;
   width: 100%;
   max-width: 20em;
+  font-size: .9rem;
 
   &:focus-within {
     border: 1px solid var(--ucsc-secondary-blue);
@@ -125,13 +135,13 @@
   input[type="text"] {
     border: none;
     border-radius: var(--border-radius);
-    padding: 0.3em 0.6em;
+    padding: 0.2em 0.5em;
     flex-grow: 1;
 
     &:focus,
     &:hover,
     &:active {
-      color: var(--ucsc-dark-gray);
+      color: var(--ucsc-black);
       border: none;
       outline: none;
       box-shadow: none;
@@ -141,7 +151,7 @@
 
   input[type="submit"] {
     background: url(https://ucsc-webassets.netlify.app/images/looking-glass.svg) no-repeat;
-    background-size: 22px;
+    background-size: 18px;
     background-position: center center;
     border: 0;
     left: auto;
@@ -154,7 +164,6 @@
 
 
   @media screen and (min-width: 48em) {
-
     margin-left: 1em;
     width: auto;
     max-width: auto;
