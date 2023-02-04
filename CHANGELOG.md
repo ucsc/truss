@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.8](https://github.com/ucsc/truss/compare/v0.6.7...v0.6.8) (2023-02-04)
+
+
+### Features
+
+* **component:** Add 'withAnimation' attribute to trss-logo ([53a8ac7](https://github.com/ucsc/truss/commit/53a8ac7c3e973dad4baa4f81633c7d3543b68739))
+* **component:** Add animation to logo in trss-ucsc-header ([b5e23f0](https://github.com/ucsc/truss/commit/b5e23f0c5214ce9626cef1d8f72c9ce14495568f))
+
+
+### Bug Fixes
+
+* **Component:** Update UCSC header design ([8936183](https://github.com/ucsc/truss/commit/893618335d0cb70c11ea86f53ce93f2008a9ec4e))
+
 ### 0.6.7 (2022-03-11)
 
 
