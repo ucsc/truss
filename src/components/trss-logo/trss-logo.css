@@ -1,3 +1,15 @@
 :host {
   display: block;
 }
+
+.trss-logo {
+  display: block;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+.trss-logo.trss-feature-animation:focus,
+.trss-logo.trss-feature-animation:hover,
+.trss-logo.trss-feature-animation:active {
+  transform: scale(1.2);
+}
