@@ -61,6 +61,10 @@ export namespace Components {
           * Sets the width of the logo.
          */
         "width": string;
+        /**
+          * Set whether or not the logo will animate on hover
+         */
+        "withAnimation": boolean;
     }
     interface TrssSiteTitle {
         /**
@@ -71,7 +75,13 @@ export namespace Components {
     interface TrssUcscFooter {
     }
     interface TrssUcscHeader {
+        /**
+          * The URL where search queries should be sent
+         */
         "search": string;
+        /**
+          * Whether or not to display the UCSC logo
+         */
         "useLogo": boolean;
     }
 }
@@ -198,6 +208,10 @@ declare namespace LocalJSX {
           * Sets the width of the logo.
          */
         "width"?: string;
+        /**
+          * Set whether or not the logo will animate on hover
+         */
+        "withAnimation"?: boolean;
     }
     interface TrssSiteTitle {
         /**
@@ -208,7 +222,13 @@ declare namespace LocalJSX {
     interface TrssUcscFooter {
     }
     interface TrssUcscHeader {
+        /**
+          * The URL where search queries should be sent
+         */
         "search"?: string;
+        /**
+          * Whether or not to display the UCSC logo
+         */
         "useLogo"?: boolean;
     }
     interface IntrinsicElements {
