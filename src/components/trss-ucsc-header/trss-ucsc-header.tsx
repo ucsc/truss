@@ -7,8 +7,14 @@ import { Component, Prop, h } from '@stencil/core';
 })
 export class TrssUcscHeader {
 
+  /**
+   * The URL where search queries should be sent
+   */
   @Prop() search: string;
 
+  /**
+   * Whether or not to display the UCSC logo
+   */
   @Prop({reflect: true}) useLogo: boolean;
 
   private parentClasses(): string {
@@ -21,7 +27,7 @@ export class TrssUcscHeader {
         <div class={this.useLogo ? this.parentClasses() : 'ucsc-header'}>
           {this.useLogo ? (
               <div class="ucsc-header__left">
-                <trss-logo width="110" display='light' />
+                <trss-logo width="110" display='light' with-animation />
               </div>
             ) : null}
           {/* <input type="checkbox" id="ucsc-header__toggle" /> */}
