@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.1](https://github.com/ucsc/truss/compare/v0.7.0...v0.7.1) (2023-02-05)
+
+
+### Bug Fixes
+
+* **Styles:** set padding on inner row to 0 at 67.5rem ([fdb3a69](https://github.com/ucsc/truss/commit/fdb3a6959527b12704024584f41c2330b1cf381f))
+
 ## [0.7.0](https://github.com/ucsc/truss/compare/v0.6.8...v0.7.0) (2023-02-05)
 
 
