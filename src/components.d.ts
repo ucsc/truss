@@ -76,9 +76,13 @@ export namespace Components {
     }
     interface TrssUcscHeader {
         /**
-          * The URL where search queries should be sent
+          * The URL for the search form action attribute
          */
-        "search": string;
+        "searchAction": string;
+        /**
+          * The query parameter for the search string
+         */
+        "searchQuery": string;
         /**
           * Whether or not to display the UCSC logo
          */
@@ -223,9 +227,13 @@ declare namespace LocalJSX {
     }
     interface TrssUcscHeader {
         /**
-          * The URL where search queries should be sent
+          * The URL for the search form action attribute
          */
-        "search"?: string;
+        "searchAction"?: string;
+        /**
+          * The query parameter for the search string
+         */
+        "searchQuery"?: string;
         /**
           * Whether or not to display the UCSC logo
          */

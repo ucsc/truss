@@ -7,10 +7,11 @@ The UCSC header appears at the top of UCSC web pages published by the campus CMS
 
 ## Properties
 
-| Property  | Attribute  | Description                                 | Type      | Default     |
-| --------- | ---------- | ------------------------------------------- | --------- | ----------- |
-| `search`  | `search`   | The URL where search queries should be sent | `string`  | `undefined` |
-| `useLogo` | `use-logo` | Whether or not to display the UCSC logo     | `boolean` | `undefined` |
+| Property       | Attribute       | Description                                  | Type      | Default     |
+| -------------- | --------------- | -------------------------------------------- | --------- | ----------- |
+| `searchAction` | `search-action` | The URL for the search form action attribute | `string`  | `undefined` |
+| `searchQuery`  | `search-query`  | The query parameter for the search string    | `string`  | `undefined` |
+| `useLogo`      | `use-logo`      | Whether or not to display the UCSC logo      | `boolean` | `undefined` |
 
 
 ## Dependencies
