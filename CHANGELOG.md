@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/ucsc/truss/compare/v0.6.8...v0.7.0) (2023-02-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* `trss-content-width` is set globally, but can be changed for any component. Updated settings for distribution as well.
+* **component:** trss-ucsc-header requires a CSS custom property `--trss-content-width` to set the inner width of the header.
+
+### Features
+
+* change `ucsc-content-width` to `trss-content-width` ([5d9cb85](https://github.com/ucsc/truss/commit/5d9cb850844e446c2eb362b3e02e5d64f9277302))
+* **component:** set inner content width on `trss-ucsc-header` component ([1514249](https://github.com/ucsc/truss/commit/151424926369afecaa13e72a8877be19a1f5acf2))
+
 ### [0.6.8](https://github.com/ucsc/truss/compare/v0.6.7...v0.6.8) (2023-02-04)
 
 
