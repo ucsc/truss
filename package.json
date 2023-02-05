@@ -3,14 +3,14 @@
   "version": "0.6.8",
   "description": "Truss Design System",
   "homepage": "https://github.com/ucsc/truss",
-  "main": "dist/index.cjs",
+  "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
-  "types": "dist/types/index.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
+  "types": "dist/types/components.d.ts",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/ucsc-truss/ucsc-trss.esm.js",
+  "collection": "dist/collection/collection-manifest.json",
+  "unpkg": "dist/ucsc-trss/ucsc-trss.js",
   "files": [
     "dist/",
     "loader/"

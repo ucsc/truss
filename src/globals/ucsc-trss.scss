@@ -39,7 +39,7 @@ $value in $colors {
   --border-radius: 0;
 
   /* Layout */
-  --ucsc-content-width: 67.5rem;
+  --trss-content-width: 67.5rem;
 }
 
 
@@ -59,12 +59,25 @@ $value in $colors {
 
 .ucsc-row__inner {
   margin: 0 auto;
-  max-width: var(--ucsc-content-width);
+  max-width: var(--trss-content-width);
   padding: 0 var(--font-size-base);
 }
 
-@media screen and (min-width: var(--content-width)) {
+@media screen and (min-width: var(--trss-content-width)) {
   .row {
     padding: 0;
   }
+}
+
+.hide {
+  border: 0;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal!important;
 }
