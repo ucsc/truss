@@ -63,6 +63,9 @@ $value in $colors {
   padding: 0 var(--font-size-base);
 }
 
+/**
+ * At 67.5rem, we remove horizontal padding from the inner row
+ */
 @media screen and (min-width: 67.5rem) {
   .ucsc-row__inner {
     padding: 0;
