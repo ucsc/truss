@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.3](https://github.com/ucsc/truss/compare/v0.7.2...v0.7.3) (2023-02-05)
+
+
+### Bug Fixes
+
+* **Styles:** force a CSS update to add recent changes to the package ([3333959](https://github.com/ucsc/truss/commit/3333959a704826407d53a1e5c65f142dbac68f47))
+
 ### [0.7.2](https://github.com/ucsc/truss/compare/v0.7.1...v0.7.2) (2023-02-05)
 
 
