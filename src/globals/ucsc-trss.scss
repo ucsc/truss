@@ -63,7 +63,7 @@ $value in $colors {
   padding: 0 var(--font-size-base);
 }
 
-@media screen and (min-width: var(--trss-content-width)) {
+@media screen and (min-width: 67.5rem) {
   .row {
     padding: 0;
   }
