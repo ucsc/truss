@@ -15,5 +15,5 @@ Truss contains branded web components built with StencilJS. Truss components use
 - [trss-data-list](src/components/trss-data-list) (beta)
 - [trss-logo](src/components/trss-logo) (stable)
 - [trss-site-title](src/components/trss-site-title) (beta)
-- [trss-ucsc-footer](src/components/trss-ucsc-footer) (in development)
+- [trss-ucsc-footer](src/components/trss-ucsc-footer) (beta)
 - [trss-ucsc-header](src/components/trss-ucsc-header) (beta)
