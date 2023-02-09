@@ -4,6 +4,9 @@ import { sass } from '@stencil/sass';
 export const config: Config = {
   namespace: 'ucsc-trss',
   globalStyle: 'src/globals/ucsc-trss.scss',
+  devServer: {
+    reloadStrategy: 'pageReload'
+  }
   outputTargets: [
     {
       type: 'dist',
