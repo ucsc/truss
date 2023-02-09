@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.5](https://github.com/ucsc/truss/compare/v0.7.4...v0.7.5) (2023-02-09)
+
+
+### Bug Fixes
+
+* build footer for production ([2e4f7d9](https://github.com/ucsc/truss/commit/2e4f7d9166db67c1658c7e48ae50526a800a93f4))
+
 ### [0.7.4](https://github.com/ucsc/truss/compare/v0.7.3...v0.7.4) (2023-02-09)
 
 
