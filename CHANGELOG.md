@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.4](https://github.com/ucsc/truss/compare/v0.7.3...v0.7.4) (2023-02-09)
+
+
+### Features
+
+* **Component:** 🚀 trss-ucsc-footer is now in beta ([21680be](https://github.com/ucsc/truss/commit/21680bebcd1674d094c7778edf221ea5c026bccc))
+
+
+### Bug Fixes
+
+* Set default content width to match WordPress theme default ([88fa4a1](https://github.com/ucsc/truss/commit/88fa4a15e5841af9c2936c89aabcecbd9a4cb0ac))
+
 ### [0.7.3](https://github.com/ucsc/truss/compare/v0.7.2...v0.7.3) (2023-02-05)
 
 
