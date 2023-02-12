@@ -3,48 +3,62 @@
 
 }
 
-.two-blues {
+.trss-ucsc-header {
   @media screen and (min-width: $max-width) {
     background: linear-gradient(90deg, #003c6c 40%, #006aad 0);
   }
-}
 
-// #ucsc-header__toggle:checked + #ucsc-header__show {
-//   border: 2px solid red;
-// }
-
-.ucsc-header {
+  > .ucsc-row__inner {
   background-image: linear-gradient(360deg, #003c6c 10%, #006aad 40%);
   max-width: var(--trss-content-width);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: var(--font-size-lg);
+  gap: 1em;
+  padding: 1em 0;
 
   @media screen and (min-width: $max-width) {
     background-image: linear-gradient(130deg, #003c6c 4rem, #006aad 18rem);
     flex-direction: row;
     justify-content: flex-end;
+    padding: 0;
+    gap: var(--font-size-lg);
 
     &.has-logo {
       justify-content: space-between;
     }
   }
 }
+}
 
-.ucsc-header__left {
-  padding: .5rem 3rem .5rem 0;
+// #trss-ucsc-header__toggle:checked + #trss-ucsc-header__show {
+//   border: 2px solid red;
+// }
+
+
+
+.trss-ucsc-header__left {
+
+  padding: .5rem 0 .5rem 0;
+
+  @media screen and (min-width: $max-width) {
+    padding: .5rem 3rem .5rem 0;
+  }
+
 }
 
 
 
-.ucsc-header__right {
+.trss-ucsc-header__right {
   display: flex;
   flex-direction: column-reverse;
-  gap: var(--font-size-lg);
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
 
-  @media screen and (min-width: 48em) {
+  @media screen and (min-width: $max-width) {
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
@@ -52,14 +66,14 @@
   }
 }
 
-.ucsc-header__navigation {
+.trss-ucsc-header__navigation {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   font-size: .9em;
   margin: 0;
+  padding: 0;
   gap: 0.8em;
-  margin
 
 
   li {
@@ -67,6 +81,7 @@
     padding: 0;
     list-style: none;
     flex: 1 1 46%;
+    text-align: center;
   }
 
   a {
@@ -110,7 +125,7 @@
 
 // ## Site Search
 // Search box for searching each site.
-.ucsc-header__search {
+.trss-ucsc-header__search {
   background-color: var(--ucsc-white);
   border-radius: var(--border-radius);
   border: 1px solid var(--ucsc-white);
@@ -164,7 +179,7 @@
     width: auto;
     max-width: auto;
 
-    form>div {
+    form > div {
       display: block;
     }
 
