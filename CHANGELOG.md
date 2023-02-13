@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.6](https://github.com/ucsc/truss/compare/v0.7.5...v0.7.6) (2023-02-13)
+
+
+### Bug Fixes
+
+* **Component:** 🐛 Fix mobile display of trss-ucsc-header ([74168ea](https://github.com/ucsc/truss/commit/74168eaf359f402b42bd85f43405ab6c6193b718))
+
 ### [0.7.5](https://github.com/ucsc/truss/compare/v0.7.4...v0.7.5) (2023-02-09)
 
 
