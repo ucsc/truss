@@ -49,7 +49,7 @@ export class TrssUcscHeader {
             <div class="trss-ucsc-header__search" role="search">
               <form role="search" method="get" action={this.searchAction} id="cse-search-box">
                 <div>
-                  <label class="hide" htmlFor={this.searchQuery}>Search</label>
+                  <label class="trss-hide" htmlFor={this.searchQuery}>Search</label>
                   <input class="query" id={this.searchQuery} name={this.searchQuery} placeholder="Search" type="text" value="" />
                   <input type="submit" value="Search" />
                 </div>
