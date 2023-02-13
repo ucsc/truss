@@ -3,9 +3,15 @@
 }
 
 .trss-logo {
+  all: reset;
   display: block;
   transition: all .3s ease;
   cursor: pointer;
+  line-height: 1;
+}
+
+.trss-logo svg {
+  display: block;
 }
 
 .trss-logo.trss-feature-animation:focus,

@@ -4,6 +4,7 @@ import { Component, Prop, h } from '@stencil/core';
   tag: 'trss-ucsc-header',
   styleUrl: 'trss-ucsc-header.scss',
   shadow: false,
+  scoped: true
 })
 export class TrssUcscHeader {
 

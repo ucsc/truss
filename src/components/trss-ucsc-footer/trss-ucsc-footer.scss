@@ -12,6 +12,7 @@
     row-gap: .85rem;
     align-items: center;
     justify-items: center;
+    font-size: 1rem;
 
     @media screen and (min-width: $max-width) {
       grid-template-columns: 1fr 4fr;
