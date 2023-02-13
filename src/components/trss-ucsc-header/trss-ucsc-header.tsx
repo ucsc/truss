@@ -24,14 +24,14 @@ export class TrssUcscHeader {
 
 
   private parentClasses(): string {
-    return 'has-logo ucsc-row__inner';
+    return 'has-logo trss-row__inner';
   }
 
   render() {
     return (
-      <div class="ucsc-row__full trss-ucsc-header">
+      <div class="trss-row__full trss-ucsc-header">
         <slot />
-        <div class={this.useLogo ? this.parentClasses() : 'ucsc-row__inner'}>
+        <div class={this.useLogo ? this.parentClasses() : 'trss-row__inner'}>
           {this.useLogo ? (
             <div class="trss-ucsc-header__left">
               <trss-logo width="114" display='light' with-animation />

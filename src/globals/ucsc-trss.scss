@@ -1,6 +1,5 @@
 @import 'scss/variables';
 @import 'scss/mixins';
-@import 'scss/reset';
 
 :root {
 
@@ -48,16 +47,16 @@ $value in $colors {
 /*
   UCSC defaults
 */
-.container {
+.trss-container {
   padding: 0;
   margin: 0 ;
 }
 
-.ucsc-row__full {
+.trss-row__full {
   width: 100%;
 }
 
-.ucsc-row__inner {
+.trss-row__inner {
   margin: 0 auto;
   max-width: var(--trss-content-width);
   padding: 0 var(--font-size-base);
@@ -67,12 +66,12 @@ $value in $colors {
  * At 67.5rem, we remove horizontal padding from the inner row
  */
 @media screen and (min-width: 67.5rem) {
-  .ucsc-row__inner {
+  .trss-row__inner {
     padding: 0;
   }
 }
 
-.hide {
+.trss-hide {
   border: 0;
   clip: rect(1px,1px,1px,1px);
   clip-path: inset(50%);
