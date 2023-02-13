@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.7](https://github.com/ucsc/truss/compare/v0.7.6...v0.7.7) (2023-02-13)
+
+
+### Bug Fixes
+
+* **Component:** Fix style leaks into header, footer and logo ([49da04f](https://github.com/ucsc/truss/commit/49da04f4744a33f19b966460fb09832d27257106))
+
 ### [0.7.6](https://github.com/ucsc/truss/compare/v0.7.5...v0.7.6) (2023-02-13)
 
 
