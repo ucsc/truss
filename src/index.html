@@ -5,6 +5,66 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
+    <style>
+      /*
+  Josh Comeau CSS Reset (2021)
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      * {
+        margin: 0;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      body {
+        font-family: var(--font-family-sans-serif);
+        line-height: 1.5;
+        font-size: var(--font-size-base);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img,
+      picture,
+      video,
+      canvas,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+
+      input,
+      button,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        overflow-wrap: break-word;
+      }
+
+      #root,
+      #__next {
+        isolation: isolate;
+      }
+    </style>
     <link rel="stylesheet" href="/build/ucsc-trss.css" />
     <script type="module" src="/build/ucsc-trss.esm.js"></script>
     <script nomodule src="/build/ucsc-trss.js"></script>
@@ -22,10 +82,10 @@
 
         <trss-ucsc-header use-logo="true" search-query="s" search-action="/" style="--trss-content-width:72rem;">
           <trss-alert appearance="warning">
-          <div slot="header">Headline for 'warning' ribbon appearance</div>
-          <div slot="description">Indoor face covering requirements remain in effect.&nbsp;<a
-              href="https://slugstrong.ucsc.edu">Stay informed</a>.</div>
-        </trss-alert>
+            <div slot="header">Headline for 'warning' ribbon appearance</div>
+            <div slot="description">Indoor face covering requirements remain in effect.&nbsp;<a
+                href="https://slugstrong.ucsc.edu">Stay informed</a>.</div>
+          </trss-alert>
         </trss-ucsc-header>
 
         <trss-site-title link="https://mcd.ucsc.edu">Molecular, Cell, &amp; Developmental Biology</trss-site-title>
