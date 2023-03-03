@@ -1,6 +1,8 @@
 # trss-ucsc-header
 
-The UCSC header appears at the top of UCSC web pages published by the campus CMS. It contains the utility links our visitors use most often, and a configurable search element.  
+The UCSC header appears at the top of UCSC web pages published by the campus CMS. It contains the utility links our visitors use most often, and a configurable search element.
+
+You can use a style attribute on the element to set the `--trss-content-width` CSS custom property.
 
 <!-- Auto Generated Below -->
 
