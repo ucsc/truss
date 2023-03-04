@@ -9,9 +9,9 @@ import { Component, Prop, h } from '@stencil/core';
 export class TrssUcscHeader {
 
   /**
-    * Whether or not to display the UCSC logo
+    * Use "logo" to display UCSC logo or "text" for a text link
     */
-  @Prop() useLogo: boolean;
+  @Prop() homeLink: string;
 
   /**
    * The URL for the search form action attribute
@@ -25,17 +25,21 @@ export class TrssUcscHeader {
 
 
   private parentClasses(): string {
-    return 'has-logo trss-row__inner';
+    return 'has-home-link trss-row__inner';
   }
 
   render() {
     return (
       <div class="trss-row__full trss-ucsc-header">
         <slot />
-        <div class={this.useLogo ? this.parentClasses() : 'trss-row__inner'}>
-          {this.useLogo ? (
+        <div class={this.homeLink ? this.parentClasses() : 'trss-row__inner'}>
+          {this.homeLink ? (
             <div class="trss-ucsc-header__left">
-              <trss-logo width="114" display='light' with-animation />
+              {this.homeLink === 'logo' ? (
+                <trss-logo width="114" display='light' with-animation />
+              ) : this.homeLink === 'text' ? (
+                <a href="https://www.ucsc.edu" title="UC Santa Cruz home page">&larr; ucsc.edu</a>
+              ) : null}
             </div>
           ) : null}
           {/* <input type="checkbox" id="trss-ucsc-header__toggle" /> */}

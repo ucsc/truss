@@ -27,8 +27,18 @@
     padding: 0;
     gap: var(--font-size-lg);
 
-    &.has-logo {
+    &.has-home-link {
       justify-content: space-between;
+
+      .trss-ucsc-header__left a {
+        color: $gold;
+      }
+
+      .trss-ucsc-header__left a:focus,
+      .trss-ucsc-header__left a:hover,
+      .trss-ucsc-header__left a:active {
+        text-decoration: underline;
+      }
     }
   }
 }

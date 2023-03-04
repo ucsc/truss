@@ -76,6 +76,10 @@ export namespace Components {
     }
     interface TrssUcscHeader {
         /**
+          * Use "logo" to display UCSC logo or "text" for a text link
+         */
+        "homeLink": string;
+        /**
           * The URL for the search form action attribute
          */
         "searchAction": string;
@@ -83,10 +87,6 @@ export namespace Components {
           * The query parameter for the search string
          */
         "searchQuery": string;
-        /**
-          * Whether or not to display the UCSC logo
-         */
-        "useLogo": boolean;
     }
 }
 declare global {
@@ -227,6 +227,10 @@ declare namespace LocalJSX {
     }
     interface TrssUcscHeader {
         /**
+          * Use "logo" to display UCSC logo or "text" for a text link
+         */
+        "homeLink"?: string;
+        /**
           * The URL for the search form action attribute
          */
         "searchAction"?: string;
@@ -234,10 +238,6 @@ declare namespace LocalJSX {
           * The query parameter for the search string
          */
         "searchQuery"?: string;
-        /**
-          * Whether or not to display the UCSC logo
-         */
-        "useLogo"?: boolean;
     }
     interface IntrinsicElements {
         "trss-alert": TrssAlert;

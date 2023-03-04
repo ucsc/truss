@@ -9,11 +9,11 @@ You can use a style attribute on the element to set the `--trss-content-width` C
 
 ## Properties
 
-| Property       | Attribute       | Description                                  | Type      | Default     |
-| -------------- | --------------- | -------------------------------------------- | --------- | ----------- |
-| `searchAction` | `search-action` | The URL for the search form action attribute | `string`  | `undefined` |
-| `searchQuery`  | `search-query`  | The query parameter for the search string    | `string`  | `undefined` |
-| `useLogo`      | `use-logo`      | Whether or not to display the UCSC logo      | `boolean` | `undefined` |
+| Property       | Attribute       | Description                                               | Type     | Default     |
+| -------------- | --------------- | --------------------------------------------------------- | -------- | ----------- |
+| `homeLink`     | `home-link`     | Use "logo" to display UCSC logo or "text" for a text link | `string` | `undefined` |
+| `searchAction` | `search-action` | The URL for the search form action attribute              | `string` | `undefined` |
+| `searchQuery`  | `search-query`  | The query parameter for the search string                 | `string` | `undefined` |
 
 
 ## Dependencies
