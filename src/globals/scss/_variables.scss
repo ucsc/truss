@@ -108,8 +108,10 @@ $modular-scale-ratio: 1.25;
 
 
 // Layout variables for Bourbon Neat
+$pixel-width: 1080;
+$padded-width: calc($pixel-width - 20);
 $browser-context: 16;
-$max-width: #{math.div(1080,$browser-context)}rem;
+$max-width: #{math.div($pixel-width,$browser-context)}rem;
 $grids-columns: 12;
 $column: 12;
 $gutter: 1em;
