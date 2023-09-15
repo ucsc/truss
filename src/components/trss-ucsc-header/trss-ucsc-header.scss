@@ -4,9 +4,9 @@
 }
 
 .trss-ucsc-header {
-  @media screen and (min-width: $max-width) {
-    background-color: #003c6c;
-  }
+
+  background-color: #003c6c;
+  padding: 0 var(--trss-content-padding);
 
   > .trss-row__inner {
   background-color: #003c6c;
@@ -17,14 +17,14 @@
   justify-content: center;
   align-items: center;
   gap: 1em;
-  padding: 1em var(--trss-content-padding);
+  padding: 1em 0;
 
   @media screen and (min-width: $max-width) {
     background-color: #003c6c;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    padding: 0 var(--trss-content-padding);
+    padding: 0;
     gap: var(--font-size-lg);
 
     &.has-logo {
