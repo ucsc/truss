@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.9](https://github.com/ucsc/truss/compare/v0.7.8...v0.7.9) (2023-09-15)
+
+
+### Bug Fixes
+
+* **Component:** 🐛 Horizontal padding is moved from the inner container to the bounding box ([bb1195f](https://github.com/ucsc/truss/commit/bb1195ff05d16caf1ec227e6773d1196549cf6d0))
+* **Settings:** 📝 Default layout width is 1280, matching the WordPress defaults ([f87a8b2](https://github.com/ucsc/truss/commit/f87a8b20965d5120fc59e86fa79affe7a81922bf))
+
 ### [0.7.8](https://github.com/ucsc/truss/compare/v0.7.7...v0.7.8) (2023-09-15)
 
 
