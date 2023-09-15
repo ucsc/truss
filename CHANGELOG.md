@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.8](https://github.com/ucsc/truss/compare/v0.7.7...v0.7.8) (2023-09-15)
+
+
+### Features
+
+* **Component:** ✨ Add accessibility reporting link to footer. Fixes [#15](https://github.com/ucsc/truss/issues/15) ([3bc0e86](https://github.com/ucsc/truss/commit/3bc0e86914fa9960c0d4da078169ba28d0c5309a))
+* **Component:** ✨ Add padding to header and remove gradient. Fixes [#11](https://github.com/ucsc/truss/issues/11) and fixes [#7](https://github.com/ucsc/truss/issues/7) ([36a348e](https://github.com/ucsc/truss/commit/36a348effc4b15cbd40e0be8b1459ff1c4396eff))
+* **Component:** ✨ Update banana slug illustration in the footer. Fixes [#14](https://github.com/ucsc/truss/issues/14) ([7ad601f](https://github.com/ucsc/truss/commit/7ad601f16e67b328a266071b51f072c5897179f0))
+
+
+### Bug Fixes
+
+* 🐛 Manage left and right padding on small screen widths ([0ed4bfb](https://github.com/ucsc/truss/commit/0ed4bfba9c7ab224fb1e4e8d92bd03f6b362de4d)), closes [#7](https://github.com/ucsc/truss/issues/7)
+
 ### [0.7.7](https://github.com/ucsc/truss/compare/v0.7.6...v0.7.7) (2023-02-13)
 
 
