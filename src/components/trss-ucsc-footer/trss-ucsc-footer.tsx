@@ -23,6 +23,7 @@ export class TrssUcscFooter {
             <div class="trss-ucsc-footer__inner-right">
               <ul>
                 <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdoZLrRfU3L1ZiUuCn2E24ph7aB0O9ytIGHbZfTpTG1PlJVww/viewform">Report an accessibility barrier</a></li>
+                <li><a href="https://www.ucsc.edu/land-acknowledgment">Land Acknowledgment</a></li>
                 <li><a href="https://jobs.ucsc.edu">Employment</a></li>
                 <li><a href="https://its.ucsc.edu/terms/">Privacy</a></li>
                 <li><a href="https://academicaffairs.ucsc.edu/accreditation/">Accreditation</a></li>
