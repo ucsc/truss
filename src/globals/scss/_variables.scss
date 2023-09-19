@@ -108,7 +108,7 @@ $modular-scale-ratio: 1.25;
 
 
 // Layout variables for Bourbon Neat
-$pixel-width: 1280;
+$pixel-width: 900;
 $padded-width: calc($pixel-width - 20);
 $browser-context: 16;
 $max-width: #{math.div($pixel-width,$browser-context)}rem;
