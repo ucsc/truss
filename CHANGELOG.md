@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.10](https://github.com/ucsc/truss/compare/v0.7.9...v0.7.10) (2023-09-19)
+
+
+### Bug Fixes
+
+* **Component:** ⚡️ Add land acknowledgment to footer links ([9d9df12](https://github.com/ucsc/truss/commit/9d9df122674897762933cdc6c01094f6a3be632b))
+* **Component:** 🐛 Set proper position of slug illustration at all breakpoints ([4ad4451](https://github.com/ucsc/truss/commit/4ad44515e1adff16e8cf12ff6607310c86c9c419))
+* **Settings:** 🐛 Reduce breakppoint at which header and footer collapse ([839be85](https://github.com/ucsc/truss/commit/839be8534ed386fd07111053c90920176464b20a))
+
 ### [0.7.9](https://github.com/ucsc/truss/compare/v0.7.8...v0.7.9) (2023-09-15)
 
 
