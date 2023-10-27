@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.11](https://github.com/ucsc/truss/compare/v0.7.10...v0.7.11) (2023-10-27)
+
+
+### Features
+
+* **Component:** ✨ Return background to gradient color, and update footer links ([c035f36](https://github.com/ucsc/truss/commit/c035f366e64319b9cf52f43765ef013ea20a2c0a))
+
 ### [0.7.10](https://github.com/ucsc/truss/compare/v0.7.9...v0.7.10) (2023-09-19)
 
 
