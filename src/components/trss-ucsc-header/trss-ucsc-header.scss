@@ -5,22 +5,26 @@
 
 .trss-ucsc-header {
 
-  background-color: #003c6c;
+  background: linear-gradient(360deg, #003c6c 10%, #006aad 40%);
+
+  @media screen and (min-width: $max-width) {
+    background: linear-gradient(90deg, #003c6c 40%, #006aad 0);
+  }
   padding: 0 var(--trss-content-padding);
 
   > .trss-row__inner {
-  background-color: #003c6c;
+  background-image: linear-gradient(360deg, #003c6c 10%, #006aad 40%);
   max-width: var(--trss-content-width);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1em;
+  gap: 0em;
   padding: 1em 0;
 
   @media screen and (min-width: $max-width) {
-    background-color: #003c6c;
+    background-image: linear-gradient(130deg, #003c6c 4rem, #006aad 18rem);
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
@@ -55,7 +59,7 @@
 .trss-ucsc-header__right {
   display: flex;
   flex-direction: column-reverse;
-  gap: 1rem;
+  gap: 0rem;
   justify-content: center;
   align-items: center;
 
@@ -81,7 +85,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    flex: 1 1 46%;
+    flex: auto;
     text-align: center;
   }
 
