@@ -73,6 +73,7 @@ export namespace Components {
         "link": string;
     }
     interface TrssUcscFooter {
+        "year": string;
     }
     interface TrssUcscHeader {
         /**
@@ -224,6 +225,7 @@ declare namespace LocalJSX {
         "link"?: string;
     }
     interface TrssUcscFooter {
+        "year"?: string;
     }
     interface TrssUcscHeader {
         /**
