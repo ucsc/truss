@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.12](https://github.com/ucsc/truss/compare/v0.7.11...v0.7.12) (2024-04-16)
+
+
+### Bug Fixes
+
+* 🐛 Update copyright date in footer component. Fixes [#20](https://github.com/ucsc/truss/issues/20) ([745a589](https://github.com/ucsc/truss/commit/745a589756ce7997dbc1f0a75a5261e17d52c25e)), closes [#21](https://github.com/ucsc/truss/issues/21)
+* 🐛 Update copyright date in footer component. Fixes [#20](https://github.com/ucsc/truss/issues/20) ([d224481](https://github.com/ucsc/truss/commit/d22448146caf47c8d98b71ad660bc6aaaf0da0dd))
+
 ### [0.7.11](https://github.com/ucsc/truss/compare/v0.7.10...v0.7.11) (2023-10-27)
 
 
