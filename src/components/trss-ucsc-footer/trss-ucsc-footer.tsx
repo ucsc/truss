@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'trss-ucsc-footer',
@@ -8,6 +8,8 @@ import { Component, h } from '@stencil/core';
   scoped: true
 })
 export class TrssUcscFooter {
+
+  @Prop() year: string = new Date().getFullYear().toString();
 
   render() {
     return (
@@ -27,7 +29,7 @@ export class TrssUcscFooter {
                 <li><a href="https://jobs.ucsc.edu">Employment</a></li>
                 <li><a href="https://its.ucsc.edu/terms/">Privacy</a></li>
                 <li><a href="https://academicaffairs.ucsc.edu/accreditation/">Accreditation</a></li>
-                <li>&copy;2023 UC Regents</li>
+                <li>&copy;{this.year} UC Regents</li>
               </ul>
             </div>
 
