@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.13](https://github.com/ucsc/truss/compare/v0.7.12...v0.7.13) (2024-05-08)
+
+
+### Features
+
+* **data-list:** Make the JSONfeed `description` optional (as `teaser`) in `trss-data-list` ([#23](https://github.com/ucsc/truss/issues/23)) ([c636271](https://github.com/ucsc/truss/commit/c63627141fe09dd7401141ef9e99a7ab8f1fd34e)), closes [#22](https://github.com/ucsc/truss/issues/22)
+
+
+### Bug Fixes
+
+* **ucsc-footer:** Add docs for copyright date in the footer ([3d426a8](https://github.com/ucsc/truss/commit/3d426a89192e62e2712d5cea9c201ba7ecf83bfb))
+
 ### [0.7.12](https://github.com/ucsc/truss/compare/v0.7.11...v0.7.12) (2024-04-16)
 
 
