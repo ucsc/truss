@@ -9,6 +9,9 @@ import { Component, h, Prop } from '@stencil/core';
 })
 export class TrssUcscFooter {
 
+  /**
+ * The numeric year we use for the copyright.
+ */
   @Prop() year: string = new Date().getFullYear().toString();
 
   render() {

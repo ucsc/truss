@@ -73,6 +73,9 @@ export namespace Components {
         "link": string;
     }
     interface TrssUcscFooter {
+        /**
+          * The numeric year we use for the copyright.
+         */
         "year": string;
     }
     interface TrssUcscHeader {
@@ -225,6 +228,9 @@ declare namespace LocalJSX {
         "link"?: string;
     }
     interface TrssUcscFooter {
+        /**
+          * The numeric year we use for the copyright.
+         */
         "year"?: string;
     }
     interface TrssUcscHeader {

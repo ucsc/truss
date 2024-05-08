@@ -9,9 +9,9 @@ You can use a style attribute on the element to set the `--trss-content-width` C
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default                               |
-| -------- | --------- | ----------- | -------- | ------------------------------------- |
-| `year`   | `year`    |             | `string` | `new Date().getFullYear().toString()` |
+| Property | Attribute | Description                                | Type     | Default                               |
+| -------- | --------- | ------------------------------------------ | -------- | ------------------------------------- |
+| `year`   | `year`    | The numeric year we use for the copyright. | `string` | `new Date().getFullYear().toString()` |
 
 
 ## Dependencies
