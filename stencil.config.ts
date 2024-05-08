@@ -6,7 +6,7 @@ export const config: Config = {
   globalStyle: 'src/globals/ucsc-trss.scss',
   devServer: {
     reloadStrategy: 'pageReload'
-  }
+  },
   outputTargets: [
     {
       type: 'dist',
@@ -21,9 +21,9 @@ export const config: Config = {
     },
   ],
   plugins: [sass({
-      injectGlobalPaths: [
-        'src/globals/scss/variables.scss',
-        'src/globals/scss/mixins.scss'
-      ]
-    })]
+    injectGlobalPaths: [
+      'src/globals/scss/variables.scss',
+      'src/globals/scss/mixins.scss'
+    ]
+  })]
 };

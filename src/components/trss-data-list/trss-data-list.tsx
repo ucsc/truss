@@ -15,7 +15,12 @@ export class TrssDataList {
   /**
    * Limit the number of items displayed.
    */
-  @Prop() limit: number = 10;
+  @Prop() limit: number = 5;
+
+  /**
+   * Whether or not to display the teaser text.
+   */
+  @Prop() teaser: boolean = false;
 
   /**
    * @slot default - Content that appears above the list. We recommend a header and description.
@@ -24,17 +29,13 @@ export class TrssDataList {
   render() {
     return (
       <Host class="trss-data-list">
-        <div>
-          <slot />
-        </div>
+        <slot />
         <ul>
           {this.listData.items.slice(0, this.limit).map((item: any = {}) => (
             <li>
-              <a href={item.url}>
-                <span class="meta">{friendly_date(item.date_published)}</span>
-                <h3 class="header">{this.getEncodedText(item.title)}</h3>
-                {item.summary ? <p class="description">{this.getEncodedText(item.summary)}</p> : ''}
-              </a>
+              <h3 class="header"><a href={item.url}>{this.getEncodedText(item.title)}</a></h3>
+              <span class="meta">{friendly_date(item.date_published)}</span>
+              {item.summary && this.teaser ? <p class="description">{this.getEncodedText(item.summary)}</p> : ''}
             </li>
           ))}
         </ul>
