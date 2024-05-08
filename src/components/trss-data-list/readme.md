@@ -7,10 +7,11 @@ The data list component fetches data from a remote source and renders a list of 
 
 ## Properties
 
-| Property | Attribute | Description                                             | Type     | Default     |
-| -------- | --------- | ------------------------------------------------------- | -------- | ----------- |
-| `limit`  | `limit`   | Limit the number of items displayed.                    | `number` | `10`        |
-| `source` | `source`  | The JSON source for the content list in this component. | `string` | `undefined` |
+| Property | Attribute | Description                                             | Type      | Default     |
+| -------- | --------- | ------------------------------------------------------- | --------- | ----------- |
+| `limit`  | `limit`   | Limit the number of items displayed.                    | `number`  | `5`         |
+| `source` | `source`  | The JSON source for the content list in this component. | `string`  | `undefined` |
+| `teaser` | `teaser`  | Whether or not to display the teaser text.              | `boolean` | `false`     |
 
 
 ----------------------------------------------
