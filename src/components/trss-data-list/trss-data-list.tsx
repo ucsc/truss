@@ -33,7 +33,9 @@ export class TrssDataList {
         <ul>
           {this.listData.items.slice(0, this.limit).map((item: any = {}) => (
             <li>
-              <h3 class="header"><a href={item.url}>{this.getEncodedText(item.title)}</a></h3>
+              <h3 class="header">
+                <a href={item.url}>{this.getEncodedText(item.title)}</a>
+              </h3>
               <span class="meta">{friendly_date(item.date_published)}</span>
               {item.summary && this.teaser ? <p class="description">{this.getEncodedText(item.summary)}</p> : ''}
             </li>
@@ -46,8 +48,13 @@ export class TrssDataList {
   listData = { items: [] };
 
   async componentWillRender() {
-    let getApi = await fetch(this.source, { method: 'GET', headers: { 'Content-Type': 'application/json' } });
-    this.listData = await getApi.json();
+    if (!sessionStorage.getItem('trssFetchedData') || sessionStorage.getItem('trssFetchedData') === '{}') {
+      let getApi = await fetch(this.source, { method: 'GET', headers: { 'Content-Type': 'application/json' } });
+      sessionStorage.setItem('trssFetchedData', JSON.stringify(await getApi.json()));
+      this.listData = JSON.parse(sessionStorage.getItem('trssFetchedData'));
+    } else {
+      this.listData = JSON.parse(sessionStorage.getItem('trssFetchedData'));
+    }
   }
 
   private getEncodedText(text): string {
