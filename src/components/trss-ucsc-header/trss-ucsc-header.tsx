@@ -42,10 +42,10 @@ export class TrssUcscHeader {
           <div class="trss-ucsc-header__right" id="trss-ucsc-header__show">
             <ul class="trss-ucsc-header__navigation">
               <li><a href="https://my.ucsc.edu" title="The student portal">MyUCSC</a></li>
-              <li><a href="https://www.ucsc.edu/tools/people.html" title="Campus directory">People</a></li>
-              <li><a href="https://www.ucsc.edu/tools/calendars.html" title="Upcoming events, academic, and administrative calendars">Calendars</a></li>
-              <li><a href="https://www.ucsc.edu/visit/maps-directions.html">Maps</a></li>
-              <li><a href="https://www.ucsc.edu/tools/azindex.html" title="A to Z index of UCSC websites">A-Z Index</a></li>
+              <li><a href="https://www.ucsc.edu/people/" title="Campus directory">People</a></li>
+              <li><a href="https://www.ucsc.edu/calendars/" title="Upcoming events, academic, and administrative calendars">Calendars</a></li>
+              <li><a href="https://www.ucsc.edu/campus/visit/maps-directions/">Maps</a></li>
+              <li><a href="https://www.ucsc.edu/azindex/" title="A to Z index of UCSC websites">A-Z Index</a></li>
             </ul>
             <div class="trss-ucsc-header__search" role="search">
               <form role="search" method="get" action={this.searchAction} id="cse-search-box">

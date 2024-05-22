@@ -1,10 +1,8 @@
 :host {
   display: block;
-
 }
 
 .trss-ucsc-header {
-
   background: linear-gradient(360deg, #003c6c 10%, #006aad 40%);
 
   @media screen and (min-width: $max-width) {
@@ -13,48 +11,42 @@
   padding: 0 var(--trss-content-padding);
 
   > .trss-row__inner {
-  background-image: linear-gradient(360deg, #003c6c 10%, #006aad 40%);
-  max-width: var(--trss-content-width);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0em;
-  padding: 1em 0;
-
-  @media screen and (min-width: $max-width) {
-    background-image: linear-gradient(130deg, #003c6c 4rem, #006aad 18rem);
-    flex-direction: row;
-    justify-content: flex-end;
+    background-image: linear-gradient(360deg, #003c6c 10%, #006aad 40%);
+    max-width: var(--trss-content-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 0;
-    gap: var(--font-size-lg);
+    gap: 0em;
+    padding: 1em 0;
 
-    &.has-logo {
-      justify-content: space-between;
+    @media screen and (min-width: $max-width) {
+      background-image: linear-gradient(130deg, #003c6c 4rem, #006aad 18rem);
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0;
+      gap: var(--font-size-lg);
+
+      &.has-logo {
+        justify-content: space-between;
+      }
     }
   }
-}
 }
 
 // #trss-ucsc-header__toggle:checked + #trss-ucsc-header__show {
 //   border: 2px solid red;
 // }
 
-
-
 .trss-ucsc-header__left {
-
-  padding: .5rem 0 .5rem 0;
+  padding: 0.5rem 0 0.5rem 0;
 
   @media screen and (min-width: $max-width) {
-    padding: .5rem 3rem .5rem 0;
+    padding: 0.5rem 3rem 0.5rem 0;
   }
-
 }
-
-
 
 .trss-ucsc-header__right {
   display: flex;
@@ -75,11 +67,10 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  font-size: .9rem;
+  font-size: 0.9rem;
   margin: 0;
   padding: 0;
   gap: 0.8rem;
-
 
   li {
     margin: 0;
@@ -92,7 +83,7 @@
   a {
     text-transform: none;
     color: var(--ucsc-white);
-    padding: .25em .5em;
+    padding: 0.25em 0.5em;
     text-decoration: none;
 
     &:focus,
@@ -103,10 +94,7 @@
     }
   }
 
-
-
   @media screen and (min-width: 48em) {
-
     flex-wrap: nowrap;
     gap: 1.5em;
     margin: 0;
@@ -134,11 +122,11 @@
   background-color: var(--ucsc-white);
   border-radius: var(--border-radius);
   border: 1px solid var(--ucsc-white);
-  transition: all .1s;
+  transition: all 0.1s;
   width: 100%;
   max-width: 20em;
-  font-size: .9rem;
-  margin: .5em 0;
+  font-size: 0.9rem;
+  margin: 0.5em 0;
 
   &:focus-within {
     border: 1px solid var(--ucsc-secondary-blue);
@@ -148,10 +136,10 @@
     display: flex;
   }
 
-  input[type="text"] {
+  input[type='text'] {
     border: none;
     border-radius: var(--border-radius);
-    padding: 0.2em 0.5em;
+    padding: 0.25em 0.5em;
     flex-grow: 1;
 
     &:focus,
@@ -162,12 +150,11 @@
       outline: none;
       box-shadow: none;
     }
-
   }
 
-  input[type="submit"] {
+  input[type='submit'] {
     background: url(https://ucsc-webassets.netlify.app/images/looking-glass.svg) no-repeat;
-    background-size: 18px;
+    background-size: 16px;
     background-position: center center;
     border: 0;
     left: auto;
@@ -178,7 +165,6 @@
     z-index: 100;
   }
 
-
   @media screen and (min-width: 48em) {
     margin-left: 1em;
     width: auto;
@@ -187,6 +173,5 @@
     form > div {
       display: block;
     }
-
   }
 }

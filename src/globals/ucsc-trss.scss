@@ -2,11 +2,9 @@
 @import 'scss/mixins';
 
 :root {
-
-@each $key,
-$value in $colors {
-  --#{$key}: #{$value};
-}
+  @each $key, $value in $colors {
+    --#{$key}: #{$value};
+  }
 
   /* Base colors */
   --ucsc-light-blue: #d2e7f4;
@@ -21,11 +19,10 @@ $value in $colors {
   --ucsc-dark-gray: #555555;
   --ucsc-black: #000;
 
-
   /* Typography */
-  --font-family-sans-serif: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-family-sans-serif: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-family-sans-serif-condensed: 'Roboto Condensed', sans-serif;
-  --font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
+  --font-family-monospace: Monaco, Menlo, Consolas, 'Courier New', monospace;
   --font-family-headlines: var(--font-family-sans-serif);
   --font-family-base: var(--font-family-sans-serif);
 
@@ -35,22 +32,19 @@ $value in $colors {
   --font-size-lg: 20px;
   --font-size-xl: 24px;
 
-  --border-radius: 0;
+  --border-radius: 2px;
 
   /* Layout */
   --trss-content-width: 80rem;
   --trss-content-padding: 1rem;
 }
 
-
-
-
 /*
   UCSC defaults
 */
 .trss-container {
   padding: 0;
-  margin: 0 ;
+  margin: 0;
 }
 
 .trss-row__full {
@@ -74,7 +68,7 @@ $value in $colors {
 
 .trss-hide {
   border: 0;
-  clip: rect(1px,1px,1px,1px);
+  clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
   height: 1px;
   margin: -1px;
@@ -82,5 +76,5 @@ $value in $colors {
   padding: 0;
   position: absolute;
   width: 1px;
-  word-wrap: normal!important;
+  word-wrap: normal !important;
 }
