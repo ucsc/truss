@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/ucsc/truss/compare/v0.7.13...v0.8.0) (2024-05-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ucsc-header:** Update links to reflect new URLs on ucsc.edu  Fixes #18
+* **data-list:** trss-data-list now saves fetched data in sessionStorage
+
+### Features
+
+* **data-list:** trss-data-list now saves fetched data in sessionStorage ([a53e0c5](https://github.com/ucsc/truss/commit/a53e0c5912eadd037f0765ddfa88e770d0327923))
+
+
+### Bug Fixes
+
+* **ucsc-header:** Update links to reflect new URLs on ucsc.edu  Fixes [#18](https://github.com/ucsc/truss/issues/18) ([3c9bc69](https://github.com/ucsc/truss/commit/3c9bc6908da8052fdcb42067d000f27347996120))
+
 ### [0.7.13](https://github.com/ucsc/truss/compare/v0.7.12...v0.7.13) (2024-05-08)
 
 
