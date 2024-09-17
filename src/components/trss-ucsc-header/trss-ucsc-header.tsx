@@ -35,7 +35,7 @@ export class TrssUcscHeader {
         <div class={this.useLogo ? this.parentClasses() : 'trss-row__inner'}>
           {this.useLogo ? (
             <div class="trss-ucsc-header__left">
-              <trss-logo width="114" display='light' with-animation />
+              <trss-logo width="180" display='light' with-animation />
             </div>
           ) : null}
           {/* <input type="checkbox" id="trss-ucsc-header__toggle" /> */}
