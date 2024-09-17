@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.2](https://github.com/ucsc/truss/compare/v0.8.1...v0.8.2) (2024-09-17)
+
+
+### Bug Fixes
+
+* 🎨 Update size of 60th logo in the footer ([31ff341](https://github.com/ucsc/truss/commit/31ff3412b4378b16c70fc3cf0a55372de39fbef4))
+
 ### [0.8.1](https://github.com/ucsc/truss/compare/v0.8.0...v0.8.1) (2024-09-17)
 
 
