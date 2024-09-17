@@ -22,7 +22,7 @@ export class TrssUcscFooter {
           <div class="trss-ucsc-footer__inner">
 
             <div class="trss-ucsc-footer__inner-left">
-              <trss-logo width="130" display='light' with-animation />
+              <trss-logo width="180" display='light' with-animation />
             </div>
 
             <div class="trss-ucsc-footer__inner-right">
