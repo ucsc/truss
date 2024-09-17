@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.1](https://github.com/ucsc/truss/compare/v0.8.0...v0.8.1) (2024-09-17)
+
+
+### Features
+
+* 🎨 Convert logo to 60th celebration logo ([8669db9](https://github.com/ucsc/truss/commit/8669db91d8c3c27dd0ce805019377dcaa440426d))
+
 ## [0.8.0](https://github.com/ucsc/truss/compare/v0.7.13...v0.8.0) (2024-05-22)
 
 
