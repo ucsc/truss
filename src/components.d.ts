@@ -15,10 +15,6 @@ export namespace Components {
           * The text for the headline of the alert.
          */
         "header": string;
-        /**
-          * The source for the data displayed in this component.
-         */
-        "source": string;
     }
     interface TrssBreadcrumbs {
         /**
@@ -178,10 +174,6 @@ declare namespace LocalJSX {
           * The text for the headline of the alert.
          */
         "header"?: string;
-        /**
-          * The source for the data displayed in this component.
-         */
-        "source"?: string;
     }
     interface TrssBreadcrumbs {
         /**

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
@@ -79,17 +78,15 @@
   <body>
     <div class="wrap">
       <div class="content">
-
         <trss-alert appearance="warning">
           <div slot="header">Headline for 'warning' ribbon appearance</div>
-          <div slot="description">Indoor face covering requirements remain in effect.&nbsp;<a
-              href="https://slugstrong.ucsc.edu">Stay informed</a>.</div>
+          <div slot="description">Indoor face covering requirements remain in effect.&nbsp;<a href="https://slugstrong.ucsc.edu">Stay informed</a>.</div>
         </trss-alert>
-        <trss-ucsc-header use-logo="true" search-query="s" search-action="/"
-          style="--trss-content-width:80rem;"></trss-ucsc-header>
+        <trss-ucsc-header use-logo="true" search-query="s" search-action="/" style="--trss-content-width: 80rem"></trss-ucsc-header>
 
         <trss-site-title link="https://mcd.ucsc.edu">Molecular, Cell, &amp; Developmental Biology</trss-site-title>
 
+        <trss-data-list source="https://news.ucsc.edu/feeds/chancellor.json" limit="3" teaser="true"></trss-data-list>
 
         <!-- <trss-breadcrumbs>
             <ul>
@@ -101,15 +98,9 @@
             </ul>
           </trss-breadcrumbs>
          -->
-
-
       </div>
 
-      <trss-ucsc-footer>
-
-      </trss-ucsc-footer>
-
+      <trss-ucsc-footer> </trss-ucsc-footer>
     </div>
   </body>
-
 </html>
