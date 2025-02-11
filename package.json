@@ -1,6 +1,6 @@
 {
   "name": "@ucsantacruz/truss",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Truss Design System",
   "homepage": "https://github.com/ucsc/truss",
   "main": "dist/index.cjs.js",
