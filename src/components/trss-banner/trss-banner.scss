@@ -3,7 +3,7 @@
 }
 
 .trss-banner {
-  padding: 2em 0;
+  padding: 1.8em 0;
   margin: 0;
   font-size: 1rem;
   text-align: center;
@@ -20,12 +20,16 @@
 
   [slot="header"] {
     margin: 0 0 .25em 0;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 500;
   }
 
   [slot="description"] {
-    margin: .65em 0;
+    margin: .65em auto;
+
+    > :not(:last-child) {
+      margin: 0 auto 1.5em auto;
+    }
   }
 
   &[aria-hidden='true'] {

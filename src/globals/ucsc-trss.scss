@@ -36,6 +36,7 @@
 
   /* Layout */
   --trss-content-width: 80rem;
+  --trss-reading-width: 42rem;
   --trss-content-padding: 1rem;
 }
 
@@ -54,7 +55,11 @@
 .trss-row__inner {
   margin: 0 auto;
   max-width: var(--trss-content-width);
-  padding: 0 var(--font-size-base);
+  padding: 0 var(--font-size-base); 
+}
+
+.trss-narrow {
+  max-width: var(--trss-reading-width);
 }
 
 /**
