@@ -1,0 +1,49 @@
+:host {
+  display: block;
+}
+
+.trss-banner {
+  padding: 2em 0;
+  margin: 0;
+  font-size: 1rem;
+  text-align: center;
+
+  a {
+    font-weight: 600;
+    text-decoration: underline;
+    color: inherit;
+  }
+
+  .row {
+    margin: 0 auto;
+  }
+
+  [slot="header"] {
+    margin: 0 0 .25em 0;
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+
+  [slot="description"] {
+    margin: .65em 0;
+  }
+
+  &[aria-hidden='true'] {
+    display: none !important;
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+}
+
+.trss-banner--blue {
+  background-color: #003c6c;
+  color: #fff;
+}
+
+.trss-banner--gold {
+  background-color: #fdc700;
+  color: #003c6c;
+}
