@@ -12,14 +12,14 @@
   "collection": "dist/collection/collection-manifest.json",
   "unpkg": "dist/ucsc-trss/ucsc-trss.js",
   "files": [
-    "dist/",
-    "loader/"
+    "dist/"
   ],
   "scripts": {
     "dev": "stencil build --docs --watch --serve",
     "start": "stencil build --watch",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
+    "build": "stencil build --docs",
     "generate": "stencil generate"
   },
   "dependencies": {
