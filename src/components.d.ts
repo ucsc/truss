@@ -16,6 +16,16 @@ export namespace Components {
          */
         "header": string;
     }
+    interface TrssBanner {
+        /**
+          * This sets the color scheme for the alert.
+         */
+        "appearance": string;
+        /**
+          * The text for the headline of the alert.
+         */
+        "header": string;
+    }
     interface TrssBreadcrumbs {
         /**
           * The visual separator between links.
@@ -104,6 +114,12 @@ declare global {
         prototype: HTMLTrssAlertElement;
         new (): HTMLTrssAlertElement;
     };
+    interface HTMLTrssBannerElement extends Components.TrssBanner, HTMLStencilElement {
+    }
+    var HTMLTrssBannerElement: {
+        prototype: HTMLTrssBannerElement;
+        new (): HTMLTrssBannerElement;
+    };
     interface HTMLTrssBreadcrumbsElement extends Components.TrssBreadcrumbs, HTMLStencilElement {
     }
     var HTMLTrssBreadcrumbsElement: {
@@ -154,6 +170,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "trss-alert": HTMLTrssAlertElement;
+        "trss-banner": HTMLTrssBannerElement;
         "trss-breadcrumbs": HTMLTrssBreadcrumbsElement;
         "trss-card": HTMLTrssCardElement;
         "trss-carousel": HTMLTrssCarouselElement;
@@ -166,6 +183,16 @@ declare global {
 }
 declare namespace LocalJSX {
     interface TrssAlert {
+        /**
+          * This sets the color scheme for the alert.
+         */
+        "appearance"?: string;
+        /**
+          * The text for the headline of the alert.
+         */
+        "header"?: string;
+    }
+    interface TrssBanner {
         /**
           * This sets the color scheme for the alert.
          */
@@ -257,6 +284,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "trss-alert": TrssAlert;
+        "trss-banner": TrssBanner;
         "trss-breadcrumbs": TrssBreadcrumbs;
         "trss-card": TrssCard;
         "trss-carousel": TrssCarousel;
@@ -272,6 +300,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "trss-alert": LocalJSX.TrssAlert & JSXBase.HTMLAttributes<HTMLTrssAlertElement>;
+            "trss-banner": LocalJSX.TrssBanner & JSXBase.HTMLAttributes<HTMLTrssBannerElement>;
             "trss-breadcrumbs": LocalJSX.TrssBreadcrumbs & JSXBase.HTMLAttributes<HTMLTrssBreadcrumbsElement>;
             "trss-card": LocalJSX.TrssCard & JSXBase.HTMLAttributes<HTMLTrssCardElement>;
             "trss-carousel": LocalJSX.TrssCarousel & JSXBase.HTMLAttributes<HTMLTrssCarouselElement>;
