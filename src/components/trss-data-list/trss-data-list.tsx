@@ -49,7 +49,7 @@ export class TrssDataList {
 
   async componentWillRender() {
     if (!sessionStorage.getItem('trssFetchedData') || sessionStorage.getItem('trssFetchedData') === '{}') {
-      let getApi = await fetch(this.source, { method: 'GET', headers: { 'Content-Type': 'application/json' } });
+      let getApi = await fetch(this.source, { method: 'GET', headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' } });
       sessionStorage.setItem('trssFetchedData', JSON.stringify(await getApi.json()));
       this.listData = JSON.parse(sessionStorage.getItem('trssFetchedData'));
     } else {
