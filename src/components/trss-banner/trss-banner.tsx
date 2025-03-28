@@ -35,7 +35,7 @@ export class TrssBanner {
             <h3 slot="header">You Belong Here</h3>
             <div slot="description">
               <p>The programs and services described here are open to all, consistent with state and federal law, as well as the University of California’s nondiscrimination policies. Every initiative—whether a student service, faculty program, or community event—is designed to be accessible, inclusive, and respectful of all identities.</p>
-              <p>To learn more, please visit <a href="https://www.ucop.edu/operating-budget/fees-and-enrollments/policies-and-resources/nondiscrimination-statement.html">UC Nondiscrimination Statement</a> or <a href="">Nondiscrimination Policy Statement for University of California Publications Regarding Student-Related Matters</a>.</p>
+              <p>To learn more, please visit <a href="https://www.ucop.edu/operating-budget/fees-and-enrollments/policies-and-resources/nondiscrimination-statement.html">UC Nondiscrimination Statement</a> or <a href="https://policy.ucop.edu/doc/2710540/PACAOS-Appendix-C">Nondiscrimination Policy Statement for University of California Publications Regarding Student-Related Matters</a>.</p>
             </div>
           </div>
         </div>        
