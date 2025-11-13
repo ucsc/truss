@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'trss-ucsc-header',
@@ -30,17 +30,18 @@ export class TrssUcscHeader {
 
   render() {
     return (
+      <Host role="banner">
       <div class="trss-row__full trss-ucsc-header">
         <slot />
         <div class={this.useLogo ? this.parentClasses() : 'trss-row__inner'}>
           {this.useLogo ? (
             <div class="trss-ucsc-header__left">
-              <trss-logo width="180" display='light' with-animation />
+              <trss-logo width="132" display='light' with-animation />
             </div>
           ) : null}
           {/* <input type="checkbox" id="trss-ucsc-header__toggle" /> */}
           <div class="trss-ucsc-header__right" id="trss-ucsc-header__show">
-            <ul class="trss-ucsc-header__navigation">
+            <ul class="trss-ucsc-header__navigation" role="navigation" aria-label="UCSC global navigation">
               <li><a href="https://my.ucsc.edu" title="The student portal">MyUCSC</a></li>
               <li><a href="https://www.ucsc.edu/people/" title="Campus directory">People</a></li>
               <li><a href="https://www.ucsc.edu/calendars/" title="Upcoming events, academic, and administrative calendars">Calendars</a></li>
@@ -60,6 +61,7 @@ export class TrssUcscHeader {
 
         </div>
       </div>
+      </Host>
     );
   }
 
