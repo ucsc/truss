@@ -40,8 +40,8 @@ export class TrssUcscHeader {
             </div>
           ) : null}
           {/* <input type="checkbox" id="trss-ucsc-header__toggle" /> */}
-          <div class="trss-ucsc-header__right" role="navigation" id="trss-ucsc-header__show">
-            <ul class="trss-ucsc-header__navigation" aria-label="UCSC global navigation">
+          <div class="trss-ucsc-header__right" role="navigation" aria-label="UCSC global navigation" id="trss-ucsc-header__show">
+            <ul class="trss-ucsc-header__navigation">
               <li><a href="https://my.ucsc.edu" title="The student portal">MyUCSC</a></li>
               <li><a href="https://www.ucsc.edu/people/" title="Campus directory">People</a></li>
               <li><a href="https://www.ucsc.edu/calendars/" title="Upcoming events, academic, and administrative calendars">Calendars</a></li>
