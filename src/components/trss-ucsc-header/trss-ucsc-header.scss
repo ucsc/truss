@@ -83,7 +83,8 @@
   a {
     text-transform: none;
     color: var(--ucsc-white);
-    padding: 0.25em 0.5em;
+    padding: 1.75ch 1.25ch;
+    display: inline-block;
     text-decoration: none;
 
     &:focus,
@@ -96,8 +97,9 @@
 
   @media screen and (min-width: 48em) {
     flex-wrap: nowrap;
-    gap: 1.5em;
+    gap: .25em;
     margin: 0;
+    padding: 0;
 
     > li {
       line-height: 1.2em;
@@ -107,10 +109,10 @@
 
     a {
       border: none;
-      background-color: transparent;
       border-radius: 0;
       font-weight: 400;
-      padding: 0;
+      padding: 1.75ch 1.25ch;
+      display: inline-block;
       @include hoverActiveFocus($brand-white, true);
     }
   }

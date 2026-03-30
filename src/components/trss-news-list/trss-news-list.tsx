@@ -2,11 +2,11 @@ import { Component, Host, h, Prop } from '@stencil/core';
 import { friendly_date } from '../../utils/utils';
 
 @Component({
-  tag: 'trss-data-list',
-  styleUrl: 'trss-data-list.scss',
+  tag: 'trss-news-list',
+  styleUrl: 'trss-news-list.scss',
   shadow: false,
 })
-export class TrssDataList {
+export class TrssNewsList {
   /**
    * The JSON source for the content list in this component.
    */
@@ -28,7 +28,7 @@ export class TrssDataList {
 
   render() {
     return (
-      <Host class="trss-data-list">
+      <Host class="trss-news-list">
         <slot />
         <ul>
           {this.listData.items.slice(0, this.limit).map((item: any = {}) => (
@@ -48,20 +48,33 @@ export class TrssDataList {
   listData = { items: [] };
 
   async componentWillRender() {
-    if (!sessionStorage.getItem('trssFetchedData') || sessionStorage.getItem('trssFetchedData') === '{}') {
+    let feed = this.getFeedId(this.source);
+    if (!sessionStorage.getItem('trss-news-list-' + feed) || sessionStorage.getItem('trss-news-list-' + feed) === '{}') {
       let getApi = await fetch(this.source, { method: 'GET', headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' } });
-      sessionStorage.setItem('trssFetchedData', JSON.stringify(await getApi.json()));
-      this.listData = JSON.parse(sessionStorage.getItem('trssFetchedData'));
+      sessionStorage.setItem('trss-news-list-' + feed, JSON.stringify(await getApi.json()));
+      this.listData = JSON.parse(sessionStorage.getItem('trss-news-list-' + feed));
     } else {
-      this.listData = JSON.parse(sessionStorage.getItem('trssFetchedData'));
+      this.listData = JSON.parse(sessionStorage.getItem('trss-news-list-' + feed));
     }
   }
 
-  private getEncodedText(text): string {
+  private getEncodedText(text: string) {
     var textArea = document.createElement('textarea');
     textArea.innerHTML = text;
     const regex = /<script[\d\D]*?>[\d\D]*?<\/script>/gm;
     const result = textArea.value.replace(regex, '');
     return result;
+  }
+
+  private getFeedId(url: string) {
+    const pattern = /https\:\/\/news\.ucsc\.edu\/(.*)\/feed\/json\/?$/;
+    const match = url.match(pattern);
+
+    if (!match) {
+      return self.crypto.randomUUID();
+    }
+
+    const substring = match[1];
+    return substring.replace(/\//g, '-');
   }
 }

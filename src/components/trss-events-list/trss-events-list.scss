@@ -1,0 +1,54 @@
+.trss-events-list {
+  display: inline-block;
+  margin-bottom: 2rem;
+
+  >div {
+    margin-bottom: 2rem;
+  }
+
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a {
+    color: var(--ucsc-primary-blue);
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  li {
+    display: block;
+    margin-bottom: 1.65rem;
+    text-wrap: pretty;
+
+    .meta {
+      display: block;
+      color: var(--ucsc-dark-gray);
+      letter-spacing: 0.03em;
+      font-size: 0.9rem;
+      margin: 0.25em 0 0.5em 0;
+      font-weight: 400;
+    }
+
+    .header {
+      color: var(--ucsc-secondary-blue);
+      margin: 0.1em 0 0 0;
+      font-size: 1.35rem;
+      font-weight: 500;
+    }
+
+    .description {
+      color: var(--ucsc-dark-gray);
+      margin: 0.25em 0 0.85em 0;
+    }
+
+    a {
+      @include hoverActiveFocus;
+    }
+  }
+}
