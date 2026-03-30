@@ -10,14 +10,22 @@ import { Component, h, Prop } from '@stencil/core';
 export class TrssUcscFooter {
 
   /**
- * The numeric year we use for the copyright.
- */
+    * Whether or not to display the Sammy illustration
+    */
+  @Prop() hasSammy: boolean = true;
+
+  /**
+    * The numeric year we use for the copyright.
+    */
   @Prop() year: string = new Date().getFullYear().toString();
+
+  private parentClasses(): string {
+    return 'trss-has-sammy trss-ucsc-footer__outer';
+  }
 
   render() {
     return (
-
-      <div class="trss-ucsc-footer__outer">
+      <div class={this.hasSammy ? this.parentClasses() : 'trss-ucsc-footer__outer'}>
         <div class="trss-ucsc-footer" role="contentinfo">
           <div class="trss-ucsc-footer__inner">
 

@@ -114,6 +114,10 @@ export namespace Components {
     }
     interface TrssUcscFooter {
         /**
+          * Whether or not to display the Sammy illustration
+         */
+        "hasSammy": boolean;
+        /**
           * The numeric year we use for the copyright.
          */
         "year": string;
@@ -322,6 +326,10 @@ declare namespace LocalJSX {
         "link"?: string;
     }
     interface TrssUcscFooter {
+        /**
+          * Whether or not to display the Sammy illustration
+         */
+        "hasSammy"?: boolean;
         /**
           * The numeric year we use for the copyright.
          */
