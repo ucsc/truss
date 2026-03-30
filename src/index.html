@@ -86,9 +86,22 @@
 
         <trss-site-title link="https://mcd.ucsc.edu">Molecular, Cell, &amp; Developmental Biology</trss-site-title>
 
-        <trss-data-list source="https://news.ucsc.edu/feeds/chancellor.json" limit="3" teaser="true"></trss-data-list>
+        <div class="trss-row__inner">
 
-        <!-- <trss-breadcrumbs>
+        <trss-events-list source="https://events.ucsc.edu/wp-json/tribe/events/v1/events?organizer=568&per_page=10" limit="4" image="true">
+          <h2 slot="header">Upcoming Events</h2>
+          <button slot="footer">See more events</button>
+        </trss-events-list>
+
+        <trss-news-list source="https://news.ucsc.edu/academics/social-sciences/feed/json/" limit="2" teaser="true">
+          <h2>SocSci News</h2>
+        </trss-news-list>
+
+        <trss-news-list source="https://news.ucsc.edu/academics/humanities/feed/json/" limit="8" teaser="true">
+          <h2>Arts News</h2>
+        </trss-news-list>
+
+        <trss-breadcrumbs>
             <ul>
               <li><a href="#">Link First</a></li>
               <li><a href="#">Link Second</a></li>
@@ -96,10 +109,12 @@
               <li><a href="#">Link Fourth</a></li>
               <li>Current Page</li>
             </ul>
-          </trss-breadcrumbs>
-         -->
-      </div>
+        </trss-breadcrumbs>
 
+        </div>
+
+      </div>
+        <trss-banner appearance="gold"></trss-banner>
       <trss-ucsc-footer> </trss-ucsc-footer>
     </div>
   </body>

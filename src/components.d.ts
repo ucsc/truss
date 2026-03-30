@@ -48,17 +48,29 @@ export namespace Components {
     }
     interface TrssCarousel {
     }
-    interface TrssDataList {
+    interface TrssEventsList {
+        /**
+          * Whether or not to display the event teaser.
+         */
+        "image": boolean;
+        /**
+          * Layout style of the event list.
+         */
+        "layout": string;
         /**
           * Limit the number of items displayed.
          */
         "limit": number;
         /**
+          * Whether or not to display the event location.
+         */
+        "location": boolean;
+        /**
           * The JSON source for the content list in this component.
          */
         "source": string;
         /**
-          * Whether or not to display the teaser text.
+          * Whether or not to display the event teaser.
          */
         "teaser": boolean;
     }
@@ -79,6 +91,20 @@ export namespace Components {
           * Set whether or not the logo will animate on hover
          */
         "withAnimation": boolean;
+    }
+    interface TrssNewsList {
+        /**
+          * Limit the number of items displayed.
+         */
+        "limit": number;
+        /**
+          * The JSON source for the content list in this component.
+         */
+        "source": string;
+        /**
+          * Whether or not to display the teaser text.
+         */
+        "teaser": boolean;
     }
     interface TrssSiteTitle {
         /**
@@ -138,17 +164,23 @@ declare global {
         prototype: HTMLTrssCarouselElement;
         new (): HTMLTrssCarouselElement;
     };
-    interface HTMLTrssDataListElement extends Components.TrssDataList, HTMLStencilElement {
+    interface HTMLTrssEventsListElement extends Components.TrssEventsList, HTMLStencilElement {
     }
-    var HTMLTrssDataListElement: {
-        prototype: HTMLTrssDataListElement;
-        new (): HTMLTrssDataListElement;
+    var HTMLTrssEventsListElement: {
+        prototype: HTMLTrssEventsListElement;
+        new (): HTMLTrssEventsListElement;
     };
     interface HTMLTrssLogoElement extends Components.TrssLogo, HTMLStencilElement {
     }
     var HTMLTrssLogoElement: {
         prototype: HTMLTrssLogoElement;
         new (): HTMLTrssLogoElement;
+    };
+    interface HTMLTrssNewsListElement extends Components.TrssNewsList, HTMLStencilElement {
+    }
+    var HTMLTrssNewsListElement: {
+        prototype: HTMLTrssNewsListElement;
+        new (): HTMLTrssNewsListElement;
     };
     interface HTMLTrssSiteTitleElement extends Components.TrssSiteTitle, HTMLStencilElement {
     }
@@ -174,8 +206,9 @@ declare global {
         "trss-breadcrumbs": HTMLTrssBreadcrumbsElement;
         "trss-card": HTMLTrssCardElement;
         "trss-carousel": HTMLTrssCarouselElement;
-        "trss-data-list": HTMLTrssDataListElement;
+        "trss-events-list": HTMLTrssEventsListElement;
         "trss-logo": HTMLTrssLogoElement;
+        "trss-news-list": HTMLTrssNewsListElement;
         "trss-site-title": HTMLTrssSiteTitleElement;
         "trss-ucsc-footer": HTMLTrssUcscFooterElement;
         "trss-ucsc-header": HTMLTrssUcscHeaderElement;
@@ -224,17 +257,29 @@ declare namespace LocalJSX {
     }
     interface TrssCarousel {
     }
-    interface TrssDataList {
+    interface TrssEventsList {
+        /**
+          * Whether or not to display the event teaser.
+         */
+        "image"?: boolean;
+        /**
+          * Layout style of the event list.
+         */
+        "layout"?: string;
         /**
           * Limit the number of items displayed.
          */
         "limit"?: number;
         /**
+          * Whether or not to display the event location.
+         */
+        "location"?: boolean;
+        /**
           * The JSON source for the content list in this component.
          */
         "source"?: string;
         /**
-          * Whether or not to display the teaser text.
+          * Whether or not to display the event teaser.
          */
         "teaser"?: boolean;
     }
@@ -255,6 +300,20 @@ declare namespace LocalJSX {
           * Set whether or not the logo will animate on hover
          */
         "withAnimation"?: boolean;
+    }
+    interface TrssNewsList {
+        /**
+          * Limit the number of items displayed.
+         */
+        "limit"?: number;
+        /**
+          * The JSON source for the content list in this component.
+         */
+        "source"?: string;
+        /**
+          * Whether or not to display the teaser text.
+         */
+        "teaser"?: boolean;
     }
     interface TrssSiteTitle {
         /**
@@ -288,8 +347,9 @@ declare namespace LocalJSX {
         "trss-breadcrumbs": TrssBreadcrumbs;
         "trss-card": TrssCard;
         "trss-carousel": TrssCarousel;
-        "trss-data-list": TrssDataList;
+        "trss-events-list": TrssEventsList;
         "trss-logo": TrssLogo;
+        "trss-news-list": TrssNewsList;
         "trss-site-title": TrssSiteTitle;
         "trss-ucsc-footer": TrssUcscFooter;
         "trss-ucsc-header": TrssUcscHeader;
@@ -304,8 +364,9 @@ declare module "@stencil/core" {
             "trss-breadcrumbs": LocalJSX.TrssBreadcrumbs & JSXBase.HTMLAttributes<HTMLTrssBreadcrumbsElement>;
             "trss-card": LocalJSX.TrssCard & JSXBase.HTMLAttributes<HTMLTrssCardElement>;
             "trss-carousel": LocalJSX.TrssCarousel & JSXBase.HTMLAttributes<HTMLTrssCarouselElement>;
-            "trss-data-list": LocalJSX.TrssDataList & JSXBase.HTMLAttributes<HTMLTrssDataListElement>;
+            "trss-events-list": LocalJSX.TrssEventsList & JSXBase.HTMLAttributes<HTMLTrssEventsListElement>;
             "trss-logo": LocalJSX.TrssLogo & JSXBase.HTMLAttributes<HTMLTrssLogoElement>;
+            "trss-news-list": LocalJSX.TrssNewsList & JSXBase.HTMLAttributes<HTMLTrssNewsListElement>;
             "trss-site-title": LocalJSX.TrssSiteTitle & JSXBase.HTMLAttributes<HTMLTrssSiteTitleElement>;
             "trss-ucsc-footer": LocalJSX.TrssUcscFooter & JSXBase.HTMLAttributes<HTMLTrssUcscFooterElement>;
             "trss-ucsc-header": LocalJSX.TrssUcscHeader & JSXBase.HTMLAttributes<HTMLTrssUcscHeaderElement>;
