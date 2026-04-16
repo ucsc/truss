@@ -38,4 +38,24 @@ After you've added the two files to your page, you can use any of the custom ele
 
 ````html
 <trss-ucsc-header use-logo="true" search-action="/" search-query="s" style="--trss-content-width:80rem;"></trss-ucsc-header>
-```` 
+````
+
+## Developing Truss
+
+### Running Storybook
+
+Storybook is used to preview components interactively during development.
+
+```bash
+npm run storybook
+```
+
+This runs Stencil in watch mode alongside the Storybook dev server on [http://localhost:6006](http://localhost:6006). Editing a component or story file hot-reloads the preview.
+
+To produce a static bundle for deployment:
+
+```bash
+npm run build-storybook
+```
+
+The output is written to `storybook-static/`.
