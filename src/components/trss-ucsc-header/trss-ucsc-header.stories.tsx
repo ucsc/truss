@@ -1,25 +1,33 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+import { html } from 'lit';
 
-import readme from './readme.md';
-
-export default {
-  title: 'Global/UCSC Nav Bar',
-  parameters: {
-    markdown: readme,
-    notes: readme,
-  },
+const meta: Meta = {
+  title: 'Global/UCSC Header',
+  component: 'trss-ucsc-header',
+  tags: ['autodocs'],
   argTypes: {
-    search: { control: 'text', description: 'Location where the search form will go' },
-    logo: { control: 'boolean', description: 'Add UCSC logo to left side' }
+    search: {
+      control: 'text',
+      description: 'Location where the search form will submit to',
+    },
+    logo: {
+      control: 'boolean',
+      description: 'Add UCSC logo to left side',
+    },
   },
+  render: (args) => html`
+    <trss-ucsc-header
+      use-logo=${args.logo}
+      search=${args.search}
+    ></trss-ucsc-header>
+  `,
 };
 
-const Template = ({ label, ...args }) => {
-  // You can either use a function to create DOM elements or use a plain html string!
-  return `<trss-ucsc-navbar use-logo="${args.logo}" search="${args.search}"/>`;
-  };
+export default meta;
 
-export const UCSCNavBar = Template.bind({});
-UCSCNavBar.args = {
-  search: 'https://news.ucsc.edu',
-  logo: true
+export const UCSCHeader: StoryObj = {
+  args: {
+    search: 'https://news.ucsc.edu',
+    logo: true,
+  },
 };
