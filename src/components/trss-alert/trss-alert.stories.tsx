@@ -1,31 +1,41 @@
-import readme from './readme.md';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import { html } from 'lit';
 
-export default {
+const meta: Meta = {
   title: 'Banners/Alert',
-  parameters: {
-    markdown: readme,
-    notes: readme
-  },
+  component: 'trss-alert',
+  tags: ['autodocs'],
   argTypes: {
     appearance: {
-      control: { type: 'select' },
+      control: 'select',
       options: ['notice', 'clear', 'warning', 'emergency'],
       description: 'This sets the color scheme of the alert ribbon.',
-      defaultValue: { summary: 'notice' }
     },
-    header: { control: 'text', description: 'The header text for the alert ribbon.' },
-    description: { control: 'text', description: 'The text description of the alert ribbon.' }
+    header: {
+      control: 'text',
+      description: 'The header text for the alert ribbon.',
+    },
+    description: {
+      control: 'text',
+      description: 'The text description of the alert ribbon.',
+    },
   },
+  render: (args) => html`
+    <trss-alert appearance=${args.appearance}>
+      <div slot="header">${args.header}</div>
+      <div slot="description" .innerHTML=${args.description}></div>
+    </trss-alert>
+  `,
 };
 
-const Template = ({ label, ...args }) => {
-  return `<trss-alert appearance="${args.appearance}"><div slot="header">${args.header}</div> <div slot="description">${args.description}</div></trss-alert>`;
-};
+export default meta;
 
-export const Alert = Template.bind({});
-Alert.args = {
-  appearance: 'notice',
-  header: 'Headline for the NOTICE appearance',
-  description: 'Indoor face covering requirements remain in effect.&nbsp;<a href="https://slugstrong.ucsc.edu">Stay informed</a>.'
+export const Alert: StoryObj = {
+  args: {
+    appearance: 'notice',
+    header: 'Headline for the NOTICE appearance',
+    description:
+      'Indoor face covering requirements remain in effect.&nbsp;<a href="https://slugstrong.ucsc.edu">Stay informed</a>.',
+  },
 };
 
