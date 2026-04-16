@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/web-components';
 import { defineCustomElements } from '../dist/loader';
+import '../src/globals/scss/_reset.scss';
 import '../src/globals/ucsc-trss.scss';
 
 defineCustomElements();
