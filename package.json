@@ -20,7 +20,9 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "build": "stencil build --docs",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "storybook": "concurrently -k -n stencil,storybook \"stencil build --watch\" \"storybook dev -p 6006 --no-open\"",
+    "build-storybook": "stencil build && storybook build -o storybook-static"
   },
   "dependencies": {
     "@stencil/core": "^3.0.0",
