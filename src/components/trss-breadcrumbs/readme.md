@@ -6,11 +6,13 @@ Truss expects breadcrumbs to be an HTML list (`ul` or `ol`). Optionally, the las
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property        | Attribute       | Description                                        | Type      | Default |
 | --------------- | --------------- | -------------------------------------------------- | --------- | ------- |
 | `trailing_link` | `trailing_link` | Should the last item in the list look like a link? | `boolean` | `true`  |
+
 
 ----------------------------------------------
 
