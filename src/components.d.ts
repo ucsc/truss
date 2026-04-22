@@ -9,28 +9,16 @@ export namespace Components {
     interface TrssAlert {
         /**
           * This sets the color scheme for the alert.
+          * @default 'notice'
          */
         "appearance": string;
-        /**
-          * The text for the headline of the alert.
-         */
-        "header": string;
-    }
-    interface TrssBanner {
-        /**
-          * This sets the color scheme for the alert.
-         */
-        "appearance": string;
-        /**
-          * The text for the headline of the alert.
-         */
-        "header": string;
     }
     interface TrssBreadcrumbs {
         /**
-          * The visual separator between links.
+          * Should the last item in the list look like a link?
+          * @default true
          */
-        "separator": string;
+        "trailing_link": boolean;
     }
     interface TrssCard {
         /**
@@ -51,26 +39,32 @@ export namespace Components {
     interface TrssEventsList {
         /**
           * Whether or not to display the event teaser.
+          * @default false
          */
         "image": boolean;
         /**
           * Layout style of the event list.
+          * @default 'list'
          */
         "layout": string;
         /**
           * Limit the number of items displayed.
+          * @default 5
          */
         "limit": number;
         /**
           * Whether or not to display the event location.
+          * @default false
          */
         "location": boolean;
         /**
           * The JSON source for the content list in this component.
+          * @default 'https://events.ucsc.edu/wp-json/tribe/events/v1/events'
          */
         "source": string;
         /**
           * Whether or not to display the event teaser.
+          * @default false
          */
         "teaser": boolean;
     }
@@ -81,6 +75,7 @@ export namespace Components {
         "display": string;
         /**
           * The URL target for the logo.
+          * @default 'https://www.ucsc.edu'
          */
         "link": string;
         /**
@@ -95,14 +90,17 @@ export namespace Components {
     interface TrssNewsList {
         /**
           * Limit the number of items displayed.
+          * @default 5
          */
         "limit": number;
         /**
           * The JSON source for the content list in this component.
+          * @default 'https://news.ucsc.edu/feed/json'
          */
         "source": string;
         /**
           * Whether or not to display the teaser text.
+          * @default false
          */
         "teaser": boolean;
     }
@@ -115,10 +113,12 @@ export namespace Components {
     interface TrssUcscFooter {
         /**
           * Whether or not to display the Sammy illustration
+          * @default true
          */
         "hasSammy": boolean;
         /**
           * The numeric year we use for the copyright.
+          * @default new Date().getFullYear().toString()
          */
         "year": string;
     }
@@ -136,6 +136,18 @@ export namespace Components {
          */
         "useLogo": boolean;
     }
+    interface TrssYouBelong {
+        /**
+          * This sets the color scheme for the alert.
+          * @default 'blue'
+         */
+        "appearance": string;
+        /**
+          * The text for the headline of the alert.
+          * @default 'You Belong Here'
+         */
+        "header": string;
+    }
 }
 declare global {
     interface HTMLTrssAlertElement extends Components.TrssAlert, HTMLStencilElement {
@@ -143,12 +155,6 @@ declare global {
     var HTMLTrssAlertElement: {
         prototype: HTMLTrssAlertElement;
         new (): HTMLTrssAlertElement;
-    };
-    interface HTMLTrssBannerElement extends Components.TrssBanner, HTMLStencilElement {
-    }
-    var HTMLTrssBannerElement: {
-        prototype: HTMLTrssBannerElement;
-        new (): HTMLTrssBannerElement;
     };
     interface HTMLTrssBreadcrumbsElement extends Components.TrssBreadcrumbs, HTMLStencilElement {
     }
@@ -204,9 +210,14 @@ declare global {
         prototype: HTMLTrssUcscHeaderElement;
         new (): HTMLTrssUcscHeaderElement;
     };
+    interface HTMLTrssYouBelongElement extends Components.TrssYouBelong, HTMLStencilElement {
+    }
+    var HTMLTrssYouBelongElement: {
+        prototype: HTMLTrssYouBelongElement;
+        new (): HTMLTrssYouBelongElement;
+    };
     interface HTMLElementTagNameMap {
         "trss-alert": HTMLTrssAlertElement;
-        "trss-banner": HTMLTrssBannerElement;
         "trss-breadcrumbs": HTMLTrssBreadcrumbsElement;
         "trss-card": HTMLTrssCardElement;
         "trss-carousel": HTMLTrssCarouselElement;
@@ -216,34 +227,23 @@ declare global {
         "trss-site-title": HTMLTrssSiteTitleElement;
         "trss-ucsc-footer": HTMLTrssUcscFooterElement;
         "trss-ucsc-header": HTMLTrssUcscHeaderElement;
+        "trss-you-belong": HTMLTrssYouBelongElement;
     }
 }
 declare namespace LocalJSX {
     interface TrssAlert {
         /**
           * This sets the color scheme for the alert.
+          * @default 'notice'
          */
         "appearance"?: string;
-        /**
-          * The text for the headline of the alert.
-         */
-        "header"?: string;
-    }
-    interface TrssBanner {
-        /**
-          * This sets the color scheme for the alert.
-         */
-        "appearance"?: string;
-        /**
-          * The text for the headline of the alert.
-         */
-        "header"?: string;
     }
     interface TrssBreadcrumbs {
         /**
-          * The visual separator between links.
+          * Should the last item in the list look like a link?
+          * @default true
          */
-        "separator"?: string;
+        "trailing_link"?: boolean;
     }
     interface TrssCard {
         /**
@@ -264,26 +264,32 @@ declare namespace LocalJSX {
     interface TrssEventsList {
         /**
           * Whether or not to display the event teaser.
+          * @default false
          */
         "image"?: boolean;
         /**
           * Layout style of the event list.
+          * @default 'list'
          */
         "layout"?: string;
         /**
           * Limit the number of items displayed.
+          * @default 5
          */
         "limit"?: number;
         /**
           * Whether or not to display the event location.
+          * @default false
          */
         "location"?: boolean;
         /**
           * The JSON source for the content list in this component.
+          * @default 'https://events.ucsc.edu/wp-json/tribe/events/v1/events'
          */
         "source"?: string;
         /**
           * Whether or not to display the event teaser.
+          * @default false
          */
         "teaser"?: boolean;
     }
@@ -294,6 +300,7 @@ declare namespace LocalJSX {
         "display"?: string;
         /**
           * The URL target for the logo.
+          * @default 'https://www.ucsc.edu'
          */
         "link"?: string;
         /**
@@ -308,14 +315,17 @@ declare namespace LocalJSX {
     interface TrssNewsList {
         /**
           * Limit the number of items displayed.
+          * @default 5
          */
         "limit"?: number;
         /**
           * The JSON source for the content list in this component.
+          * @default 'https://news.ucsc.edu/feed/json'
          */
         "source"?: string;
         /**
           * Whether or not to display the teaser text.
+          * @default false
          */
         "teaser"?: boolean;
     }
@@ -328,10 +338,12 @@ declare namespace LocalJSX {
     interface TrssUcscFooter {
         /**
           * Whether or not to display the Sammy illustration
+          * @default true
          */
         "hasSammy"?: boolean;
         /**
           * The numeric year we use for the copyright.
+          * @default new Date().getFullYear().toString()
          */
         "year"?: string;
     }
@@ -349,35 +361,95 @@ declare namespace LocalJSX {
          */
         "useLogo"?: boolean;
     }
+    interface TrssYouBelong {
+        /**
+          * This sets the color scheme for the alert.
+          * @default 'blue'
+         */
+        "appearance"?: string;
+        /**
+          * The text for the headline of the alert.
+          * @default 'You Belong Here'
+         */
+        "header"?: string;
+    }
+
+    interface TrssAlertAttributes {
+        "appearance": string;
+    }
+    interface TrssBreadcrumbsAttributes {
+        "trailing_link": boolean;
+    }
+    interface TrssCardAttributes {
+        "imageUrl": string;
+        "imageAlt": string;
+        "header": string;
+    }
+    interface TrssEventsListAttributes {
+        "source": string;
+        "limit": number;
+        "location": boolean;
+        "teaser": boolean;
+        "image": boolean;
+        "layout": string;
+    }
+    interface TrssLogoAttributes {
+        "display": string;
+        "withAnimation": boolean;
+        "width": string;
+        "link": string;
+    }
+    interface TrssNewsListAttributes {
+        "source": string;
+        "limit": number;
+        "teaser": boolean;
+    }
+    interface TrssSiteTitleAttributes {
+        "link": string;
+    }
+    interface TrssUcscFooterAttributes {
+        "hasSammy": boolean;
+        "year": string;
+    }
+    interface TrssUcscHeaderAttributes {
+        "useLogo": boolean;
+        "searchAction": string;
+        "searchQuery": string;
+    }
+    interface TrssYouBelongAttributes {
+        "appearance": string;
+        "header": string;
+    }
+
     interface IntrinsicElements {
-        "trss-alert": TrssAlert;
-        "trss-banner": TrssBanner;
-        "trss-breadcrumbs": TrssBreadcrumbs;
-        "trss-card": TrssCard;
+        "trss-alert": Omit<TrssAlert, keyof TrssAlertAttributes> & { [K in keyof TrssAlert & keyof TrssAlertAttributes]?: TrssAlert[K] } & { [K in keyof TrssAlert & keyof TrssAlertAttributes as `attr:${K}`]?: TrssAlertAttributes[K] } & { [K in keyof TrssAlert & keyof TrssAlertAttributes as `prop:${K}`]?: TrssAlert[K] };
+        "trss-breadcrumbs": Omit<TrssBreadcrumbs, keyof TrssBreadcrumbsAttributes> & { [K in keyof TrssBreadcrumbs & keyof TrssBreadcrumbsAttributes]?: TrssBreadcrumbs[K] } & { [K in keyof TrssBreadcrumbs & keyof TrssBreadcrumbsAttributes as `attr:${K}`]?: TrssBreadcrumbsAttributes[K] } & { [K in keyof TrssBreadcrumbs & keyof TrssBreadcrumbsAttributes as `prop:${K}`]?: TrssBreadcrumbs[K] };
+        "trss-card": Omit<TrssCard, keyof TrssCardAttributes> & { [K in keyof TrssCard & keyof TrssCardAttributes]?: TrssCard[K] } & { [K in keyof TrssCard & keyof TrssCardAttributes as `attr:${K}`]?: TrssCardAttributes[K] } & { [K in keyof TrssCard & keyof TrssCardAttributes as `prop:${K}`]?: TrssCard[K] };
         "trss-carousel": TrssCarousel;
-        "trss-events-list": TrssEventsList;
-        "trss-logo": TrssLogo;
-        "trss-news-list": TrssNewsList;
-        "trss-site-title": TrssSiteTitle;
-        "trss-ucsc-footer": TrssUcscFooter;
-        "trss-ucsc-header": TrssUcscHeader;
+        "trss-events-list": Omit<TrssEventsList, keyof TrssEventsListAttributes> & { [K in keyof TrssEventsList & keyof TrssEventsListAttributes]?: TrssEventsList[K] } & { [K in keyof TrssEventsList & keyof TrssEventsListAttributes as `attr:${K}`]?: TrssEventsListAttributes[K] } & { [K in keyof TrssEventsList & keyof TrssEventsListAttributes as `prop:${K}`]?: TrssEventsList[K] };
+        "trss-logo": Omit<TrssLogo, keyof TrssLogoAttributes> & { [K in keyof TrssLogo & keyof TrssLogoAttributes]?: TrssLogo[K] } & { [K in keyof TrssLogo & keyof TrssLogoAttributes as `attr:${K}`]?: TrssLogoAttributes[K] } & { [K in keyof TrssLogo & keyof TrssLogoAttributes as `prop:${K}`]?: TrssLogo[K] };
+        "trss-news-list": Omit<TrssNewsList, keyof TrssNewsListAttributes> & { [K in keyof TrssNewsList & keyof TrssNewsListAttributes]?: TrssNewsList[K] } & { [K in keyof TrssNewsList & keyof TrssNewsListAttributes as `attr:${K}`]?: TrssNewsListAttributes[K] } & { [K in keyof TrssNewsList & keyof TrssNewsListAttributes as `prop:${K}`]?: TrssNewsList[K] };
+        "trss-site-title": Omit<TrssSiteTitle, keyof TrssSiteTitleAttributes> & { [K in keyof TrssSiteTitle & keyof TrssSiteTitleAttributes]?: TrssSiteTitle[K] } & { [K in keyof TrssSiteTitle & keyof TrssSiteTitleAttributes as `attr:${K}`]?: TrssSiteTitleAttributes[K] } & { [K in keyof TrssSiteTitle & keyof TrssSiteTitleAttributes as `prop:${K}`]?: TrssSiteTitle[K] };
+        "trss-ucsc-footer": Omit<TrssUcscFooter, keyof TrssUcscFooterAttributes> & { [K in keyof TrssUcscFooter & keyof TrssUcscFooterAttributes]?: TrssUcscFooter[K] } & { [K in keyof TrssUcscFooter & keyof TrssUcscFooterAttributes as `attr:${K}`]?: TrssUcscFooterAttributes[K] } & { [K in keyof TrssUcscFooter & keyof TrssUcscFooterAttributes as `prop:${K}`]?: TrssUcscFooter[K] };
+        "trss-ucsc-header": Omit<TrssUcscHeader, keyof TrssUcscHeaderAttributes> & { [K in keyof TrssUcscHeader & keyof TrssUcscHeaderAttributes]?: TrssUcscHeader[K] } & { [K in keyof TrssUcscHeader & keyof TrssUcscHeaderAttributes as `attr:${K}`]?: TrssUcscHeaderAttributes[K] } & { [K in keyof TrssUcscHeader & keyof TrssUcscHeaderAttributes as `prop:${K}`]?: TrssUcscHeader[K] };
+        "trss-you-belong": Omit<TrssYouBelong, keyof TrssYouBelongAttributes> & { [K in keyof TrssYouBelong & keyof TrssYouBelongAttributes]?: TrssYouBelong[K] } & { [K in keyof TrssYouBelong & keyof TrssYouBelongAttributes as `attr:${K}`]?: TrssYouBelongAttributes[K] } & { [K in keyof TrssYouBelong & keyof TrssYouBelongAttributes as `prop:${K}`]?: TrssYouBelong[K] };
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "trss-alert": LocalJSX.TrssAlert & JSXBase.HTMLAttributes<HTMLTrssAlertElement>;
-            "trss-banner": LocalJSX.TrssBanner & JSXBase.HTMLAttributes<HTMLTrssBannerElement>;
-            "trss-breadcrumbs": LocalJSX.TrssBreadcrumbs & JSXBase.HTMLAttributes<HTMLTrssBreadcrumbsElement>;
-            "trss-card": LocalJSX.TrssCard & JSXBase.HTMLAttributes<HTMLTrssCardElement>;
-            "trss-carousel": LocalJSX.TrssCarousel & JSXBase.HTMLAttributes<HTMLTrssCarouselElement>;
-            "trss-events-list": LocalJSX.TrssEventsList & JSXBase.HTMLAttributes<HTMLTrssEventsListElement>;
-            "trss-logo": LocalJSX.TrssLogo & JSXBase.HTMLAttributes<HTMLTrssLogoElement>;
-            "trss-news-list": LocalJSX.TrssNewsList & JSXBase.HTMLAttributes<HTMLTrssNewsListElement>;
-            "trss-site-title": LocalJSX.TrssSiteTitle & JSXBase.HTMLAttributes<HTMLTrssSiteTitleElement>;
-            "trss-ucsc-footer": LocalJSX.TrssUcscFooter & JSXBase.HTMLAttributes<HTMLTrssUcscFooterElement>;
-            "trss-ucsc-header": LocalJSX.TrssUcscHeader & JSXBase.HTMLAttributes<HTMLTrssUcscHeaderElement>;
+            "trss-alert": LocalJSX.IntrinsicElements["trss-alert"] & JSXBase.HTMLAttributes<HTMLTrssAlertElement>;
+            "trss-breadcrumbs": LocalJSX.IntrinsicElements["trss-breadcrumbs"] & JSXBase.HTMLAttributes<HTMLTrssBreadcrumbsElement>;
+            "trss-card": LocalJSX.IntrinsicElements["trss-card"] & JSXBase.HTMLAttributes<HTMLTrssCardElement>;
+            "trss-carousel": LocalJSX.IntrinsicElements["trss-carousel"] & JSXBase.HTMLAttributes<HTMLTrssCarouselElement>;
+            "trss-events-list": LocalJSX.IntrinsicElements["trss-events-list"] & JSXBase.HTMLAttributes<HTMLTrssEventsListElement>;
+            "trss-logo": LocalJSX.IntrinsicElements["trss-logo"] & JSXBase.HTMLAttributes<HTMLTrssLogoElement>;
+            "trss-news-list": LocalJSX.IntrinsicElements["trss-news-list"] & JSXBase.HTMLAttributes<HTMLTrssNewsListElement>;
+            "trss-site-title": LocalJSX.IntrinsicElements["trss-site-title"] & JSXBase.HTMLAttributes<HTMLTrssSiteTitleElement>;
+            "trss-ucsc-footer": LocalJSX.IntrinsicElements["trss-ucsc-footer"] & JSXBase.HTMLAttributes<HTMLTrssUcscFooterElement>;
+            "trss-ucsc-header": LocalJSX.IntrinsicElements["trss-ucsc-header"] & JSXBase.HTMLAttributes<HTMLTrssUcscHeaderElement>;
+            "trss-you-belong": LocalJSX.IntrinsicElements["trss-you-belong"] & JSXBase.HTMLAttributes<HTMLTrssYouBelongElement>;
         }
     }
 }

@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:color";
 // All the variables used in the stylesheet
 
 /*
@@ -15,35 +16,35 @@ $colors:(
 
 // 2010 template defaults
 $sand: #f2f0e4;
-$sand-light: lighten($sand, 8%);
-$sand-med: darken($sand, 2%);
-$sand-dark: darken($sand, 6%);
+$sand-light: color.adjust($sand, $lightness: 8%);
+$sand-med: color.adjust($sand, $lightness: -2%);
+$sand-dark: color.adjust($sand, $lightness: -6%);
 
 $brown: #585755;
-$brown-light: lighten($brown, 8%);
-$brown-med: darken($brown, 2%);
-$brown-dark: darken($brown, 6%);
+$brown-light: color.adjust($brown, $lightness: 8%);
+$brown-med: color.adjust($brown, $lightness: -2%);
+$brown-dark: color.adjust($brown, $lightness: -6%);
 
 $gray: #8e8c87;
-$gray-very-light: lighten($gray, 40%);
-$gray-light: lighten($gray, 8%);
-$gray-med: darken($gray, 2%);
-$gray-dark: darken($gray, 4%);
+$gray-very-light: color.adjust($gray, $lightness: 40%);
+$gray-light: color.adjust($gray, $lightness: 8%);
+$gray-med: color.adjust($gray, $lightness: -2%);
+$gray-dark: color.adjust($gray, $lightness: -4%);
 
 $blue: #003c6c;
-$blue-light: lighten($blue, 8%);
-$blue-med: darken($blue, 2%);
-$blue-dark: darken($blue, 4%);
+$blue-light: color.adjust($blue, $lightness: 8%);
+$blue-med: color.adjust($blue, $lightness: -2%);
+$blue-dark: color.adjust($blue, $lightness: -4%);
 
 $gold: #ffc500;
-$gold-light: lighten($gold, 8%);
-$gold-med: darken($gold, 2%);
-$gold-dark: darken($gold, 10%);
+$gold-light: color.adjust($gold, $lightness: 8%);
+$gold-med: color.adjust($gold, $lightness: -2%);
+$gold-dark: color.adjust($gold, $lightness: -10%);
 
 // 2014 template default colors, derived from above
-$body-text: darken($gray, 15%);
+$body-text: color.adjust($gray, $lightness: -15%);
 $body-bg: #fff;
-// $body-bg: lighten($sand, 2%);
+// $body-bg: color.adjust($sand, $lightness: 2%);
 
 
 
@@ -84,15 +85,15 @@ sans-serif;
 $font-family-base: $font-family-sans-serif !default;
 
 $font-size-base: 16px !default;
-$font-size-large: ceil($font-size-base * 1.25) !default; // ~18px
-$font-size-small: ceil($font-size-base * 0.85) !default; // ~12px
+$font-size-large: math.ceil($font-size-base * 1.25) !default; // ~18px
+$font-size-small: math.ceil($font-size-base * 0.85) !default; // ~12px
 
-$font-size-h1: floor($font-size-base * 2.6) !default; // ~36px
-$font-size-h2: floor($font-size-base * 2.15) !default; // ~30px
-$font-size-h3: ceil($font-size-base * 1.7) !default; // ~24px
-$font-size-h4: ceil($font-size-base * 1.25) !default; // ~18px
+$font-size-h1: math.floor($font-size-base * 2.6) !default; // ~36px
+$font-size-h2: math.floor($font-size-base * 2.15) !default; // ~30px
+$font-size-h3: math.ceil($font-size-base * 1.7) !default; // ~24px
+$font-size-h4: math.ceil($font-size-base * 1.25) !default; // ~18px
 $font-size-h5: $font-size-base !default;
-$font-size-h6: ceil($font-size-base * 0.85) !default; // ~12px
+$font-size-h6: math.ceil($font-size-base * 0.85) !default; // ~12px
 
 $line-height-base: 1.428571429 !default; // 20/14
 // $line-height-computed:    floor($font-size-base * $line-height-base) !default; // ~20px
