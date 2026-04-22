@@ -13,11 +13,6 @@ export class TrssAlert {
   @Prop() appearance: string = 'notice';
 
   /**
-   * The text for the headline of the alert.
-   */
-  @Prop() header: string;
-
-  /**
    * @slot header - Header content for the alert.
    * @slot description - Text content for alert.
    */
@@ -30,7 +25,7 @@ export class TrssAlert {
     return (
       <div class={this.appearance ? this.getAppearance() : 'trss-alert trss-alert--notice'} role="complementary">
         <div class="trss-row__inner">
-          <h3 class="header"><slot name="header" /></h3>
+          <div class="header"><slot name="header" /></div>
           <div class="description"><slot name="description" /></div>
         </div>
       </div>
