@@ -3,10 +3,14 @@
   "compilerOptions": {
     "jsx": "preserve",
     "noUnusedLocals": false,
-    "noUnusedParameters": false
+    "noUnusedParameters": false,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true
   },
   "include": [
     "./**/*.ts",
+    "../custom-elements.json",
     "../src/**/*.stories.tsx",
     "../src/**/*.stories.ts"
   ]

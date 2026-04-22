@@ -1,5 +1,6 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
+import { writeCustomElementsManifest } from './.storybook/stencil-to-cem';
 
 export const config: Config = {
   namespace: 'ucsc-trss',
@@ -14,6 +15,10 @@ export const config: Config = {
     {
       type: 'docs-readme',
       strict: true
+    },
+    {
+      type: 'docs-custom',
+      generator: (docs) => writeCustomElementsManifest(docs, 'custom-elements.json'),
     },
     {
       type: 'www',

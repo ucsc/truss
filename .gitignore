@@ -4,6 +4,7 @@ loader/
 storybook-static/
 build/
 local/
+custom-elements.json
 
 *~
 *.sw[mnpcod]
