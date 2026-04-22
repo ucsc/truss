@@ -2,15 +2,16 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
+    "skipLibCheck": true,
     "declaration": false,
     "experimentalDecorators": true,
     "lib": [
       "dom",
-      "es2017"
+      "es2018"
     ],
     "moduleResolution": "node",
     "module": "esnext",
-    "target": "es2017",
+    "target": "es2018",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react",
@@ -20,6 +21,8 @@
     "src"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/**/*.stories.ts",
+    "src/**/*.stories.tsx"
   ]
 }

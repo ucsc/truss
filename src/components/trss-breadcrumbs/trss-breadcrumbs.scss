@@ -7,7 +7,6 @@
 .trss-breadcrumbs {
   display: block;
   margin-bottom: 1rem;
-  font-size: 0.85rem;
 
   ul,
   ol {
@@ -15,14 +14,21 @@
     padding: 0;
     display: flex;
     justify-content: flex-start;
+    flex-direction: row;
     list-style: none;
     gap: 0.35rem;
 
     li {
-      display: inline;
+      display: inline-flex;
       list-style: none;
       font-weight: 600;
       color: #555;
+
+      &:not(:last-child):after {
+        content: var(--trss-breadcrumbs-separator, '/');
+        margin-left: 0.35rem;
+        color: #616161;
+      }
     }
   }
 
@@ -30,18 +36,19 @@
     display: block;
     font-weight: normal;
 
-    &:after {
-      content: '/';
-      font-weight: 800;
-      color: #555;
-      display: inline-block;
-      margin-left: 0.35rem;
-    }
-
     &:focus,
     &:hover,
     &:active {
       @include hoverActiveFocus;
     }
   }
-}
+
+  &.trss-breadcrumbs__no-trailing-link {
+    li:last-child a {
+        color: #222;
+        cursor: default;
+        text-decoration: none;
+    }
+  }
+
+  }

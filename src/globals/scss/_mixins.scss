@@ -1,4 +1,6 @@
 @use "sass:math";
+@use "sass:color";
+@use "variables" as v;
 
 // # Custom functions and mixins
 
@@ -37,21 +39,21 @@
 // Add box-shadow to modules.
 @mixin module-box-shadow($bgcolor:light) {
   @if $bgcolor==light {
-    border-bottom: solid 1px lighten($gray-light, 20%);
+    border-bottom: solid 1px color.adjust(v.$gray-light, $lightness: 20%);
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.05);
   }
 
   @else if $bgcolor==dark {
-    border-bottom: solid 1px lighten($gray-light, 10%);
+    border-bottom: solid 1px color.adjust(v.$gray-light, $lightness: 10%);
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
   }
 
-  border-radius:$border-radius-base;
+  border-radius: v.$border-radius-base;
 }
 
 // # Hover, active, focus
 // Set hover, active, and focus for elements.
-@mixin hoverActiveFocus($color: $brand-tertiary-blue, $decorate: true) {
+@mixin hoverActiveFocus($color: v.$brand-tertiary-blue, $decorate: true) {
 
   &:hover,
   &:active,
@@ -60,7 +62,7 @@
 
     @if $decorate==true {
       text-decoration: underline;
-      text-decoration-color: $gold;
+      text-decoration-color: v.$gold;
       text-decoration-skip-ink: auto;
       text-decoration-thickness: .12em;
       text-underline-offset: .2em;
@@ -92,15 +94,15 @@
   padding: 0.4em 1em;
   text-align: right;
   text-decoration: none;
-  font-size: $font-size-small;
-  color: $ucsc-gold;
-  background-color: $sand-light;
+  font-size: v.$font-size-small;
+  color: v.$gold;
+  background-color: v.$sand-light;
 
   &:hover,
   &:active,
   &:focus {
-    color: $gold;
-    background-color: $blue;
+    color: v.$gold;
+    background-color: v.$blue;
     text-decoration: none;
   }
 }
@@ -118,7 +120,7 @@
     max-height: none;
   }
 
-  @include media($tablet) {
+  @include media(v.$tablet) {
     max-height: auto;
     max-height: none;
   }
@@ -134,7 +136,7 @@
     padding: $padding;
 
     @if $radius {
-      border-radius: $border-radius-base;
+      border-radius: v.$border-radius-base;
     }
   }
 }

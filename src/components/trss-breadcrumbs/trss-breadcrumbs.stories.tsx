@@ -1,24 +1,37 @@
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { html } from 'lit';
 
-import readme from './readme.md';
-
-export default {
+const meta: Meta = {
   title: 'Navigation/Breadcrumbs',
-  parameters: {
-    markdown: readme,
-    notes: readme,
-  },
+  component: 'trss-breadcrumbs',
+  tags: ['autodocs', 'beta'],
   argTypes: {
-    separator: { control: 'text', description: 'Visual separator between links' }
+    separator: {
+      control: 'text',
+      description: 'Visual separator between links',
+    },
+    trailing_link: {
+      control: 'boolean',
+      description: 'Whether or not the last item should look like a link',
+    },
   },
+  render: (args) => html`
+    <trss-breadcrumbs trailing_link="${args.trailing_link}" style="--trss-breadcrumbs-separator: '${args.separator}'">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Category</a></li>
+        <li><a href="#">Subcategory</a></li>
+        <li><a href="#">Current Page</a></li>
+      </ul>
+    </trss-breadcrumbs>
+  `,
 };
 
-const Template = ({ label, ...args }) => {
-  // You can either use a function to create DOM elements or use a plain html string!
-  return `<trss-crumbs separator="${args.separator}">${args.separator}</trss-crumbs>`;
-  };
+export default meta;
 
-export const Breadcrumbs = Template.bind({});
-Breadcrumbs.args = {
-  link: 'https://news.ucsc.edu',
-  text: 'Campus News',
+export const Breadcrumbs: StoryObj = {
+  args: {
+    separator: '/',
+    trailing_link: true,
+  },
 };

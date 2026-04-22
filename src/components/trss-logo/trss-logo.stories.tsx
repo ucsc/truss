@@ -1,34 +1,41 @@
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { html } from 'lit';
 
-import readme from './readme.md';
-
-export default {
+const meta: Meta = {
   title: 'Global/Logo',
-  parameters: {
-    markdown: readme,
-    notes: readme,
-  },
+  component: 'trss-logo',
+  tags: ['autodocs', 'stable'],
   argTypes: {
     display: {
-      control: { type: 'select' },
+      control: 'select',
       options: ['dark', 'light'],
       description: 'Whether or not to display the logo in blue or white.',
-      defaultValue: { summary: 'dark' }
     },
-    width: { control: 'text', description: 'How wide the logo should appear. Height is calculated automatically' },
-    link: { control: 'text', description: 'Where the logo should link to. Default is https://www.ucsc.edu' }
+    width: {
+      control: 'text',
+      description:
+        'How wide the logo should appear. Height is calculated automatically',
+    },
+    link: {
+      control: 'text',
+      description: 'Where the logo should link to. Default is https://www.ucsc.edu',
+    },
   },
+  render: (args) => html`
+    <trss-logo
+      width=${args.width}
+      display=${args.display}
+      link=${args.link}
+    ></trss-logo>
+  `,
 };
 
-const Template = ({ label, ...args }) => {
-  // You can either use a function to create DOM elements or use a plain html string!
-  return `
-    <trss-logo width=${args.width} display=${args.display} link=${args.link} />
-  `;
-  };
+export default meta;
 
-export const Logo = Template.bind({});
-Logo.args = {
-  display: 'dark',
-  width: '320',
-  link: 'https://www.ucsc.edu'
+export const Logo: StoryObj = {
+  args: {
+    display: 'dark',
+    width: '320',
+    link: 'https://www.ucsc.edu',
+  },
 };

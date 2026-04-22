@@ -10,7 +10,7 @@ export class TrssNewsList {
   /**
    * The JSON source for the content list in this component.
    */
-  @Prop() source: string;
+  @Prop() source: string = 'https://news.ucsc.edu/feed/json';
 
   /**
    * Limit the number of items displayed.

@@ -7,10 +7,9 @@ The alert ribbon shows across the very top of a page. It appears when there is i
 
 ## Properties
 
-| Property     | Attribute    | Description                               | Type     | Default     |
-| ------------ | ------------ | ----------------------------------------- | -------- | ----------- |
-| `appearance` | `appearance` | This sets the color scheme for the alert. | `string` | `'notice'`  |
-| `header`     | `header`     | The text for the headline of the alert.   | `string` | `undefined` |
+| Property     | Attribute    | Description                               | Type     | Default    |
+| ------------ | ------------ | ----------------------------------------- | -------- | ---------- |
+| `appearance` | `appearance` | This sets the color scheme for the alert. | `string` | `'notice'` |
 
 
 ----------------------------------------------

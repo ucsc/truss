@@ -1,21 +1,21 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { TrssBanner } from '../trss-banner';
+import { TrssYouBelong } from '../trss-you-belong';
 
-describe('trss-banner', () => {
+describe('trss-you-belong', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [TrssBanner],
-      html: `<trss-banner appearance="notice" header="YUM!">Yo, Dawg!</trss-banner>`,
+      components: [TrssYouBelong],
+      html: `<trss-you-belong appearance="notice" header="YUM!">Yo, Dawg!</trss-you-belong>`,
     });
     expect(page.root).toEqualHtml(`
-      <trss-banner appearance="notice" header="YUM!">
+      <trss-you-belong appearance="notice" header="YUM!">
         <div class="ribbon ribbon-notice" role="complementary">
         <div class="inner">
           <h3 class="header">YUM!</h3>
           Yo, Dawg!
         </div>
       </div>
-      </trss-banner>
+      </trss-you-belong>
     `);
   });
 });
