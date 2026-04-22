@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'trss-breadcrumbs',
@@ -7,15 +7,15 @@ import { Component, Host, Prop, h } from '@stencil/core';
 })
 export class TrssBreadcrumbs {
   /**
-   * The visual separator between links.
+   * Should the last item in the list look like a link?
    */
-  @Prop() separator: string = '/';
+  @Prop() trailing_link: boolean = true;
 
   render() {
     return (
-      <Host class="trss-breadcrumbs">
+      <nav class={this.trailing_link ? 'trss-breadcrumbs' : 'trss-breadcrumbs trss-breadcrumbs__no-trailing-link'} role="navigation" aria-label="Breadcrumb">
         <slot />
-      </Host>
+      </nav>
     );
   }
 }
