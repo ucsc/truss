@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 
 const meta: Meta = {
   title: 'Global/Logo',
   component: 'trss-logo',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'stable'],
   argTypes: {
     display: {
       control: 'select',

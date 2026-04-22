@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 
 const meta: Meta = {
   title: 'Global/UCSC Header',
   component: 'trss-ucsc-header',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'stable'],
   argTypes: {
     search: {
       control: 'text',

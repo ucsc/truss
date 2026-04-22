@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 
 const meta: Meta = {
   title: 'Banners/Site Title',
   component: 'trss-site-title',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'beta'],
   argTypes: {
     link: {
       control: 'text',

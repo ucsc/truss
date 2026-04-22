@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 
 const meta: Meta = {
   title: 'Blocks/Card',
   component: 'trss-card',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'alpha'],
   argTypes: {
     header: {
       control: 'text',
