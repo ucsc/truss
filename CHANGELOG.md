@@ -1,6 +1,21 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## [2.0.0](https://github.com/ucsc/truss/compare/v0.8.3...v2.0.0) (2026-04-22)
+
+
+### Features
+
+* Banner component 1.0 ([9a278e9](https://github.com/ucsc/truss/commit/9a278e951f3553e222e5fbbc8714e94eb16cea04))
+* **component:** Add banner element ([2506d45](https://github.com/ucsc/truss/commit/2506d45347fd61ee585a752089ee2af11b3d481a))
+
+
+### Bug Fixes
+
+* Fix broken banner link ([ac9b814](https://github.com/ucsc/truss/commit/ac9b81453851ad9a57e042b5cfab3cece6b957c6))
+* **trss-ucsc-footer:** 🎨 Add option to hide Sammy illustration in the global footer ([c25e8ac](https://github.com/ucsc/truss/commit/c25e8ac3d0f4e374b6936a1c15f3ee6872694961)), closes [#26](https://github.com/ucsc/truss/issues/26)
+* Update data list to deal with CORS ([18dd641](https://github.com/ucsc/truss/commit/18dd641da77ce0bb3170854a7d3ac62d81244ba9))
 
 ### [0.8.3](https://github.com/ucsc/truss/compare/v0.8.2...v0.8.3) (2025-02-11)
 
