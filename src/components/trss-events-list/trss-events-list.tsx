@@ -11,7 +11,7 @@ export class TrssEventsList {
   /**
    * The JSON source for the content list in this component.
    */
-  @Prop() source: string;
+  @Prop() source: string = 'https://events.ucsc.edu/wp-json/tribe/events/v1/events';
 
   /**
    * Limit the number of items displayed.
