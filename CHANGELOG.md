@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2026.6.0](https://github.com/ucsc/truss/compare/v2.0.0...v2026.6.0) (2026-06-30)
+
 ## [2.0.0](https://github.com/ucsc/truss/compare/v0.8.3...v2.0.0) (2026-04-22)
 
 
