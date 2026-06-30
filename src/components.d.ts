@@ -124,17 +124,25 @@ export namespace Components {
     }
     interface TrssUcscHeader {
         /**
-          * The URL for the search form action attribute
+          * URL for the search action
+          * @default '/'
          */
         "searchAction": string;
         /**
-          * The query parameter for the search string
+          * Query parameter for search
+          * @default 'q'
          */
         "searchQuery": string;
         /**
-          * Whether or not to display the UCSC logo
+          * Display the UCSC logo
+          * @default true
          */
         "useLogo": boolean;
+        /**
+          * Display the UCSC search form
+          * @default true
+         */
+        "useSearch": boolean;
     }
     interface TrssYouBelong {
         /**
@@ -349,17 +357,25 @@ declare namespace LocalJSX {
     }
     interface TrssUcscHeader {
         /**
-          * The URL for the search form action attribute
+          * URL for the search action
+          * @default '/'
          */
         "searchAction"?: string;
         /**
-          * The query parameter for the search string
+          * Query parameter for search
+          * @default 'q'
          */
         "searchQuery"?: string;
         /**
-          * Whether or not to display the UCSC logo
+          * Display the UCSC logo
+          * @default true
          */
         "useLogo"?: boolean;
+        /**
+          * Display the UCSC search form
+          * @default true
+         */
+        "useSearch"?: boolean;
     }
     interface TrssYouBelong {
         /**
@@ -413,6 +429,7 @@ declare namespace LocalJSX {
     }
     interface TrssUcscHeaderAttributes {
         "useLogo": boolean;
+        "useSearch": boolean;
         "searchAction": string;
         "searchQuery": string;
     }

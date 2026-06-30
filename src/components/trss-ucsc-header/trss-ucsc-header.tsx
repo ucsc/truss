@@ -9,19 +9,24 @@ import { Component, Host, Prop, h } from '@stencil/core';
 export class TrssUcscHeader {
 
   /**
-    * Whether or not to display the UCSC logo
+    * Display the UCSC logo
     */
-  @Prop() useLogo: boolean;
+  @Prop() useLogo: boolean = true;
 
   /**
-   * The URL for the search form action attribute
-   */
-  @Prop() searchAction: string;
+    * Display the UCSC search form
+    */
+  @Prop() useSearch: boolean = true;
 
   /**
-   * The query parameter for the search string
+   * URL for the search action
    */
-  @Prop() searchQuery: string;
+  @Prop() searchAction: string = '/';
+
+  /**
+   * Query parameter for search
+   */
+  @Prop() searchQuery: string = 'q';
 
 
   private parentClasses(): string {
@@ -48,6 +53,7 @@ export class TrssUcscHeader {
               <li><a href="https://www.ucsc.edu/campus/visit/maps-directions/">Maps</a></li>
               <li><a href="https://www.ucsc.edu/azindex/" title="A to Z index of UCSC websites">A-Z Index</a></li>
             </ul>
+            {this.useSearch ? (
             <div class="trss-ucsc-header__search" role="search">
               <form role="search" method="get" action={this.searchAction} id="cse-search-box">
                 <div>
@@ -57,6 +63,7 @@ export class TrssUcscHeader {
                 </div>
               </form>
             </div>
+            ) : null}
           </div>
 
         </div>
