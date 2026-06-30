@@ -14,11 +14,11 @@ const meta: Meta = {
       control: 'text',
       description: 'The text description of the story the card is teasing.',
     },
-    imageUrl: {
+    'image-url': {
       control: 'text',
       description: 'URL of the teaser image.',
     },
-    imageAlt: {
+    'image-alt': {
       control: 'text',
       description: 'Alt text for the teaser image.',
     },
@@ -26,8 +26,8 @@ const meta: Meta = {
   render: (args) => html`
     <trss-card
       header=${args.header}
-      image-url=${args.imageUrl}
-      image-alt=${args.imageAlt}
+      image-url=${args['image-url']}
+      image-alt=${args['image-alt']}
     >
       ${args.description}
     </trss-card>
@@ -42,7 +42,7 @@ export const Card: StoryObj = {
       'Objectively innovate empowered manufactured products whereas parallel platforms',
     description:
       'Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.',
-    imageUrl: 'https://via.placeholder.com/480x150',
-    imageAlt: 'Text description for the image',
+    'image-url': 'https://via.placeholder.com/480x150',
+    'image-alt': 'Text description for the image',
   },
 };

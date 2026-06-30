@@ -6,7 +6,7 @@ const meta: Meta = {
   component: 'trss-ucsc-footer',
   tags: ['autodocs', 'stable'],
   argTypes: {
-    hasSammy: {
+    'has-sammy': {
       control: 'boolean',
       description: 'Whether or not to display the Sammy illustration.',
     },
@@ -17,7 +17,7 @@ const meta: Meta = {
   },
   render: (args) => html`
     <trss-ucsc-footer
-      has-sammy=${args.hasSammy}
+      has-sammy=${args['has-sammy']}
       year=${args.year}
     ></trss-ucsc-footer>
   `,
@@ -27,14 +27,14 @@ export default meta;
 
 export const UCSCFooter: StoryObj = {
   args: {
-    hasSammy: true,
+    'has-sammy': true,
     year: String(new Date().getFullYear()),
   },
 };
 
 export const WithoutSammy: StoryObj = {
   args: {
-    hasSammy: false,
+    'has-sammy': false,
     year: String(new Date().getFullYear()),
   },
 };

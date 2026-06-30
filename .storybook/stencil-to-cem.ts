@@ -24,14 +24,19 @@ const toDeclaration = (component: JsonDocsComponent) => ({
       fieldName: prop.name,
     })),
   members: [
-    ...component.props.map((prop) => ({
-      kind: 'field' as const,
-      name: prop.name,
-      description: prop.docs ?? '',
-      type: { text: prop.type },
-      default: prop.default,
-      attribute: prop.attr,
-    })),
+    // Only props with NO attribute belong here; attribute-backed props are
+    // already listed in `attributes` above. Listing them in both makes
+    // Storybook autodocs render each prop twice (Properties + Attributes).
+    ...component.props
+      .filter((prop) => !prop.attr)
+      .map((prop) => ({
+        kind: 'field' as const,
+        name: prop.name,
+        description: prop.docs ?? '',
+        type: { text: prop.type },
+        default: prop.default,
+        attribute: prop.attr,
+      })),
     ...component.methods.map((method) => ({
       kind: 'method' as const,
       name: method.name,
