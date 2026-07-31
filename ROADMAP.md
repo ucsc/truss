@@ -216,22 +216,13 @@ it renders an empty, broken `<img>`.
 **Fix:** Only render the image when `imageUrl` is present, and default `imageAlt`
 to `''` so images are at least explicitly decorative when no alt is supplied.
 
-### [ ] 16. `trss-alert` is not announced by assistive tech — Medium
+### ✅ 16. `trss-alert` is not announced by assistive tech — Medium
 
-**Where:** `src/components/trss-alert/trss-alert.tsx`
-
-```tsx
-<div class={…} role="complementary">
-```
-
-`role="complementary"` marks the alert as tangential content, so screen readers
-won't announce it — a problem for the `warning`/`emergency` appearances, which
-are the whole point of the component. There's also no accessible name to
-distinguish it from other complementary regions.
-
-**Fix:** For urgent appearances, use `role="alert"` (or `role="region"` +
-`aria-live="assertive"`/`"polite"`) so the content is announced, and give the
-region an `aria-label`. Consider driving the role from `appearance`.
+**Status:** Fixed. Replaced the static `role="complementary"` with a role driven
+by `appearance`: `warning`/`emergency` render `role="alert"` (assertive live
+region) and all other appearances render `role="status"` (polite live region),
+so screen readers surface the alert instead of ignoring it. Covered by tests in
+`trss-alert.spec.tsx` (assertive + polite cases).
 
 ### [ ] 17. Event titles are not headings — Low
 
