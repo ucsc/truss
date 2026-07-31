@@ -1,4 +1,4 @@
-import { friendly_date, safe_url } from './utils';
+import { decode_entities, friendly_date, safe_url } from './utils';
 
 describe('format', () => {
   it('returns empty string for no dates defined', () => {
@@ -40,5 +40,16 @@ describe('safe_url', () => {
   it('returns undefined for empty or missing input', () => {
     expect(safe_url('')).toBeUndefined();
     expect(safe_url(undefined)).toBeUndefined();
+  });
+});
+
+describe('decode_entities', () => {
+  // The actual entity decoding relies on a real browser's <textarea>
+  // innerHTML→value behavior, which Stencil's mock-doc DOM does not implement,
+  // so those cases can't be exercised here (they are covered in-browser). Only
+  // the pre-DOM guard path is unit-testable.
+  it('returns empty string for empty or missing input', () => {
+    expect(decode_entities('')).toEqual('');
+    expect(decode_entities(undefined)).toEqual('');
   });
 });

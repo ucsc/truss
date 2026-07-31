@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core';
-import { friendly_date, safe_url } from '../../utils/utils';
+import { decode_entities, friendly_date, safe_url } from '../../utils/utils';
 
 @Component({
   tag: 'trss-events-list',
@@ -50,12 +50,12 @@ export class TrssEventsList {
           <ul>
             {this.eventData.events.slice(0, this.limit).map((event: any = {}) => (
               <li>
-                {event.image.url && this.image ? <img src={event.image.url} alt="" /> : '' }
+                {event.image?.url && this.image ? <img src={safe_url(event.image.url)} alt="" /> : '' }
                 <p class="title">
-                  <a href={safe_url(event.url)}>{this.getEncodedText(event.title)}</a>
+                  <a href={safe_url(event.url)}>{decode_entities(event.title)}</a>
                 </p>
                 <span class="meta">{friendly_date(event.start_date)}</span>
-                {event.summary && this.teaser ? <p class="description">{this.getEncodedText(event.summary)}</p> : ''}
+                {event.summary && this.teaser ? <p class="description">{decode_entities(event.summary)}</p> : ''}
               </li>
             ))}
           </ul>
@@ -85,14 +85,6 @@ export class TrssEventsList {
     } else {
       this.eventData = JSON.parse(sessionStorage.getItem('trss-events-list-' + feed));
     }
-  }
-
-  private getEncodedText(text: string) {
-    var textArea = document.createElement('textarea');
-    textArea.innerHTML = text;
-    const regex = /<script[\d\D]*?>[\d\D]*?<\/script>/gm;
-    const result = textArea.value.replace(regex, '');
-    return result;
   }
 
   private getFeedId(url: string) {

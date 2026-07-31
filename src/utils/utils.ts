@@ -1,4 +1,4 @@
-export function friendly_date(date: string): string {
+export function friendly_date(date: string | undefined): string {
   if (!date) {
     return '';
   }
@@ -19,7 +19,7 @@ const SAFE_URL_PROTOCOLS = ['http:', 'https:'];
  * click. Parsing via `URL` normalizes leading whitespace and control characters
  * (e.g. `\tjavascript:`) that a naive string check would miss.
  */
-export function safe_url(url: string): string | undefined {
+export function safe_url(url: string | undefined): string | undefined {
   if (!url) {
     return undefined;
   }
@@ -32,4 +32,22 @@ export function safe_url(url: string): string | undefined {
   } catch {
     return undefined;
   }
+}
+
+/**
+ * Decodes HTML entities in feed-supplied text (e.g. `Tom &amp; Jerry` →
+ * `Tom & Jerry`) so it displays correctly.
+ *
+ * NOTE: This is NOT a sanitizer. Its output must only be rendered as text (JSX
+ * text interpolation, which Stencil auto-escapes) — never assigned to
+ * `innerHTML`, which would re-activate any markup the feed had escaped. Use a
+ * dedicated sanitizer (e.g. DOMPurify) if raw HTML ever needs to be rendered.
+ */
+export function decode_entities(text: string | undefined): string {
+  if (!text) {
+    return '';
+  }
+  const textArea = document.createElement('textarea');
+  textArea.innerHTML = text;
+  return textArea.value;
 }
