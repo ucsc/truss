@@ -21,9 +21,18 @@ export class TrssAlert {
     return 'trss-alert trss-alert--' + this.appearance;
   }
 
+  /**
+   * Announce urgent alerts assertively (`role="alert"`) and informational ones
+   * politely (`role="status"`). Both are live regions, so screen readers surface
+   * the alert — unlike the previous `role="complementary"`, which they ignored.
+   */
+  private getRole(): string {
+    return this.appearance === 'emergency' || this.appearance === 'warning' ? 'alert' : 'status';
+  }
+
   render() {
     return (
-      <div class={this.appearance ? this.getAppearance() : 'trss-alert trss-alert--notice'} role="complementary">
+      <div class={this.appearance ? this.getAppearance() : 'trss-alert trss-alert--notice'} role={this.getRole()}>
         <div class="trss-row__inner">
           <div class="header"><slot name="header" /></div>
           <div class="description"><slot name="description" /></div>
