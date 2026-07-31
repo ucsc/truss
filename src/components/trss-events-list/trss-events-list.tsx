@@ -1,5 +1,5 @@
-import { Component, Host, h, Prop } from '@stencil/core';
-import { decode_entities, friendly_date, hash_string, safe_url } from '../../utils/utils';
+import { Component, Element, Host, h, Prop } from '@stencil/core';
+import { decode_entities, fetch_cached_json, friendly_date, safe_url } from '../../utils/utils';
 
 @Component({
   tag: 'trss-events-list',
@@ -7,6 +7,7 @@ import { decode_entities, friendly_date, hash_string, safe_url } from '../../uti
   shadow: false,
 })
 export class TrssEventsList {
+  @Element() el!: HTMLElement;
 
   /**
    * The JSON source for the content list in this component.
@@ -39,18 +40,34 @@ export class TrssEventsList {
   @Prop() layout: string = 'list';
 
   /**
-   * @slot default - Content that appears above the list. We recommend a header and description.
+   * @slot header - Content that appears above the list. We recommend a header and description.
+   * @slot footer - Content that appears below the list.
+   * @slot fallback - Content shown when the feed cannot be loaded or is empty. Falls back to a default message.
    */
 
+  eventData = { events: [] };
+
+  async componentWillRender() {
+    const data = await fetch_cached_json(this.source, 'trss-events-list-');
+    // Always keep `events` an array so the render below can never crash on a
+    // malformed, empty, or failed response (see ROADMAP #4).
+    this.eventData = { events: Array.isArray(data?.events) ? data.events : [] };
+  }
+
+  private hasFallbackContent(): boolean {
+    return !!this.el.querySelector('[slot="fallback"]');
+  }
+
   render() {
-    if (this.eventData.events) {
-      return (
-        <Host class="trss-events-list">
-          <slot name="header" />
+    const events = this.eventData.events.slice(0, this.limit);
+    return (
+      <Host class="trss-events-list">
+        <slot name="header" />
+        {events.length > 0 ? (
           <ul>
-            {this.eventData.events.slice(0, this.limit).map((event: any = {}) => (
+            {events.map((event: any = {}) => (
               <li>
-                {event.image?.url && this.image ? <img src={safe_url(event.image.url)} alt="" /> : '' }
+                {event.image?.url && this.image ? <img src={safe_url(event.image.url)} alt="" /> : ''}
                 <p class="title">
                   <a href={safe_url(event.url)}>{decode_entities(event.title)}</a>
                 </p>
@@ -59,38 +76,13 @@ export class TrssEventsList {
               </li>
             ))}
           </ul>
-          <slot name="footer" />
-        </Host>
-      );
-
-    } else {
-      return (
-        <Host class="trss-events-list">
-          <slot name="header" />
-          <p>No upcoming events found.</p>
-          <slot name="footer" />
-        </Host>
-      );
-    }
+        ) : (
+          <div class="trss-events-list__fallback" role="status">
+            {this.hasFallbackContent() ? <slot name="fallback" /> : <p>No upcoming events found.</p>}
+          </div>
+        )}
+        <slot name="footer" />
+      </Host>
+    );
   }
-
-  eventData = { events: [] };
-
-  async componentWillRender() {
-    let feed = this.getFeedId(this.source);
-    if (!sessionStorage.getItem('trss-events-list-' + feed) || sessionStorage.getItem('trss-events-list-' + feed) === '{}') {
-      let getApi = await fetch(this.source, { method: 'GET', headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' } });
-      sessionStorage.setItem('trss-events-list-' + feed, JSON.stringify(await getApi.json()));
-      this.eventData = JSON.parse(sessionStorage.getItem('trss-events-list-' + feed));
-    } else {
-      this.eventData = JSON.parse(sessionStorage.getItem('trss-events-list-' + feed));
-    }
-  }
-
-  private getFeedId(url: string) {
-    // Stable, deterministic key derived from the full source URL so cached
-    // responses are actually reused across renders (see ROADMAP #5).
-    return hash_string(url);
-  }
-
 }

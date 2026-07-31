@@ -57,18 +57,18 @@ returning `image: false`/`undefined` no longer throw and abort the list render.
 Also wrapped the image `src` in `safe_url()` for defense-in-depth on
 feed-supplied URLs (`trss-events-list.tsx:53`).
 
-### [ ] 4. List render crashes on an error/empty API response — Medium
+### [x] 4. List render crashes on an error/empty API response — Medium
 
-**Where:** `src/components/trss-news-list/trss-news-list.tsx:34` (`listData.items.slice`),
-fetch at `trss-news-list.tsx:53-55` and `trss-events-list.tsx:82-84`
-
-If the fetch returns a non-feed payload (error object `{}`, HTML error page,
-rate-limit body), `listData` has no `items` and `.slice` throws. There is no
-`response.ok` check and no `try/catch`, so any network failure or non-JSON body
-becomes an unhandled rejection and a broken component.
-
-**Fix:** Check `response.ok`, wrap the fetch/parse in `try/catch`, and default
-to `{ items: [] }` / `{ events: [] }` on failure.
+**Status:** Fixed. Added `fetch_cached_json()` to `src/utils/utils.ts`, which
+wraps fetch + cache + parse in `try/catch`, checks `response.ok`, and returns
+`null` on any failure (network error, non-OK status, invalid JSON, storage
+unavailable); only successful responses are cached. Both components now coerce
+the result to an array (`Array.isArray(data?.items) ? … : []`), so `.slice`
+can never throw. Added an HTML fallback via a new `fallback` **named slot**
+(consumers supply their own markup; detected with `@Element` + `querySelector`
+since these are non-shadow components) with a built-in default message, shown
+whenever the feed fails or is empty. The `getFeedId` duplication was folded into
+the util.
 
 ### [x] 5. Random-UUID cache key defeats caching and leaks `sessionStorage` — Medium
 

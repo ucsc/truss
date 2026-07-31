@@ -1,5 +1,5 @@
-import { Component, Host, h, Prop } from '@stencil/core';
-import { decode_entities, friendly_date, hash_string, safe_url } from '../../utils/utils';
+import { Component, Element, Host, h, Prop } from '@stencil/core';
+import { decode_entities, fetch_cached_json, friendly_date, safe_url } from '../../utils/utils';
 
 @Component({
   tag: 'trss-news-list',
@@ -7,6 +7,8 @@ import { decode_entities, friendly_date, hash_string, safe_url } from '../../uti
   shadow: false,
 })
 export class TrssNewsList {
+  @Element() el!: HTMLElement;
+
   /**
    * The JSON source for the content list in this component.
    */
@@ -24,43 +26,45 @@ export class TrssNewsList {
 
   /**
    * @slot default - Content that appears above the list. We recommend a header and description.
+   * @slot fallback - Content shown when the feed cannot be loaded or is empty. Falls back to a default message.
    */
-
-  render() {
-    return (
-      <Host class="trss-news-list">
-        <slot />
-        <ul>
-          {this.listData.items.slice(0, this.limit).map((item: any = {}) => (
-            <li>
-              <h3 class="header">
-                <a href={safe_url(item.url)}>{decode_entities(item.title)}</a>
-              </h3>
-              <span class="meta">{friendly_date(item.date_published)}</span>
-              {item.summary && this.teaser ? <p class="description">{decode_entities(item.summary)}</p> : ''}
-            </li>
-          ))}
-        </ul>
-      </Host>
-    );
-  }
 
   listData = { items: [] };
 
   async componentWillRender() {
-    let feed = this.getFeedId(this.source);
-    if (!sessionStorage.getItem('trss-news-list-' + feed) || sessionStorage.getItem('trss-news-list-' + feed) === '{}') {
-      let getApi = await fetch(this.source, { method: 'GET', headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' } });
-      sessionStorage.setItem('trss-news-list-' + feed, JSON.stringify(await getApi.json()));
-      this.listData = JSON.parse(sessionStorage.getItem('trss-news-list-' + feed));
-    } else {
-      this.listData = JSON.parse(sessionStorage.getItem('trss-news-list-' + feed));
-    }
+    const data = await fetch_cached_json(this.source, 'trss-news-list-');
+    // Always keep `items` an array so the render below can never crash on a
+    // malformed, empty, or failed response (see ROADMAP #4).
+    this.listData = { items: Array.isArray(data?.items) ? data.items : [] };
   }
 
-  private getFeedId(url: string) {
-    // Stable, deterministic key derived from the full source URL so cached
-    // responses are actually reused across renders (see ROADMAP #5).
-    return hash_string(url);
+  private hasFallbackContent(): boolean {
+    return !!this.el.querySelector('[slot="fallback"]');
+  }
+
+  render() {
+    const items = this.listData.items.slice(0, this.limit);
+    return (
+      <Host class="trss-news-list">
+        <slot />
+        {items.length > 0 ? (
+          <ul>
+            {items.map((item: any = {}) => (
+              <li>
+                <h3 class="header">
+                  <a href={safe_url(item.url)}>{decode_entities(item.title)}</a>
+                </h3>
+                <span class="meta">{friendly_date(item.date_published)}</span>
+                {item.summary && this.teaser ? <p class="description">{decode_entities(item.summary)}</p> : ''}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div class="trss-news-list__fallback" role="status">
+            {this.hasFallbackContent() ? <slot name="fallback" /> : <p>News is unavailable right now. Please try again later.</p>}
+          </div>
+        )}
+      </Host>
+    );
   }
 }

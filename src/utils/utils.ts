@@ -73,3 +73,34 @@ export function hash_string(str: string): string {
   const hash = 4294967296 * (2097151 & h2) + (h1 >>> 0);
   return hash.toString(36);
 }
+
+/**
+ * Fetches JSON from `source`, caching successful responses in `sessionStorage`
+ * under `cachePrefix` + a stable hash of the URL (so repeat renders reuse the
+ * cached copy).
+ *
+ * Returns the parsed data, or `null` if anything goes wrong — network error,
+ * non-OK response, invalid JSON, or storage being unavailable — so callers can
+ * render a fallback instead of crashing. Only successful responses are cached.
+ */
+export async function fetch_cached_json(source: string, cachePrefix: string): Promise<any> {
+  const key = cachePrefix + hash_string(source);
+  try {
+    const cached = sessionStorage.getItem(key);
+    if (cached && cached !== '{}') {
+      return JSON.parse(cached);
+    }
+    const response = await fetch(source, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+    });
+    if (!response.ok) {
+      return null;
+    }
+    const data = await response.json();
+    sessionStorage.setItem(key, JSON.stringify(data));
+    return data;
+  } catch {
+    return null;
+  }
+}
