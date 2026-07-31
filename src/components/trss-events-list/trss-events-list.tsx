@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core';
-import { friendly_date } from '../../utils/utils';
+import { friendly_date, safe_url } from '../../utils/utils';
 
 @Component({
   tag: 'trss-events-list',
@@ -52,7 +52,7 @@ export class TrssEventsList {
               <li>
                 {event.image.url && this.image ? <img src={event.image.url} alt="" /> : '' }
                 <p class="title">
-                  <a href={event.url}>{this.getEncodedText(event.title)}</a>
+                  <a href={safe_url(event.url)}>{this.getEncodedText(event.title)}</a>
                 </p>
                 <span class="meta">{friendly_date(event.start_date)}</span>
                 {event.summary && this.teaser ? <p class="description">{this.getEncodedText(event.summary)}</p> : ''}

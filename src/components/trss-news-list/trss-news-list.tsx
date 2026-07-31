@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core';
-import { friendly_date } from '../../utils/utils';
+import { friendly_date, safe_url } from '../../utils/utils';
 
 @Component({
   tag: 'trss-news-list',
@@ -34,7 +34,7 @@ export class TrssNewsList {
           {this.listData.items.slice(0, this.limit).map((item: any = {}) => (
             <li>
               <h3 class="header">
-                <a href={item.url}>{this.getEncodedText(item.title)}</a>
+                <a href={safe_url(item.url)}>{this.getEncodedText(item.title)}</a>
               </h3>
               <span class="meta">{friendly_date(item.date_published)}</span>
               {item.summary && this.teaser ? <p class="description">{this.getEncodedText(item.summary)}</p> : ''}
