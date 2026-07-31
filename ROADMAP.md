@@ -12,7 +12,7 @@ everything below is concentrated in the two feed components
 
 ## Security
 
-### [x] 1. `javascript:` URL XSS via feed data rendered into `href` — Medium
+### ✅ 1. `javascript:` URL XSS via feed data rendered into `href` — Medium
 
 **Status:** Fixed. Added `safe_url()` to `src/utils/utils.ts` (protocol allowlist
 via `URL` parsing) and applied it to both feed `href` bindings
@@ -36,7 +36,7 @@ feed is one compromise away.
 `http:` / `https:` / `mailto:`); drop or neutralize anything else. Apply the
 same guard anywhere feed-supplied URLs reach an attribute.
 
-### [x] 2. `getEncodedText` is an ineffective "sanitizer" (footgun) — Low
+### ✅ 2. `getEncodedText` is an ineffective "sanitizer" (footgun) — Low
 
 **Status:** Fixed. Dropped the useless `<script>` regex and replaced the
 per-component `getEncodedText` method with a shared, clearly named
@@ -50,7 +50,7 @@ mock-doc's `<textarea>` doesn't implement `innerHTML`→`value`).
 
 ## Correctness / crash bugs
 
-### [x] 3. `event.image.url` crashes when an event has no image — Medium
+### ✅ 3. `event.image.url` crashes when an event has no image — Medium
 
 **Status:** Fixed. Guarded the image access so events returning
 `image: false`/`undefined` no longer throw and abort the list render (now
@@ -58,7 +58,7 @@ mock-doc's `<textarea>` doesn't implement `innerHTML`→`value`).
 originally optional chaining). Also wrapped the image `src` in `safe_url()` for
 defense-in-depth on feed-supplied URLs.
 
-### [x] 4. List render crashes on an error/empty API response — Medium
+### ✅ 4. List render crashes on an error/empty API response — Medium
 
 **Status:** Fixed. Added `fetch_cached_json()` to `src/utils/utils.ts`, which
 wraps fetch + cache + parse in `try/catch`, checks `response.ok`, and returns
@@ -71,7 +71,7 @@ since these are non-shadow components) with a built-in default message, shown
 whenever the feed fails or is empty. The `getFeedId` duplication was folded into
 the util.
 
-### [x] 5. Random-UUID cache key defeats caching and leaks `sessionStorage` — Medium
+### ✅ 5. Random-UUID cache key defeats caching and leaks `sessionStorage` — Medium
 
 **Status:** Fixed. `getFeedId` in both feed components now returns
 `hash_string(url)` — a deterministic, low-collision hash (cyrb53) of the full
@@ -85,7 +85,7 @@ in `src/utils/utils.spec.ts`. Also removed the SSR-unsafe `self.crypto.randomUUI
 
 ## Minor
 
-### [x] 6. Leftover debug logging — Low
+### ✅ 6. Leftover debug logging — Low
 
 **Status:** Fixed. The `console.log(match)` was removed as part of the #5
 `getFeedId` rewrite in `trss-events-list.tsx`.
@@ -100,13 +100,13 @@ throw.
 
 **Fix:** Guard with `typeof window !== 'undefined'` if SSR is in scope.
 
-### [x] 8. `friendly_date` invalid-input handling — Low
+### ✅ 8. `friendly_date` invalid-input handling — Low
 
 **Status:** Fixed. `friendly_date` now returns `''` for missing input and for
 unparseable dates (`isNaN` guard) in `src/utils/utils.ts`, preventing
 "Invalid Date" from rendering. Covered by tests in `src/utils/utils.spec.ts`.
 
-### [x] 9. `any`-typed feed items — Low
+### ✅ 9. `any`-typed feed items — Low
 
 **Status:** Fixed. Added `NewsItem` (news) and `EventItem`/`EventImage` (events)
 interfaces and typed `listData`/`eventData` and the render `.map` callbacks with
@@ -119,7 +119,7 @@ the `false` branch. Build type-checks clean; spec suite still 25/25.
 
 ## Tooling / tests
 
-### [x] 10. Stale component spec tests — Medium
+### ✅ 10. Stale component spec tests — Medium
 
 **Status:** Fixed. Rewrote all 10 failing `*.spec.tsx` suites (trss-card
 already passed) from stale full-DOM `toEqualHtml` snapshots to targeted
@@ -177,6 +177,10 @@ descriptive alt.
 `event.title`), falling back to the event title — e.g.
 `alt={decode_entities(event.image?.alt || event.title)}`. Confirm the feed field
 name before wiring it up.
+
+---
+
+## Summary
 
 1. **#3, #4, #5** — outright bugs that fire in normal use.
 2. **#1** — the real security vector.
