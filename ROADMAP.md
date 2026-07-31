@@ -70,34 +70,24 @@ becomes an unhandled rejection and a broken component.
 **Fix:** Check `response.ok`, wrap the fetch/parse in `try/catch`, and default
 to `{ items: [] }` / `{ events: [] }` on failure.
 
-### [ ] 5. Random-UUID cache key defeats caching and leaks `sessionStorage` — Medium
+### [x] 5. Random-UUID cache key defeats caching and leaks `sessionStorage` — Medium
 
-**Where:** `src/components/trss-news-list/trss-news-list.tsx:69-79`,
-`src/components/trss-events-list/trss-events-list.tsx:98-109`
-
-Both **default** sources fail their `getFeedId` regex and fall back to
-`self.crypto.randomUUID()` (verified). Because `componentWillRender` runs on
-every render, each re-render generates a new key → never a cache hit →
-re-fetches every render **and** writes a new `trss-*-<uuid>` entry every render,
-growing `sessionStorage` until it throws `QuotaExceededError`.
-
-**Fix:** Derive a stable key from the full `source` URL (e.g. a hash of the
-whole URL) rather than a pattern that only matches specific URL shapes.
-
-**Related:** Even on a match, the events key uses only
-`organizer/venue/categories/tags` (`trss-events-list.tsx:99`), so two sources
-differing only in `per_page` or date filters collide on one cache entry and
-serve stale data. A full-URL key fixes this too.
+**Status:** Fixed. `getFeedId` in both feed components now returns
+`hash_string(url)` — a deterministic, low-collision hash (cyrb53) of the full
+`source` URL added to `src/utils/utils.ts`. Same URL → same key, so cached
+responses are reused instead of a new random `trss-*-<uuid>` entry piling up on
+every render. The full-URL basis also fixes the related collision (URLs
+differing only in `per_page`/date filters now key distinctly). Covered by tests
+in `src/utils/utils.spec.ts`. Also removed the SSR-unsafe `self.crypto.randomUUID()`.
 
 ---
 
 ## Minor
 
-### [ ] 6. Leftover debug logging — Low
+### [x] 6. Leftover debug logging — Low
 
-**Where:** `src/components/trss-events-list/trss-events-list.tsx:106`
-
-`console.log(match)` ships to production and prints feed internals. Remove.
+**Status:** Fixed. The `console.log(match)` was removed as part of the #5
+`getFeedId` rewrite in `trss-events-list.tsx`.
 
 ### [ ] 7. SSR/prerender safety — Low
 

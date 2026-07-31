@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core';
-import { decode_entities, friendly_date, safe_url } from '../../utils/utils';
+import { decode_entities, friendly_date, hash_string, safe_url } from '../../utils/utils';
 
 @Component({
   tag: 'trss-events-list',
@@ -88,16 +88,9 @@ export class TrssEventsList {
   }
 
   private getFeedId(url: string) {
-    const pattern = /[?&](?<entity>organizer|venue|categories|tags)=(?<value>[^&]+)/;
-    const match = url.match(pattern);
-
-    if (!match || !match.groups.value) {
-      return self.crypto.randomUUID();
-    }
-
-    console.log(match);
-    const substring = match.groups.entity + '-' + match.groups.value;
-    return substring;
+    // Stable, deterministic key derived from the full source URL so cached
+    // responses are actually reused across renders (see ROADMAP #5).
+    return hash_string(url);
   }
 
 }

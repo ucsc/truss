@@ -1,4 +1,4 @@
-import { decode_entities, friendly_date, safe_url } from './utils';
+import { decode_entities, friendly_date, hash_string, safe_url } from './utils';
 
 describe('format', () => {
   it('returns empty string for no dates defined', () => {
@@ -51,5 +51,24 @@ describe('decode_entities', () => {
   it('returns empty string for empty or missing input', () => {
     expect(decode_entities('')).toEqual('');
     expect(decode_entities(undefined)).toEqual('');
+  });
+});
+
+describe('hash_string', () => {
+  it('is deterministic — same input yields the same hash', () => {
+    const url = 'https://news.ucsc.edu/feed/json';
+    expect(hash_string(url)).toEqual(hash_string(url));
+  });
+
+  it('produces different hashes for different inputs', () => {
+    expect(hash_string('https://news.ucsc.edu/feed/json')).not.toEqual(
+      hash_string('https://events.ucsc.edu/wp-json/tribe/events/v1/events'),
+    );
+  });
+
+  it('distinguishes URLs that differ only in query params', () => {
+    expect(hash_string('https://events.ucsc.edu/api?organizer=368&per_page=10')).not.toEqual(
+      hash_string('https://events.ucsc.edu/api?organizer=368&per_page=20'),
+    );
   });
 });
