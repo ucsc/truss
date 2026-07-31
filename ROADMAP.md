@@ -12,7 +12,12 @@ everything below is concentrated in the two feed components
 
 ## Security
 
-### [ ] 1. `javascript:` URL XSS via feed data rendered into `href` — Medium
+### [x] 1. `javascript:` URL XSS via feed data rendered into `href` — Medium
+
+**Status:** Fixed. Added `safe_url()` to `src/utils/utils.ts` (protocol allowlist
+via `URL` parsing) and applied it to both feed `href` bindings
+(`trss-news-list.tsx:37`, `trss-events-list.tsx:55`). Covered by tests in
+`src/utils/utils.spec.ts`.
 
 **Where:** `src/components/trss-news-list/trss-news-list.tsx:37`,
 `src/components/trss-events-list/trss-events-list.tsx:55`
@@ -31,43 +36,26 @@ feed is one compromise away.
 `http:` / `https:` / `mailto:`); drop or neutralize anything else. Apply the
 same guard anywhere feed-supplied URLs reach an attribute.
 
-### [ ] 2. `getEncodedText` is an ineffective "sanitizer" (footgun) — Low
+### [x] 2. `getEncodedText` is an ineffective "sanitizer" (footgun) — Low
 
-**Where:** `src/components/trss-news-list/trss-news-list.tsx:61-67`,
-`src/components/trss-events-list/trss-events-list.tsx:90-96`
-
-```tsx
-textArea.innerHTML = text;
-const regex = /<script[\d\D]*?>[\d\D]*?<\/script>/gm;
-const result = textArea.value.replace(regex, '');
-```
-
-It decodes HTML entities and strips only literal `<script>…</script>`. Harmless
-today because output lands in an escaped text node, but it is named/shaped like
-a sanitizer and the regex is trivially bypassable (`<img onerror>`,
-`<svg onload>`, nested `<scr<script>ipt>`). If anyone later renders its output
-via `innerHTML` trusting it, that is instant XSS.
-
-**Fix:** Remove the useless script-regex, or replace the whole helper with a
-clearly named decode-only utility. Do not rely on it for sanitization.
+**Status:** Fixed. Dropped the useless `<script>` regex and replaced the
+per-component `getEncodedText` method with a shared, clearly named
+`decode_entities()` in `src/utils/utils.ts` whose doc comment states it is NOT
+a sanitizer and must not be fed to `innerHTML`. Both feed components now import
+it (`trss-news-list.tsx`, `trss-events-list.tsx`). Guard path covered in
+`src/utils/utils.spec.ts` (the DOM-dependent decoding is browser-only —
+mock-doc's `<textarea>` doesn't implement `innerHTML`→`value`).
 
 ---
 
 ## Correctness / crash bugs
 
-### [ ] 3. `event.image.url` crashes when an event has no image — Medium
+### [x] 3. `event.image.url` crashes when an event has no image — Medium
 
-**Where:** `src/components/trss-events-list/trss-events-list.tsx:53`
-
-```tsx
-{event.image.url && this.image ? <img src={event.image.url} alt="" /> : '' }
-```
-
-The Tribe Events API returns `image: false` (or omits it) for events without a
-featured image; `event.image.url` then throws `TypeError` and takes down the
-whole list render.
-
-**Fix:** Use optional chaining — `event.image?.url`.
+**Status:** Fixed. Guarded with optional chaining (`event.image?.url`) so events
+returning `image: false`/`undefined` no longer throw and abort the list render.
+Also wrapped the image `src` in `safe_url()` for defense-in-depth on
+feed-supplied URLs (`trss-events-list.tsx:53`).
 
 ### [ ] 4. List render crashes on an error/empty API response — Medium
 
@@ -121,30 +109,74 @@ throw.
 
 **Fix:** Guard with `typeof window !== 'undefined'` if SSR is in scope.
 
-### [ ] 8. `friendly_date` invalid-input handling — Low
+### [x] 8. `friendly_date` invalid-input handling — Low
 
-**Where:** `src/utils/utils.ts`
-
-Returns `"Invalid Date"` for unparseable input instead of falling back
-gracefully.
-
-**Fix:** Validate the parsed date and return an empty string (or the raw value)
-on failure.
+**Status:** Fixed. `friendly_date` now returns `''` for missing input and for
+unparseable dates (`isNaN` guard) in `src/utils/utils.ts`, preventing
+"Invalid Date" from rendering. Covered by tests in `src/utils/utils.spec.ts`.
 
 ### [ ] 9. `any`-typed feed items — Low
 
 **Where:** feed `.map((item: any = {}) => …)` in both feed components
 
-`any` removes the compile-time protection that would have caught items #3 and
-#4. Typing the feed response shapes prevents this class of bug.
+`any` removes the compile-time protection that would have caught items #3 and #4. Typing the feed response shapes prevents this class of bug.
 
 ---
 
-## Suggested order
+## Tooling / tests
+
+### [ ] 10. Stale component spec tests — Medium
+
+**Where:** every `src/components/**/test/*.spec.tsx`
+
+The `toEqualHtml` snapshots assert markup from an older version of the
+components and no longer match what they render today (e.g. `trss-alert`
+expects `class="ribbon ribbon-notice"` / `class="inner"` and an `header`
+attribute injecting content, but the component now renders
+`trss-alert trss-alert--notice`, `trss-row__inner`, and slots). All component
+spec suites currently fail, so they guard nothing and mask real regressions.
+
+**Fix:** Refresh the expected markup in each spec to match current component
+output (confirm the current markup is the intended baseline first), then keep
+them green in CI. `src/utils/utils.spec.ts` is already passing and can serve as
+the reference for a healthy suite.
+
+### [ ] 11. `moduleResolution=node10` deprecation — Low
+
+**Where:** `tsconfig.json` (`"moduleResolution": "node"`)
+
+Newer TypeScript reports `node10` (the `"node"` alias) as deprecated; it stops
+functioning in TypeScript 7.0.
+
+**Fix:** Switch to `"moduleResolution": "bundler"` (matching how
+`.storybook/tsconfig.json` already resolves) and verify the build/tests, or add
+`"ignoreDeprecations": "6.0"` as a stopgap.
+
+---
+
+## Accessibility
+
+### [ ] 12. Event images have hardcoded empty `alt` — Low
+
+**Where:** `src/components/trss-events-list/trss-events-list.tsx:53`
+
+```tsx
+<img src={safe_url(event.image.url)} alt="" />
+```
+
+`alt=""` marks every event image as purely decorative, so screen readers skip
+it entirely. Event feature images are meaningful content, so they should carry a
+descriptive alt.
+
+**Fix:** Use feed-supplied alt text when available (e.g. `event.image.alt` /
+`event.title`), falling back to the event title — e.g.
+`alt={decode_entities(event.image?.alt || event.title)}`. Confirm the feed field
+name before wiring it up.
 
 1. **#3, #4, #5** — outright bugs that fire in normal use.
 2. **#1** — the real security vector.
-3. **#2, #6, #7, #8, #9** — hardening and cleanup.
+3. **#10** — restore the spec suite so the fixes above are actually guarded.
+4. **#2, #6, #7, #8, #9, #11** — hardening and cleanup.
 
 Do the code changes on a branch (not `main`) and rebuild (`npm run build`) so the
 generated `custom-elements.json` and readmes stay in sync.
