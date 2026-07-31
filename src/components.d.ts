@@ -124,6 +124,11 @@ export namespace Components {
     }
     interface TrssUcscHeader {
         /**
+          * URL for the campus-wide search action, used when the search scope selector is set to "All of UCSC"
+          * @default 'https://www.ucsc.edu/search/'
+         */
+        "globalSearchAction": string;
+        /**
           * URL for the search action
           * @default '/'
          */
@@ -143,6 +148,11 @@ export namespace Components {
           * @default true
          */
         "useSearch": boolean;
+        /**
+          * Display a search scope selector ("This site" / "All of UCSC")
+          * @default false
+         */
+        "useSearchScope": boolean;
     }
     interface TrssYouBelong {
         /**
@@ -357,6 +367,11 @@ declare namespace LocalJSX {
     }
     interface TrssUcscHeader {
         /**
+          * URL for the campus-wide search action, used when the search scope selector is set to "All of UCSC"
+          * @default 'https://www.ucsc.edu/search/'
+         */
+        "globalSearchAction"?: string;
+        /**
           * URL for the search action
           * @default '/'
          */
@@ -376,6 +391,11 @@ declare namespace LocalJSX {
           * @default true
          */
         "useSearch"?: boolean;
+        /**
+          * Display a search scope selector ("This site" / "All of UCSC")
+          * @default false
+         */
+        "useSearchScope"?: boolean;
     }
     interface TrssYouBelong {
         /**
@@ -432,6 +452,8 @@ declare namespace LocalJSX {
         "useSearch": boolean;
         "searchAction": string;
         "searchQuery": string;
+        "useSearchScope": boolean;
+        "globalSearchAction": string;
     }
     interface TrssYouBelongAttributes {
         "appearance": string;

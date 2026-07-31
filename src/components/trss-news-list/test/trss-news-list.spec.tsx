@@ -13,6 +13,6 @@ describe('trss-news-list', () => {
     const fallback = root.querySelector('.trss-news-list__fallback');
     expect(fallback).not.toBeNull();
     expect(fallback!.getAttribute('role')).toBe('status');
-    expect(fallback!.textContent).toContain('News is unavailable');
+    expect(fallback!.textContent).toContain('No news links to display.');
   });
 });

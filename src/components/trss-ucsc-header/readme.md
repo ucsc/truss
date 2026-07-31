@@ -9,12 +9,14 @@ You can use a style attribute on the element to set the `--trss-content-width` C
 
 ## Properties
 
-| Property       | Attribute       | Description                  | Type      | Default |
-| -------------- | --------------- | ---------------------------- | --------- | ------- |
-| `searchAction` | `search-action` | URL for the search action    | `string`  | `'/'`   |
-| `searchQuery`  | `search-query`  | Query parameter for search   | `string`  | `'q'`   |
-| `useLogo`      | `use-logo`      | Display the UCSC logo        | `boolean` | `true`  |
-| `useSearch`    | `use-search`    | Display the UCSC search form | `boolean` | `true`  |
+| Property             | Attribute              | Description                                                                                        | Type      | Default                          |
+| -------------------- | ---------------------- | -------------------------------------------------------------------------------------------------- | --------- | -------------------------------- |
+| `globalSearchAction` | `global-search-action` | URL for the campus-wide search action, used when the search scope selector is set to "All of UCSC" | `string`  | `'https://www.ucsc.edu/search/'` |
+| `searchAction`       | `search-action`        | URL for the search action                                                                          | `string`  | `'/'`                            |
+| `searchQuery`        | `search-query`         | Query parameter for search                                                                         | `string`  | `'q'`                            |
+| `useLogo`            | `use-logo`             | Display the UCSC logo                                                                              | `boolean` | `true`                           |
+| `useSearch`          | `use-search`           | Display the UCSC search form                                                                       | `boolean` | `true`                           |
+| `useSearchScope`     | `use-search-scope`     | Display a search scope selector ("This site" / "All of UCSC")                                      | `boolean` | `false`                          |
 
 
 ## Dependencies

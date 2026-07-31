@@ -9,7 +9,7 @@ describe('trss-ucsc-header', () => {
     });
     const root = page.root as HTMLElement;
     expect(root.getAttribute('role')).toBe('banner');
-    expect(root.querySelectorAll('.trss-ucsc-header__navigation a').length).toBe(5);
+    expect(root.querySelectorAll('.trss-ucsc-header__navigation a').length).toBe(6);
     expect(root.querySelector('.trss-ucsc-header__search')).not.toBeNull();
   });
 

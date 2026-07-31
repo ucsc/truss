@@ -1,90 +1,246 @@
+// The header is a container-query-driven component with two tiers:
+//
+//   compact (< $max-width)  — one slim bar: logo | search-and-menu toggle.
+//     The toggle opens a full-screen popover panel holding the search box and
+//     the campus links.
+//   wide    (>= $max-width) — the classic single row: logo | links | search
+//
+// The header collapses to the compact tier as soon as the single row no
+// longer fits — there is no intermediate stacked layout. The search form and
+// link list live inside the panel element; at the wide tier the panel becomes
+// `display: contents` so they participate in the header grid directly.
+//
+// Tiers respond to the header's own inline size, not the viewport, so the
+// component adapts wherever it is placed.
+//
+// NOTE on structure: Stencil's scoped-CSS transform appends the scope class to
+// top-level selectors but leaves selectors inside @container/@supports/
+// @starting-style untouched, which gives top-level rules higher specificity.
+// Therefore: top-level rules carry only tier-INVARIANT properties, and every
+// tier-VARYING property lives inside an at-rule block.
+//
+// The compact/wide boundary is $max-width (56.25rem) — keep in sync with
+// COMPACT_MAX_PX in trss-ucsc-header.tsx.
+
 :host {
   display: block;
+  container: ucsc-header / inline-size;
 }
 
 .trss-ucsc-header {
-  background: linear-gradient(360deg, #003c6c 10%, #006aad 40%);
-
-  @media screen and (min-width: $max-width) {
-    background: linear-gradient(90deg, #003c6c 40%, #006aad 0);
-  }
   padding: 0 var(--trss-content-padding);
 
   > .trss-row__inner {
-    background-image: linear-gradient(360deg, #003c6c 10%, #006aad 40%);
     max-width: var(--trss-content-width);
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
     align-items: center;
-    gap: 0em;
-    padding: 1em 0;
+  }
+}
 
-    @media screen and (min-width: $max-width) {
-      background-image: linear-gradient(130deg, #003c6c 4rem, #006aad 18rem);
-      flex-direction: row;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 0;
-      gap: var(--font-size-lg);
+// Compact tier: one slim bar.
+@container ucsc-header (inline-size < #{$max-width}) {
+  .trss-ucsc-header {
+    background: linear-gradient(360deg, var(--ucsc-primary-blue) 10%, var(--ucsc-secondary-blue) 40%);
+  }
 
-      &.has-logo {
-        justify-content: space-between;
-      }
+  .trss-ucsc-header > .trss-row__inner {
+    background-image: linear-gradient(360deg, var(--ucsc-primary-blue) 10%, var(--ucsc-secondary-blue) 40%);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'toggle';
+    column-gap: 0.75rem;
+    padding: 0.625rem 0;
+
+    &.has-logo {
+      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-areas: 'logo toggle';
     }
   }
 }
 
-// #trss-ucsc-header__toggle:checked + #trss-ucsc-header__show {
-//   border: 2px solid red;
-// }
+// Wide tier: the classic single row.
+@container ucsc-header (inline-size >= #{$max-width}) {
+  .trss-ucsc-header {
+    background: linear-gradient(90deg, var(--ucsc-primary-blue) 40%, var(--ucsc-secondary-blue) 0);
+  }
 
-.trss-ucsc-header__left {
-  padding: 0.5rem 0 0.5rem 0;
+  .trss-ucsc-header > .trss-row__inner {
+    background-image: linear-gradient(130deg, var(--ucsc-primary-blue) 4rem, var(--ucsc-secondary-blue) 18rem);
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: 'nav search';
+    column-gap: var(--font-size-lg);
+    padding: 0;
 
-  @media screen and (min-width: $max-width) {
-    padding: 0.5rem 3rem 0.5rem 0;
+    &.has-logo {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      grid-template-areas: 'logo nav search';
+    }
   }
 }
 
-.trss-ucsc-header__right {
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 0rem;
-  justify-content: center;
-  align-items: center;
+.trss-ucsc-header__left {
+  grid-area: logo;
+  padding: 0.5rem 0;
 
-  @media screen and (min-width: $max-width) {
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    gap: var(--font-size-lg);
+  // The logo tracks the header's own width; trss-logo's svg scales to fit.
+  trss-logo {
+    display: block;
+    inline-size: clamp(6.25rem, 20cqi, 8.25rem);
+  }
+}
+
+.trss-ucsc-header__nav {
+  grid-area: nav;
+}
+
+// ## Search-and-menu toggle (compact tier only; display set per tier below)
+.trss-ucsc-header__menu-button {
+  grid-area: toggle;
+  justify-self: end;
+  align-items: center;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  border-radius: var(--border-radius);
+  background: transparent;
+  color: var(--ucsc-white);
+  padding: 0.5em 0.7em;
+  min-block-size: 44px;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    background: rgb(255 255 255 / 0.12);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ucsc-primary-yellow);
+    outline-offset: 2px;
+  }
+}
+
+// The icon markup comes from assets/search-menu-icon.svg, inlined at build
+// time. The svg has no width/height of its own, so it fills this wrapper.
+// (Injected markup carries no scope class, so size the wrapper, not the svg.)
+.trss-ucsc-header__icon {
+  display: inline-flex;
+  inline-size: 38px;
+  block-size: 21px;
+}
+
+@container ucsc-header (inline-size < #{$max-width}) {
+  .trss-ucsc-header__menu-button {
+    display: inline-flex;
+  }
+}
+
+@container ucsc-header (inline-size >= #{$max-width}) {
+  .trss-ucsc-header__menu-button {
+    display: none;
+  }
+}
+
+// ## Full-screen search-and-links panel (compact tier)
+// The panel can only be opened by the toggle button, which exists only at the
+// compact tier, so open-state styles need no container gate. It covers the
+// whole viewport, so light dismiss by clicking outside is impossible — the
+// close button (plus Esc) handles that.
+.trss-ucsc-header__panel:popover-open {
+  position: fixed;
+  inset: 0;
+  inline-size: auto;
+  block-size: auto;
+  margin: 0;
+  border: 0;
+  padding: 0.75rem var(--trss-content-padding) 1.5rem;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: linear-gradient(360deg, var(--ucsc-primary-blue) 30%, var(--ucsc-secondary-blue) 90%);
+  color: var(--ucsc-white);
+}
+
+// `display` set per tier below — keeping it out of this scoped base rule so
+// the unscoped container blocks can win (see NOTE at the top of the file).
+.trss-ucsc-header__close {
+  align-self: flex-end;
+  place-items: center;
+  inline-size: 44px;
+  block-size: 44px;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  border-radius: var(--border-radius);
+  background: transparent;
+  color: var(--ucsc-white);
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    background: rgb(255 255 255 / 0.12);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ucsc-primary-yellow);
+    outline-offset: 2px;
+  }
+}
+
+@container ucsc-header (inline-size < #{$max-width}) {
+  .trss-ucsc-header__close {
+    display: grid;
+  }
+
+  // Opening animation (entry only, via @starting-style). `display`/`overlay`
+  // are deliberately NOT transitioned: an allow-discrete display transition
+  // would also fire when a resize flips the tier (contents -> none), leaving
+  // the panel's children ghost-rendered and auto-stacked in the compact grid
+  // for the transition's duration. Closing is instant as a consequence.
+  .trss-ucsc-header__panel {
+    opacity: 0;
+    translate: 0 -0.75rem;
+    transition:
+      opacity 0.2s ease,
+      translate 0.2s ease;
+
+    &:popover-open {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  @starting-style {
+    .trss-ucsc-header__panel:popover-open {
+      opacity: 0;
+      translate: 0 -0.75rem;
+    }
+  }
+}
+
+// At the wide tier the panel dissolves into the header grid: its children
+// (search, nav) become grid items. `display: contents` beats the popover UA
+// `display: none`, and a contents box renders no chrome of its own.
+@container ucsc-header (inline-size >= #{$max-width}) {
+  .trss-ucsc-header__panel {
+    display: contents;
+  }
+
+  .trss-ucsc-header__close {
+    display: none;
   }
 }
 
 .trss-ucsc-header__navigation {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  font-size: 0.9rem;
   margin: 0;
   padding: 0;
-  gap: 0.8rem;
+  list-style: none;
 
   li {
     margin: 0;
     padding: 0;
     list-style: none;
-    flex: auto;
-    text-align: center;
   }
 
   a {
     text-transform: none;
     color: var(--ucsc-white);
-    padding: 1.75ch 1.25ch;
-    display: inline-block;
     text-decoration: none;
 
     &:focus,
@@ -94,17 +250,40 @@
       text-decoration: underline;
     }
   }
+}
 
-  @media screen and (min-width: 48em) {
+// ### The link list inside the panel (compact tier)
+@container ucsc-header (inline-size < #{$max-width}) {
+  .trss-ucsc-header__navigation a {
+    display: block;
+    font-size: 1.05rem;
+    padding: 0.75em 0.5em;
+    border-radius: var(--border-radius);
+
+    &:hover,
+    &:active {
+      background: rgb(255 255 255 / 0.12);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ucsc-primary-yellow);
+      outline-offset: -2px;
+    }
+  }
+}
+
+// ### The link list inline (wide tier)
+@container ucsc-header (inline-size >= #{$max-width}) {
+  .trss-ucsc-header__navigation {
+    display: flex;
     flex-wrap: nowrap;
-    gap: .25em;
-    margin: 0;
-    padding: 0;
+    justify-content: flex-end;
+    font-size: 0.9rem;
+    gap: 0.25em;
 
-    > li {
+    li {
       line-height: 1.2em;
-      list-style-type: none;
-      flex: auto;
+      flex: none;
     }
 
     a {
@@ -121,28 +300,31 @@
 // ## Site Search
 // Search box for searching each site.
 .trss-ucsc-header__search {
+  grid-area: search;
   background-color: var(--ucsc-white);
   border-radius: var(--border-radius);
   border: 1px solid var(--ucsc-white);
-  transition: all 0.1s;
-  width: 100%;
-  max-width: 20em;
-  font-size: 0.9rem;
-  margin: 0.5em 0;
+  transition: border-color 0.1s;
+  min-inline-size: 0;
 
   &:focus-within {
-    border: 1px solid var(--ucsc-secondary-blue);
+    border-color: var(--ucsc-secondary-blue);
   }
 
-  form > div {
+  form {
     display: flex;
+    align-items: stretch;
+    margin: 0;
   }
 
-  input[type='text'] {
+  input[type='search'] {
     border: none;
     border-radius: var(--border-radius);
-    padding: 0.25em 0.5em;
-    flex-grow: 1;
+    padding: 0.35em 0.5em;
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    background: transparent;
+    font: inherit;
 
     &:focus,
     &:hover,
@@ -154,26 +336,130 @@
     }
   }
 
-  input[type='submit'] {
-    background: url(https://ucsc-webassets.netlify.app/images/looking-glass.svg) no-repeat;
-    background-size: 16px;
-    background-position: center center;
+  .trss-ucsc-header__submit {
+    display: grid;
+    place-items: center;
+    inline-size: 2.75em;
     border: 0;
-    left: auto;
-    outline: none;
-    text-indent: -100em;
-    top: 8%;
-    width: 2em;
-    z-index: 100;
+    padding: 0;
+    background: transparent;
+    color: var(--ucsc-primary-blue);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 2px solid var(--ucsc-secondary-blue);
+      outline-offset: -2px;
+    }
+  }
+}
+
+@container ucsc-header (inline-size < #{$max-width}) {
+  .trss-ucsc-header__search {
+    font-size: 1rem;
+  }
+}
+
+@container ucsc-header (inline-size >= #{$max-width}) {
+  .trss-ucsc-header__search {
+    justify-self: end;
+    inline-size: 100%;
+    max-inline-size: 22em;
+    font-size: 0.9rem;
+    margin-block: 0.5em;
+  }
+}
+
+// ### Search scope (customizable select, opt-in via use-search-scope)
+// The `appearance: base-select` rule pair is intentionally one selector list:
+// browsers without `::picker(select)` drop the whole rule and keep their
+// native select rendering.
+.trss-ucsc-header__scope {
+  border: 0;
+  border-right: 1px solid var(--ucsc-light-gray);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  background: var(--ucsc-lightest-gray);
+  color: var(--ucsc-primary-blue);
+  font: inherit;
+  font-size: 0.85em;
+  padding: 0 0.5em;
+  cursor: pointer;
+
+  &,
+  &::picker(select) {
+    appearance: base-select;
+  }
+}
+
+.trss-ucsc-header__scope::picker(select) {
+  border: 1px solid var(--ucsc-light-gray);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.18);
+  padding: 0.25rem;
+  margin-block-start: 0.35rem;
+  background: var(--ucsc-white);
+}
+
+.trss-ucsc-header__scope option {
+  padding: 0.5em 0.75em;
+  border-radius: var(--border-radius);
+  color: var(--ucsc-black);
+
+  &:hover,
+  &:focus {
+    background: var(--ucsc-light-blue);
   }
 
-  @media screen and (min-width: 48em) {
-    margin-left: 1em;
-    width: auto;
-    max-width: auto;
+  &::checkmark {
+    color: var(--ucsc-secondary-blue);
+  }
+}
 
-    form > div {
-      display: block;
+// Pre-container-query browsers get the classic always-visible row.
+@supports not (container-type: inline-size) {
+  .trss-ucsc-header {
+    background: linear-gradient(90deg, var(--ucsc-primary-blue) 40%, var(--ucsc-secondary-blue) 0);
+  }
+
+  .trss-ucsc-header > .trss-row__inner {
+    background-image: linear-gradient(130deg, var(--ucsc-primary-blue) 4rem, var(--ucsc-secondary-blue) 18rem);
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: 'nav search';
+    column-gap: var(--font-size-lg);
+
+    &.has-logo {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      grid-template-areas: 'logo nav search';
     }
+  }
+
+  .trss-ucsc-header__menu-button,
+  .trss-ucsc-header__close {
+    display: none;
+  }
+
+  .trss-ucsc-header__panel {
+    display: contents;
+  }
+
+  .trss-ucsc-header__navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    font-size: 0.9rem;
+    gap: 0.25em;
+
+    a {
+      padding: 1.75ch 1.25ch;
+      display: inline-block;
+    }
+  }
+
+  .trss-ucsc-header__search {
+    justify-self: end;
+    inline-size: 100%;
+    max-inline-size: 20em;
+    font-size: 0.9rem;
+    margin-block: 0.5em;
   }
 }
