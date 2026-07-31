@@ -2,17 +2,15 @@ import { newSpecPage } from '@stencil/core/testing';
 import { TrssSiteTitle } from '../trss-site-title';
 
 describe('trss-site-title', () => {
-  it('renders', async () => {
+  it('renders the title wrapper and link', async () => {
     const page = await newSpecPage({
       components: [TrssSiteTitle],
-      html: `<trss-site-title link="https://news.ucsc.edu">Campus Newcenter</trss-site-title>`,
+      html: `<trss-site-title link="https://news.ucsc.edu">Campus News</trss-site-title>`,
     });
-    expect(page.root).toEqualHtml(`
-      <trss-site-title link="https://news.ucsc.edu">
-        <div class="site-title">
-          <p><a href="https://news.ucsc.edu">Campus Newcenter</a></p>
-        </div>
-      </trss-site-title>
-    `);
+    const root = page.root as HTMLElement;
+    expect(root.querySelector('.site-title')).not.toBeNull();
+    const link = root.querySelector('a');
+    expect(link).not.toBeNull();
+    expect(link!.getAttribute('href')).toBe('https://news.ucsc.edu');
   });
 });

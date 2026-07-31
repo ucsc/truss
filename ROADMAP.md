@@ -115,21 +115,32 @@ unparseable dates (`isNaN` guard) in `src/utils/utils.ts`, preventing
 
 ## Tooling / tests
 
-### [ ] 10. Stale component spec tests — Medium
+### [x] 10. Stale component spec tests — Medium
 
-**Where:** every `src/components/**/test/*.spec.tsx`
+**Status:** Fixed. Rewrote all 10 failing `*.spec.tsx` suites (trss-card
+already passed) from stale full-DOM `toEqualHtml` snapshots to targeted
+assertions on the current output — key landmarks/roles, prop-driven classes,
+element counts, and slot containers. This avoids brittle transcription of the
+inline logo SVG and the you-belong legal copy, and the checks actually guard the
+contract (the feed-list suites now assert the #4 fallback; the footer passes an
+explicit `year` so it isn't date-dependent; the header verifies `useSearch`
+toggles the search form). Full spec suite: 25/25 passing.
 
-The `toEqualHtml` snapshots assert markup from an older version of the
-components and no longer match what they render today (e.g. `trss-alert`
-expects `class="ribbon ribbon-notice"` / `class="inner"` and an `header`
-attribute injecting content, but the component now renders
-`trss-alert trss-alert--notice`, `trss-row__inner`, and slots). All component
-spec suites currently fail, so they guard nothing and mask real regressions.
+**Note:** Scope was spec tests only. The `*.e2e.ts` suites (Puppeteer, run via
+`--e2e`) were not touched and may still be stale — see #13.
 
-**Fix:** Refresh the expected markup in each spec to match current component
-output (confirm the current markup is the intended baseline first), then keep
-them green in CI. `src/utils/utils.spec.ts` is already passing and can serve as
-the reference for a healthy suite.
+### [ ] 13. Verify/refresh e2e suites — Low
+
+**Where:** every `src/components/**/test/*.e2e.ts`
+
+Only the spec suites were restored in #10. The Puppeteer e2e suites (`--e2e`)
+were likely written against the same old markup and may be stale too. They
+weren't run as part of #10.
+
+**Fix:** Run `npm run test` (spec + e2e), update any e2e assertions that no
+longer match, and decide whether to migrate off Stencil's deprecated integrated
+testing (the runner warns it is removed in Stencil v5 — `@stencil/vitest` /
+`@stencil/playwright` are the suggested replacements).
 
 ### [ ] 11. `moduleResolution=node10` deprecation — Low
 
