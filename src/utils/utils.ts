@@ -1,5 +1,11 @@
 export function friendly_date(date: string): string {
-  let dateObj = new Date(Date.parse(date));
+  if (!date) {
+    return '';
+  }
+  const dateObj = new Date(Date.parse(date));
+  if (isNaN(dateObj.getTime())) {
+    return '';
+  }
   return dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 }
 

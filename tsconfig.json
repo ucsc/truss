@@ -9,6 +9,10 @@
       "dom",
       "es2018"
     ],
+    "types": [
+      "jest",
+      "node"
+    ],
     "moduleResolution": "node",
     "module": "esnext",
     "target": "es2018",
