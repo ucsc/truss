@@ -52,10 +52,11 @@ mock-doc's `<textarea>` doesn't implement `innerHTML`→`value`).
 
 ### [x] 3. `event.image.url` crashes when an event has no image — Medium
 
-**Status:** Fixed. Guarded with optional chaining (`event.image?.url`) so events
-returning `image: false`/`undefined` no longer throw and abort the list render.
-Also wrapped the image `src` in `safe_url()` for defense-in-depth on
-feed-supplied URLs (`trss-events-list.tsx:53`).
+**Status:** Fixed. Guarded the image access so events returning
+`image: false`/`undefined` no longer throw and abort the list render (now
+`event.image && event.image.url` after #9 typed `image` as `EventImage | false`;
+originally optional chaining). Also wrapped the image `src` in `safe_url()` for
+defense-in-depth on feed-supplied URLs.
 
 ### [x] 4. List render crashes on an error/empty API response — Medium
 
@@ -105,11 +106,14 @@ throw.
 unparseable dates (`isNaN` guard) in `src/utils/utils.ts`, preventing
 "Invalid Date" from rendering. Covered by tests in `src/utils/utils.spec.ts`.
 
-### [ ] 9. `any`-typed feed items — Low
+### [x] 9. `any`-typed feed items — Low
 
-**Where:** feed `.map((item: any = {}) => …)` in both feed components
-
-`any` removes the compile-time protection that would have caught items #3 and #4. Typing the feed response shapes prevents this class of bug.
+**Status:** Fixed. Added `NewsItem` (news) and `EventItem`/`EventImage` (events)
+interfaces and typed `listData`/`eventData` and the render `.map` callbacks with
+them, dropping the `any = {}` pattern. `EventItem.image` is typed
+`EventImage | false` to model the no-image case from #3; the render guard uses
+truthiness narrowing (`event.image && event.image.url`) so the compiler handles
+the `false` branch. Build type-checks clean; spec suite still 25/25.
 
 ---
 

@@ -1,6 +1,23 @@
 import { Component, Element, Host, h, Prop } from '@stencil/core';
 import { decode_entities, fetch_cached_json, friendly_date, safe_url } from '../../utils/utils';
 
+/**
+ * A single event from the Tribe Events REST API. All fields are optional since
+ * they come from an external feed; `image` is `false` when an event has no
+ * featured image (see ROADMAP #3).
+ */
+interface EventImage {
+  url?: string;
+}
+
+interface EventItem {
+  image?: EventImage | false;
+  url?: string;
+  title?: string;
+  start_date?: string;
+  summary?: string;
+}
+
 @Component({
   tag: 'trss-events-list',
   styleUrl: 'trss-events-list.scss',
@@ -45,7 +62,7 @@ export class TrssEventsList {
    * @slot fallback - Content shown when the feed cannot be loaded or is empty. Falls back to a default message.
    */
 
-  eventData = { events: [] };
+  eventData: { events: EventItem[] } = { events: [] };
 
   async componentWillRender() {
     const data = await fetch_cached_json(this.source, 'trss-events-list-');
@@ -65,9 +82,9 @@ export class TrssEventsList {
         <slot name="header" />
         {events.length > 0 ? (
           <ul>
-            {events.map((event: any = {}) => (
+            {events.map((event: EventItem) => (
               <li>
-                {event.image?.url && this.image ? <img src={safe_url(event.image.url)} alt="" /> : ''}
+                {event.image && event.image.url && this.image ? <img src={safe_url(event.image.url)} alt="" /> : ''}
                 <p class="title">
                   <a href={safe_url(event.url)}>{decode_entities(event.title)}</a>
                 </p>

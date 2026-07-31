@@ -1,6 +1,17 @@
 import { Component, Element, Host, h, Prop } from '@stencil/core';
 import { decode_entities, fetch_cached_json, friendly_date, safe_url } from '../../utils/utils';
 
+/**
+ * A single item from a JSON Feed (https://www.jsonfeed.org/) news source.
+ * All fields are optional since they come from an external feed.
+ */
+interface NewsItem {
+  url?: string;
+  title?: string;
+  date_published?: string;
+  summary?: string;
+}
+
 @Component({
   tag: 'trss-news-list',
   styleUrl: 'trss-news-list.scss',
@@ -29,7 +40,7 @@ export class TrssNewsList {
    * @slot fallback - Content shown when the feed cannot be loaded or is empty. Falls back to a default message.
    */
 
-  listData = { items: [] };
+  listData: { items: NewsItem[] } = { items: [] };
 
   async componentWillRender() {
     const data = await fetch_cached_json(this.source, 'trss-news-list-');
@@ -49,7 +60,7 @@ export class TrssNewsList {
         <slot />
         {items.length > 0 ? (
           <ul>
-            {items.map((item: any = {}) => (
+            {items.map((item: NewsItem) => (
               <li>
                 <h3 class="header">
                   <a href={safe_url(item.url)}>{decode_entities(item.title)}</a>
