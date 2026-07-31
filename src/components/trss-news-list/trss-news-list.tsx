@@ -72,7 +72,7 @@ export class TrssNewsList {
           </ul>
         ) : (
           <div class="trss-news-list__fallback" role="status">
-            {this.hasFallbackContent() ? <slot name="fallback" /> : <p>News is unavailable right now. Please try again later.</p>}
+            {this.hasFallbackContent() ? <slot name="fallback" /> : <p>No news links to display.</p>}
           </div>
         )}
       </Host>
