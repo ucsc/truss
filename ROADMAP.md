@@ -178,6 +178,119 @@ descriptive alt.
 `alt={decode_entities(event.image?.alt || event.title)}`. Confirm the feed field
 name before wiring it up.
 
+### [ ] 14. Carousel controls have no accessible names — Medium
+
+**Where:** `src/components/trss-carousel/trss-carousel.tsx`
+
+```tsx
+<button class="trss-hero-button prev">&larr;</button>
+<button class="trss-hero-button next">&rarr;</button>
+<section aria-label="Header">
+```
+
+The prev/next buttons expose only an arrow glyph as their accessible name, which
+is meaningless to screen-reader users (WCAG 4.1.2). They also lack
+`type="button"` (so they default to `submit` and would submit an enclosing
+form). The wrapping `<section aria-label="Header">` is mislabeled — "Header"
+doesn't describe a carousel. The slide images also all share the generic
+`alt="Camera"`.
+
+**Fix:** Add `type="button"` and `aria-label="Previous slide"` /
+`aria-label="Next slide"`; relabel the section to describe the carousel (or use
+`aria-roledescription="carousel"` and the ARIA carousel pattern if it becomes
+interactive); give each image a meaningful `alt` (or `alt=""` if decorative).
+
+### [ ] 15. `trss-card` image renders without `alt` (and with empty `src`) — Medium
+
+**Where:** `src/components/trss-card/trss-card.tsx`
+
+```tsx
+<img alt={this.imageAlt} class="block-image" src={this.imageUrl} />
+```
+
+`imageAlt`/`imageUrl` are optional with no defaults. When `imageAlt` is unset,
+Stencil omits the attribute entirely, producing an `<img>` with **no** `alt` (a
+WCAG 1.1.1 failure — AT falls back to reading the URL). When `imageUrl` is unset,
+it renders an empty, broken `<img>`.
+
+**Fix:** Only render the image when `imageUrl` is present, and default `imageAlt`
+to `''` so images are at least explicitly decorative when no alt is supplied.
+
+### [ ] 16. `trss-alert` is not announced by assistive tech — Medium
+
+**Where:** `src/components/trss-alert/trss-alert.tsx`
+
+```tsx
+<div class={…} role="complementary">
+```
+
+`role="complementary"` marks the alert as tangential content, so screen readers
+won't announce it — a problem for the `warning`/`emergency` appearances, which
+are the whole point of the component. There's also no accessible name to
+distinguish it from other complementary regions.
+
+**Fix:** For urgent appearances, use `role="alert"` (or `role="region"` +
+`aria-live="assertive"`/`"polite"`) so the content is announced, and give the
+region an `aria-label`. Consider driving the role from `appearance`.
+
+### [ ] 17. Event titles are not headings — Low
+
+**Where:** `src/components/trss-events-list/trss-events-list.tsx`
+
+News items use `<h3 class="header">` but event titles use `<p class="title">`.
+Without headings, screen-reader users can't navigate the events list by heading,
+and the two feed components are inconsistent.
+
+**Fix:** Render event titles as headings (e.g. `<h3>`), matching the news list.
+
+### [ ] 18. Hardcoded heading levels — Low
+
+**Where:** `trss-card` (`<h3>`), `trss-you-belong` (`<h3>`), `trss-news-list`
+(`<h3>`), and #17
+
+Each component hardcodes `<h3>`, which can skip levels depending on where it's
+placed in the page outline (WCAG 1.3.1 / 2.4.6).
+
+**Fix:** Expose a `heading-level` (or `level`) prop so consumers can set the
+correct level for their document outline; default to a sensible value.
+
+### [ ] 19. Breadcrumbs need current-page semantics — Low
+
+**Where:** `src/components/trss-breadcrumbs/trss-breadcrumbs.tsx`
+
+The breadcrumb trail is entirely slotted, so there's no `aria-current="page"` on
+the current item and the list isn't required to be an ordered list.
+
+**Fix:** Document (in the readme/slot docs) that consumers should use an `<ol>`
+and mark the current item with `aria-current="page"`; optionally add a small
+lifecycle hook that stamps `aria-current` on the last item automatically. Also
+drop the redundant `role="navigation"` (a `<nav>` already has it).
+
+### [ ] 20. `trss-site-title` link can lack an accessible name — Low
+
+**Where:** `src/components/trss-site-title/trss-site-title.tsx`
+
+```tsx
+<p><a href={this.link}><slot /></a></p>
+```
+
+If the default slot is empty, the link has no accessible name; if `link` is
+unset, `href` is omitted and it stops being a link. A site title is also often
+the page's primary heading.
+
+**Fix:** Ensure the link always has accessible text (fall back to a label), and
+consider heading semantics for the title.
+
+### [ ] 21. Duplicate/nested landmarks in the header — Low
+
+**Where:** `src/components/trss-ucsc-header/trss-ucsc-header.tsx`
+
+Both the search `<div>` and the inner `<form>` carry `role="search"`, creating
+nested/duplicate search landmarks.
+
+**Fix:** Keep `role="search"` on a single element (the `<form>` is the natural
+choice) and remove the duplicate.
+
 ---
 
 ## Summary
