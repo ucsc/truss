@@ -2,15 +2,10 @@
   for = "/*" # you can configure the correct paths here
   [headers.values]
     access-control-allow-origin = "*" # see a list of allowed values here: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin
+    cache-control = "public, max-age=3600, stale-while-revalidate=86400" # Unhashed entry points (ucsc-trss.esm.js, ucsc-trss.css, etc.) get a shorter cache time
 
 # Stencil's hashed lazy-loaded chunks (p-abc123.js, p-abc123.entry.js) never change
 [[headers]]
-  for = "/build/p-*"
+  for = "/p-*"
   [headers.values]
     cache-control = "public, max-age=31536000, immutable"
-
-# Unhashed entry points (ucsc-trss.esm.js, ucsc-trss.css, etc.) get a shorter cache time
-[[headers]]
-  for = "/build/*"
-  [headers.values]
-    cache-control = "public, max-age=3600, stale-while-revalidate=86400"
