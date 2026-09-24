@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/web-components-vite';
-import { setCustomElementsManifest } from '@storybook/web-components';
+import { setCustomElementsManifest } from '@storybook/web-components-vite';
 import { defineCustomElements } from '../dist/loader';
 import customElements from '../custom-elements.json';
 import '../src/globals/scss/_reset.scss';
