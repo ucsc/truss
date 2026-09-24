@@ -6,6 +6,6 @@
 
 # Stencil's hashed lazy-loaded chunks (p-abc123.js, p-abc123.entry.js) never change
 [[headers]]
-  for = "/p-*"
+  for = "/ucsc-trss/p-*"
   [headers.values]
     cache-control = "public, max-age=31536000, immutable"
